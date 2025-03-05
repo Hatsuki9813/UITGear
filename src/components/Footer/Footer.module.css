@@ -4,7 +4,7 @@
     background-color: #191C1F;
     background-position: center;
     background-size: cover;
-    padding: 20px; /* Thêm padding cho đẹp */
+    padding: 20px;
 }
 
 .footercontainer .titletext {
@@ -21,7 +21,7 @@
 .footercontainer .logoimg {
     width: 250px;
     height: 100px;
-    margin-bottom: 20px; /* Thêm margin-bottom cho đẹp */
+    margin-bottom: 20px;
 }
 .footercontainer .footericon {
     color: #FFFFFF;
@@ -31,4 +31,12 @@
     display: flex;
   align-items: center;
   gap: 10px; /* Tạo khoảng cách giữa icon và text */
+}
+.footercontainer .contenttext:hover  {
+    color: #02457A; 
+    transition: color 0.3s ease-in-out;
+}
+.footercontainer .stacontenttext {
+    font-size: 16px;
+    color: #FFFFFF;
 }

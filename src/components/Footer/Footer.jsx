@@ -13,9 +13,9 @@ const Footer = () => {
         <Row>
           <Col className="d-flex flex-column">
           <img src={logo} className={styles.logoimg}/>
-          <p className={styles.contenttext}>UITGEAR - Chuyên cung cấp Laptop & phụ kiện cao cấp chính hãng.</p>
+          <p className={styles.stacontenttext}>UITGEAR - Chuyên cung cấp Laptop & phụ kiện cao cấp chính hãng.</p>
           <p className={styles.titletext}>Hotline Hỗ trợ</p>
-          <p className={styles.contenttext}>0799479950</p>
+          <p className={styles.stacontenttext}>0799479950</p>
           </Col>
           <Col className="d-flex flex-column">
           <p className={styles.titletext}>Hướng dẫn</p>
