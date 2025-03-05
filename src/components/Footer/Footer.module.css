@@ -1,0 +1,34 @@
+.footercontainer {
+    background-image: url('../../assets/footerbg/footerbg2.png');
+    background-repeat: no-repeat;
+    background-color: #191C1F;
+    background-position: center;
+    background-size: cover;
+    padding: 20px; /* Thêm padding cho đẹp */
+}
+
+.footercontainer .titletext {
+    opacity: 0.6;
+    font-size: 18px;
+    color: #77878F;
+}
+
+.footercontainer .contenttext {
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.footercontainer .logoimg {
+    width: 250px;
+    height: 100px;
+    margin-bottom: 20px; /* Thêm margin-bottom cho đẹp */
+}
+.footercontainer .footericon {
+    color: #FFFFFF;
+    font-size: 24px
+}
+.footercontainer .iconcontainer {
+    display: flex;
+  align-items: center;
+  gap: 10px; /* Tạo khoảng cách giữa icon và text */
+}
