@@ -1,0 +1,62 @@
+.FormContainer {
+    display: flex!important;
+    flex-direction: column!important;
+    align-items: stretch!important;
+    justify-content: center!important;
+    width: 30%;
+    height: auto;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35) ;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 100%;
+}
+.FormContainer .HeaderText {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+}
+.FormContainer .SubHeaderText {
+    font-size: 16px!important;
+    font-weight: 400!important;
+    text-align: center!important;
+}
+.FormContainer .OTPContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Khoảng cách giữa các ô input */
+    margin-top: 15px; /* Tạo khoảng cách với phần trên */
+    flex-wrap: wrap; /* Đảm bảo không bị tràn ra ngoài form */
+    width: 100%; /* Đảm bảo nó nằm trong form */
+  }
+  .FormContainer input {
+    width: 40px; /* Điều chỉnh kích thước input */
+    height: 50px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.FormContainer .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.FormContainer .SubmitButton {
+    border-radius: 0px !important;
+    width: 100%;
+    padding: 10px;
+    background-color: #011C49;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.FormContainer .SubmitButton:active,
+.FormContainer .SubmitButton:focus,
+.FormContainer .SubmitButton:hover {
+    background-color: #011C49 !important;
+    color: white !important;
+    border-color: #011C49 !important;
+    box-shadow: none !important; /* Ngăn Bootstrap thêm viền xanh */
+}

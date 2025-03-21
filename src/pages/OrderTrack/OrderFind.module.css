@@ -1,0 +1,39 @@
+.OrderFindContainer {
+    margin: 200px;
+}
+.OrderFindContainer .form{
+
+    gap: 20px;
+
+}
+.OrderFindContainer .SubmitButton {
+    border-radius: 0px !important;
+    width: 30%;
+    padding: 10px;
+    background-color: #011C49;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.OrderFindContainer .SubmitButton:active,
+.OrderFindContainer .SubmitButton:focus,
+.OrderFindContainer .SubmitButton:hover {
+    background-color: #011C49 !important;
+    color: white !important;
+    border-color: #011C49 !important;
+    box-shadow: none !important; /* Ngăn Bootstrap thêm viền xanh */
+}
+.loginicon {
+    color: white;
+    margin-left: 5px;
+}
+.OrderFindContainer .HeaderText {
+    font-weight: bold;
+    font-size: 2rem;
+    color:#02457A;
+}
+
+.OrderFindContainer .contenttext {
+    font-size: 16px;
+}

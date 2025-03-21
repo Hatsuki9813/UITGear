@@ -2,17 +2,19 @@
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { Outlet } from 'react-router';
+
 function App() {
   return (
     <div className="AppContainer">
       <div className="HeaderContainer">
-      <Header/>
+        <Header />
       </div>
       <div className="MainContainer">
-      <Outlet/>
+        <Outlet />
+
       </div>
       <div className="FooterContainer">
-      <Footer />
+        <Footer />
       </div>
 
     </div>

@@ -1,0 +1,65 @@
+.OrderTrackContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    width: 50%;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+/* Header chứa ID, ngày đặt và giá */
+.HeaderContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E7F1FD;
+    padding: 15px;
+    border: 1px solid #ccc;
+}
+
+/* Vùng chứa thông tin đơn hàng */
+.ProductInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ID được highlight */
+.OrderID {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0056b3;
+    background-color: #d1e7ff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+/* Text ngày đặt hàng, ngày giao */
+.ContentText {
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px;
+}
+
+/* Giá nằm bên phải */
+.Price {
+    font-size: 18px;
+    font-weight: bold;
+    color: green;
+}
+.status {
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 10px; /* Khoảng cách giữa ảnh và chữ */
+
+}
+.OrderTrackContainer .HeaderText {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color:#02457A;
+}
+.OrderTrackContainer .ordercontent {
+    font-size: 1rem;
+    color:#02457A;
+}

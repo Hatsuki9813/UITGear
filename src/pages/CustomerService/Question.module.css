@@ -1,0 +1,46 @@
+.QuestionContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.QuestionContainer .Question {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 20px;
+    border: 1px solid #ccc;
+}
+
+.QuestionContainer .HeaderText {
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: left;
+    color: #02457A;
+    margin-left: 20px;
+}
+.QuestionContainer .Request {
+    flex-direction: column;
+    border: 1px solid #ccc;
+    margin: 20px;
+    width: 30%;
+    height: fit-content;
+    padding: 20px;
+}
+.QuestionContainer .SubmitButton {
+    border-radius: 0px !important;
+    width: 100%;
+    padding: 10px;
+    background-color: #011C49;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.QuestionContainer .SubmitButton:active,
+.QuestionContainer .SubmitButton:focus,
+.QuestionContainer .SubmitButton:hover {
+    background-color: #011C49 !important;
+    color: white !important;
+    border-color: #011C49 !important;
+    box-shadow: none !important; /* Ngăn Bootstrap thêm viền xanh */
+}

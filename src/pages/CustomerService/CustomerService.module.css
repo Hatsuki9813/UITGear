@@ -1,0 +1,52 @@
+.CustomerCustomerServiceContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center ;
+}
+.CustomerCustomerServiceContainer .HeaderText {
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    color:#02457A;
+}
+.CustomerCustomerServiceContainer .ButtonContainer{
+    flex-wrap: wrap; /* Cho phép xuống dòng khi không đủ chỗ */
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    gap: 50px; /* Khoảng cách giữa các button */
+    margin: 20px;
+    padding: 20px;
+}
+.CustomerCustomerServiceContainer .contenttext {
+    font-size: 16px;
+    color: #02457A;
+}
+ .SpInfo {
+    display: flex;
+    flex-direction: column;
+}
+ .supportCard {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Khoảng cách giữa ảnh và thông tin */
+    
+}
+ .spLogo {
+    width: 100px;
+    height: auto;
+}
+.SpContent {
+    font-size: 16px;
+    color: #555;
+}
+.SpName {
+    font-size: 16px;
+    font-weight: bold;
+}
+.CustomerCustomerServiceContainer .CardContainer{
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    gap: 20px;
+}

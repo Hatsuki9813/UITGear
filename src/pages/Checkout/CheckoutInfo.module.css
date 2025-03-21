@@ -1,0 +1,103 @@
+.CheckoutContainer {
+    display: flex;
+    margin-top: 20px;
+}
+.CheckoutContainer .CheckoutInfo {
+    width: 70%;
+    margin: 20px;
+    border: 1px solid #ccc;
+}
+.CheckoutContainer .Input {
+    margin: 20px;
+}
+.CheckoutContainer .CheckoutMethod {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 20px;
+    border: 1px solid #ccc;
+    height: fit-content;
+    padding: 20px;
+}
+.CheckoutContainer .CheckoutHeader {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: flex-start;
+    width: 100%;
+    margin: 20px;
+}
+.CheckoutContainer .Method {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    border: 1px solid #ccc;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.CheckoutContainer .PaymentMethods {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 20px;
+
+}
+.CheckoutContainer .Order {
+    flex-direction: column;
+    border: 1px solid #ccc;
+    margin: 20px;
+    width: 30%;
+    height: fit-content;
+    padding: 20px;
+}
+.CheckoutContainer .OrderHeader {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: flex-start;
+    width: 100%;
+}
+.CheckoutContainer .SubmitButton {
+    border-radius: 0px !important;
+    width: 100%;
+    padding: 10px;
+    background-color: #011C49;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.CheckoutContainer .SubmitButton:active,
+.CheckoutContainer .SubmitButton:focus,
+.CheckoutContainer .SubmitButton:hover {
+    background-color: #011C49 !important;
+    color: white !important;
+    border-color: #011C49 !important;
+    box-shadow: none !important; /* Ngăn Bootstrap thêm viền xanh */
+}
+.CheckoutContainer .divider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    color: #666;
+    margin: 20px 0;
+}
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+
+}
+.CheckoutContainer .OrderContent {
+    display: flex;
+    justify-content: space-between; /* Đẩy nội dung và giá sang hai bên */
+    align-items: center;
+    padding: 10px;
+    font-size: 1.2rem;
+    width: 100%;
+}
+.loginicon {
+    color: white;
+    margin-left: 5px;
+}

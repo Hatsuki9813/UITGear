@@ -1,0 +1,28 @@
+.UsuallyAskedButtonContainer {
+    border: 1px solid #001B48;
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    padding: 10px; /* Tạo khoảng cách bên trong */
+    color: #001B48;
+    gap: 10px; /* Khoảng cách giữa icon và text */
+    width: 20%;
+    cursor: pointer;
+
+}
+.UsuallyAskedButtonContainer .ButtonLogo{
+ 
+    width: 20px;
+    height: 20px;
+    color: #001B48;
+    margin-right: 10px;
+    
+}
+.UsuallyAskedButtonContainer .contenttext{
+    color: #001B48;
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    margin: 0; /* Xóa margin mặc định của `<p>` */
+    font-size: 20px;
+    font-weight: 450;
+}
