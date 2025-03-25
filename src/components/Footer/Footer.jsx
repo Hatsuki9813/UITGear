@@ -7,6 +7,8 @@ import styles from './Footer.module.css'; // Import CSS module
 import logo from '../../assets/icons/croppedlogonobgr.png'
 import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa';
 const Footer = () => {
+
+
   return (
     <footer className={styles.footercontainer}>
       <Container fluid>
