@@ -1,24 +1,22 @@
-
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import { Outlet } from 'react-router';
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import { Outlet } from "react-router";
+import "./index.css";
 
 function App() {
-  return (
-    <div className="AppContainer">
-      <div className="HeaderContainer">
-        <Header />
-      </div>
-      <div className="MainContainer">
-        <Outlet />
-
-      </div>
-      <div className="FooterContainer">
-        <Footer />
-      </div>
-
-    </div>
-  )
+    return (
+        <div className="AppContainer">
+            <div className="HeaderContainer">
+                <Header />
+            </div>
+            <div className="MainContainer">
+                <Outlet />
+            </div>
+            <div className="FooterContainer">
+                <Footer />
+            </div>
+        </div>
+    );
 }
 
-export default App
+export default App;
