@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
+import styles from "./ImageSlider.module.css"; // Import your CSS module
 
 const imageList = [
     { src: "/image-slider/1.png", index: 0 },
@@ -9,10 +10,10 @@ const imageList = [
     { src: "/image-slider/4.png", index: 3 },
     { src: "/image-slider/5.png", index: 4 },
     { src: "/image-slider/6.png", index: 5 },
-    { src: "/image-slider/7.png", index: 6 },
-    { src: "/image-slider/8.png", index: 7 },
-    { src: "/image-slider/9.png", index: 8 },
-    { src: "/image-slider/10.png", index: 9 },
+    // { src: "/image-slider/7.png", index: 6 },
+    // { src: "/image-slider/8.png", index: 7 },
+    // { src: "/image-slider/9.png", index: 8 },
+    // { src: "/image-slider/10.png", index: 9 },
 ];
 
 const ImagePicker = ({ item, index, selectIndex }) => {
@@ -37,9 +38,10 @@ const ImagePicker = ({ item, index, selectIndex }) => {
 
     return (
         <button
-            className={`w-16 sm:w-22 h-16 sm:h-22 flex bg-white border-2 ${
-                item.index == index ? "border-[#02457a]" : "border-[#e0e0e0]"
-            } rounded-sm cursor-pointer hover:border-[#02457a] transition-colors duration-200 flex items-center`}
+            style={{
+                border: item.index == index ? "1px solid #02457a" : "1px solid #e0e0e0",
+            }}
+            className={styles.ImagePicker}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
@@ -47,7 +49,11 @@ const ImagePicker = ({ item, index, selectIndex }) => {
             <img
                 src={item.src}
                 alt="carousel"
-                className="object-contain"
+                style={{
+                    maxWidth: "100%",
+                    maxHeight: "100%",
+                    objectFit: "contain",
+                }}
                 onDragStart={(e) => {
                     if (window.innerWidth >= 1024) e.preventDefault();
                 }}
@@ -135,14 +141,14 @@ const ImageSlider = () => {
     const [startX, setStartX] = useState(0);
 
     return (
-        <div className="flex flex-col w-full lg:w-136 h-fit p-4 lg:p-8 gap-4">
-            <div className="border-2 border-[#e0e0e0] rounded-sm relative h-50 md:h-100 sm:h-75 group w-full">
+        <div className={styles.ImageSlider}>
+            <div className={styles.main}>
                 {imageList.map((img, i) => (
                     <motion.img
                         key={i}
                         src={img.src}
                         alt="carousel"
-                        className="absolute inset-0 w-full h-full object-contain"
+                        className={styles.mainImg}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: i === index ? 1 : 0 }}
                         transition={{ duration: 0.5 }}
@@ -160,32 +166,45 @@ const ImageSlider = () => {
                     />
                 ))}
 
-                <button
-                    className="absolute left-2 top-1/2 -translate-y-1/2 text-white z-10 bg-[#6e6e6e] opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-full p-2 cursor-pointer"
-                    onClick={handlePrev}
-                >
-                    <ChevronLeftIcon className="h-6" />
+                <button className={`${styles.slideButton} ${styles.prevButton}`} onClick={handlePrev}>
+                    <ChevronLeftIcon className={styles.buttonIcon} />
                 </button>
 
-                <button
-                    className="absolute right-2 top-1/2 -translate-y-1/2 text-white z-10 bg-[#6e6e6e] opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-full p-2 cursor-pointer"
-                    onClick={handleNext}
-                >
-                    <ChevronRightIcon className="h-6" />
+                <button className={`${styles.slideButton} ${styles.nextButton}`} onClick={handleNext}>
+                    <ChevronRightIcon className={styles.buttonIcon} />
                 </button>
             </div>
 
-            <div className="group relative flex h-22">
-                <div className="w-full justify-center overflow-hidden">
-                    <div ref={containerRef} className="h-22 w-full flex items-center justify-center relative overflow-hidden">
+            <div className={styles.slider}>
+                <div className={styles.sliderContainer}>
+                    <div
+                        ref={containerRef}
+                        style={{
+                            height: "5.5rem",
+                            width: "100%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            position: "relative",
+                            overflow: "hidden",
+                        }}
+                    >
                         <motion.div
-                            className="flex gap-[10px] flex-nowrap absolute left-0 pointer-events-auto"
+                            style={{
+                                display: "flex",
+                                gap: "10px",
+                                flexWrap: "nowrap",
+                                width: "fit-content",
+                                position: "absolute",
+                                left: 0,
+                                pointerEvents: "auto",
+                            }}
                             animate={{ x: -firstSlotIndex * offset }}
                             transition={{ type: "spring", stiffness: 100, damping: 15 }}
                             {...(window.innerWidth < 1024 && { drag: "x", dragConstraints: { left: -maxDrag, right: 0 }, dragElastic: 0.1 })}
                         >
                             {imageList.map((item, idx) => (
-                                <div className="h-fit shrink-0 w-16 sm:w-22 pointer-events-auto" key={idx}>
+                                <div className={styles.child} key={idx}>
                                     <ImagePicker item={item} index={index} selectIndex={selectIndex} />
                                 </div>
                             ))}
@@ -193,17 +212,11 @@ const ImageSlider = () => {
                     </div>
                 </div>
 
-                <button
-                    className="absolute left-2 top-1/2 -translate-y-1/2 text-white z-10 bg-[#6e6e6e] opacity-0 group-hover:opacity-100 transition-opacity duration-150 rounded-full p-2 cursor-pointer"
-                    onClick={() => handleSlide("prev")}
-                >
-                    <ChevronLeftIcon className="h-6" />
+                <button className={`${styles.slideButton} ${styles.prevButton}`} onClick={() => handleSlide("prev")}>
+                    <ChevronLeftIcon className={styles.buttonIcon} />
                 </button>
-                <button
-                    className="absolute right-2 top-1/2 -translate-y-1/2 text-white z-10 bg-[#6e6e6e] opacity-0 group-hover:opacity-100 transition-opacity duration-150 rounded-full p-2 cursor-pointer"
-                    onClick={() => handleSlide("next")}
-                >
-                    <ChevronRightIcon className="h-6" />
+                <button className={`${styles.slideButton} ${styles.nextButton}`} onClick={() => handleSlide("next")}>
+                    <ChevronRightIcon className={styles.buttonIcon} />
                 </button>
             </div>
         </div>

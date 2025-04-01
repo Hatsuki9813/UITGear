@@ -1,0 +1,64 @@
+.SortButton {
+    position: relative;
+    display: inline-block;
+    right: 0px;
+}
+
+.SortButton label {
+    padding-right: 1rem;
+}
+
+.SortButton .button {
+    border: 1px solid #CFCFCF;
+    transition: border-color 0.3s ease-in-out;
+    width: 12rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-weight: 500;
+    text-align: left;
+}
+
+.SortButton .button:hover {
+    border-color: #02457a;
+}
+
+.SortButton .button div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.SortButton .button div span {
+    font-weight: 600;
+}
+
+.SortButton .button div .icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.SortButton .dropdown2 {
+    position: absolute;
+    right: 0;
+    margin-top: 0.5rem;
+    width: 12rem;
+    background-color: white;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    border: 1px solid #CFCFCF;
+}
+
+.SortButton .sortOption {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: none;
+}
+
+.SortButton .sortOption:hover {
+    background-color: #02457a;
+    color: white;
+}

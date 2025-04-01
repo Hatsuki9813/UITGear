@@ -1,3 +1,5 @@
+import styles from "./Specifications.module.css";
+
 const data = [
     { name: "Màn hình", value: "13,6 inch Liquid Retina, 2560 x 1664 pixel" },
     { name: "Bộ vi xử lý", value: "Apple M3, CPU 8 nhân" },
@@ -10,15 +12,33 @@ const data = [
 
 export default () => {
     return (
-        <div className="w-full lg:w-132 flex-col gap-4 p-4 lg:p-8 bg-white rounded-md h-fit shadow-md">
-            <div className="flex justify-center text-xl font-semibold">THÔNG SỐ KĨ THUẬT</div>
+        <div className={styles.Specifications}>
+            <div className={styles.header}>THÔNG SỐ KĨ THUẬT</div>
 
-            <table className="mt-6 w-full border border-gray-300">
+            <table>
                 <tbody>
                     {data.map((item, index) => (
-                        <tr key={index} className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}>
-                            <td className="border border-gray-300 px-4 py-2 font-semibold">{item.name}</td>
-                            <td className="border border-gray-300 px-4 py-2">{item.value}</td>
+                        <tr
+                            key={index}
+                            style={{
+                                backgroundColor: index % 2 === 0 ? "#ffffff" : "#ececec",
+                            }}
+                        >
+                            <td
+                                style={{
+                                    fontWeight: 600,
+                                    padding: "18px 12px",
+                                }}
+                            >
+                                {item.name}
+                            </td>
+                            <td
+                                style={{
+                                    padding: "18px 12px 18px 36px",
+                                }}
+                            >
+                                {item.value}
+                            </td>
                         </tr>
                     ))}
                 </tbody>

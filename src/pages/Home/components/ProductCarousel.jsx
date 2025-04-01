@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import CardItem from "../../../components/CardItem";
+import CardItem from "../../../components/CardItem/CardItem";
 import { motion } from "framer-motion";
+import styles from "./ProductCarousel.module.css";
 
 export default ({ data, background, title, titleColor, cardItemBorder }) => {
     const [index, setIndex] = useState(data.length);
@@ -41,13 +42,27 @@ export default ({ data, background, title, titleColor, cardItemBorder }) => {
     }, [index]);
 
     return (
-        <section className={`relative ${background} rounded-sm shadow-md py-4`}>
-            <span className={`font-bold ${titleColor} text-2xl flex justify-center mb-4`}>{title}</span>
-            <div className="flex flex-1 items-center">
-                <div className="flex flex-1 items-center px-10">
-                    <div className="w-300 justify-center overflow-hidden">
+        <div
+            style={{
+                background: background,
+            }}
+            className={styles.ProductCarousel}
+        >
+            <span
+                style={{
+                    color: titleColor,
+                }}
+            >
+                {title}
+            </span>
+            <div className={styles.slideContainer}>
+                <div className={styles.slide}>
+                    <div className={styles.motionContainer}>
                         <motion.div
-                            className="flex gap-[25px]"
+                            style={{
+                                display: "flex",
+                                gap: "25px",
+                            }}
                             animate={{ x: -index * offset }}
                             transition={isTransitioning ? { type: "spring", stiffness: 100, damping: 15 } : { duration: 0 }} // Tắt animation khi reset vị trí
                         >
@@ -57,21 +72,15 @@ export default ({ data, background, title, titleColor, cardItemBorder }) => {
                                 </div>
                             ))}
                         </motion.div>
+                        <button className={styles.prevButton} onClick={() => handleSlide("prev")}>
+                            <ChevronLeftIcon className={styles.iconButton} />
+                        </button>
+                        <button className={styles.nextButton} onClick={() => handleSlide("next")}>
+                            <ChevronRightIcon className={styles.iconButton} />
+                        </button>
                     </div>
                 </div>
-                <button
-                    className="absolute left-4 text-white z-10 bg-[#6e6e6e] opacity-50 hover:opacity-100 transition-opacity duration-150 rounded-full p-2 cursor-pointer"
-                    onClick={() => handleSlide("prev")}
-                >
-                    <ChevronLeftIcon className="h-6" />
-                </button>
-                <button
-                    className="absolute right-4 text-white z-10 bg-[#6e6e6e] opacity-50 hover:opacity-100 transition-opacity duration-150 rounded-full p-2 cursor-pointer"
-                    onClick={() => handleSlide("next")}
-                >
-                    <ChevronRightIcon className="h-6" />
-                </button>
             </div>
-        </section>
+        </div>
     );
 };

@@ -1,8 +1,10 @@
+import styles from "./Info.module.css";
+
 export default () => {
     return (
-        <div className="w-full lg:flex-1 flex-col gap-6 p-4 lg:p-8 bg-white rounded-md h-fit shadow-md">
-            <div className="flex justify-center text-xl font-semibold">GIỚI THIỆU</div>
-            <p className="mt-4">
+        <div className={styles.Info}>
+            <div className={styles.header}>GIỚI THIỆU</div>
+            <p className={styles.content}>
                 MacBook Pro mạnh mẽ nhất từng có ở đây. Với chip M1 Pro hoặc M1 Max cực nhanh - silicon đầu tiên của Apple được thiết kế dành cho các chuyên gia - bạn sẽ có được hiệu năng đột phá và
                 thời lượng pin đáng kinh ngạc. Thêm vào đó là màn hình Liquid Retina XDR tuyệt đẹp, camera và âm thanh tốt nhất từng có trên máy tính xách tay Mac và tất cả các cổng bạn cần. Chiếc máy
                 tính xách tay đầu tiên thuộc loại này, chiếc MacBook Pro này là một con quái vật. M1 Pro đưa hiệu năng vượt trội của kiến ​​trúc M1 lên một tầm cao mới dành cho người dùng chuyên

@@ -1,0 +1,72 @@
+.ProductCarousel {
+    position: relative;
+    border-radius: 0.25rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+}
+
+.ProductCarousel>span {
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.ProductCarousel .slideContainer {
+    /* flex flex-1 items-center */
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.ProductCarousel .slide {
+    /* flex flex-1 items-center px-10 */
+    display: flex;
+    flex: 1;
+    align-items: center;
+    padding: 0 2.5rem;
+}
+
+.ProductCarousel .motionContainer {
+    /* w-300 justify-center overflow-hidden */
+    width: 75rem;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.ProductCarousel button {
+    position: absolute;
+    top: 50%;
+    color: white;
+    background-color: #cfcfcf;
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 0.2s;
+    border-radius: 100%;
+    padding: 0.5rem;
+    cursor: pointer;
+    border: none;
+}
+
+.ProductCarousel .prevButton {
+    left: 0.5rem;
+}
+
+.ProductCarousel .nextButton {
+    right: 0.5rem;
+}
+
+.ProductCarousel button:hover {
+    opacity: 1;
+}
+
+.ProductCarousel .iconButton {
+    width: 24px;
+    height: 24px;
+    color: white;
+}
+
+.ProductCarousel:hover button {
+    opacity: 0.5;
+}

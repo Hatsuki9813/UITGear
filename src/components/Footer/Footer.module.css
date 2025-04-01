@@ -23,19 +23,24 @@
     height: 100px;
     margin-bottom: 20px;
 }
+
 .footercontainer .footericon {
     color: #FFFFFF;
     font-size: 24px
 }
+
 .footercontainer .iconcontainer {
     display: flex;
-  align-items: center;
-  gap: 10px; /* Tạo khoảng cách giữa icon và text */
+    align-items: center;
+    gap: 10px;
+    /* Tạo khoảng cách giữa icon và text */
 }
-.footercontainer .contenttext:hover  {
-    color: #02457A; 
+
+.footercontainer .contenttext:hover {
+    color: #02457A;
     transition: color 0.3s ease-in-out;
 }
+
 .footercontainer .stacontenttext {
     font-size: 16px;
     color: #FFFFFF;

@@ -5,13 +5,30 @@ import "./index.css";
 
 function App() {
     return (
-        <div className="AppContainer">
+        <div
+            className="AppContainer"
+            style={{
+                minHeight: "100vh",
+                display: "flex",
+                flexDirection: "column",
+                flex: 1,
+            }}
+        >
             <div className="HeaderContainer">
                 <Header />
             </div>
-            <div className="MainContainer">
-                <Outlet />
+            <div style={{ flex: 1, width: "100%", backgroundColor: "#ececec" }}>
+                <div
+                    style={{
+                        maxWidth: "1280px",
+                        margin: "2rem auto",
+                    }}
+                    className="MainContainer"
+                >
+                    <Outlet />
+                </div>
             </div>
+
             <div className="FooterContainer">
                 <Footer />
             </div>

@@ -3,7 +3,17 @@ import ProductList from "./components/ProductList";
 
 export default () => {
     return (
-        <div className="flex flex-col flex-1 bg-white rounded-sm shadow-md px-4 py-4">
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "100%",
+                backgroundColor: "white",
+                borderRadius: "0.25rem", // rounded-sm
+                // boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // shadow-md
+                padding: "1rem",
+            }}
+        >
             <FilterBar />
             <ProductList />
         </div>

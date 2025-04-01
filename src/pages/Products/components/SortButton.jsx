@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import styles from "./SortButton.module.css";
 
 export default function DropdownSort({ onSort }) {
     const [isOpen, setIsOpen] = useState(false);
     const [buttonText, setButtonText] = useState("Giá giảm dần");
+    const [sortType, setSortType] = useState(null);
     const dropdownRef = useRef(null); // Tạo ref để tham chiếu đến dropdown
 
     // Đóng dropdown nếu click bên ngoài
@@ -29,23 +31,23 @@ export default function DropdownSort({ onSort }) {
     };
 
     return (
-        <div className="relative inline-block" ref={dropdownRef}>
-            <span className="pr-4">Sắp xếp theo</span>
+        <div className={styles.SortButton} ref={dropdownRef}>
+            <label>Sắp xếp theo</label>
             {/* Nút bấm */}
-            <button className="border-[#CFCFCF] border-1 w-52 py-3 rounded-sm cursor-pointer font-medium text-left px-4" onClick={() => setIsOpen(!isOpen)}>
-                <div className="flex justify-between items-center">
-                    <span className="font-semibold">{buttonText}</span>
-                    {isOpen ? <ChevronUpIcon className="h-4 w-4" /> : <ChevronDownIcon className="h-4 w-4" />}
+            <button className={styles.button} onClick={() => setIsOpen(!isOpen)}>
+                <div>
+                    <span>{buttonText}</span>
+                    {isOpen ? <ChevronUpIcon className={styles.icon} /> : <ChevronDownIcon className={styles.icon} />}
                 </div>
             </button>
 
             {/* Dropdown */}
             {isOpen && (
-                <div className="absolute right-0 mt-2 w-52 bg-white shadow-md rounded-sm overflow-hidden border border-gray-200">
-                    <button className="block w-full text-left px-4 py-3 hover:bg-gray-200 cursor-pointer" onClick={() => handleSort("name")}>
+                <div className={styles.dropdown2}>
+                    <button className={styles.sortOption} onClick={() => handleSort("name")}>
                         Tên từ A đến Z
                     </button>
-                    <button className="block w-full text-left px-4 py-3 hover:bg-gray-200 cursor-pointer" onClick={() => handleSort("price")}>
+                    <button className={styles.sortOption} onClick={() => handleSort("price")}>
                         Giá giảm dần
                     </button>
                 </div>

@@ -1,5 +1,6 @@
 import { Outlet, NavLink } from "react-router-dom";
 import ProductCarousel from "../../Home/components/ProductCarousel";
+import styles from "./ProfileLayout.module.css";
 
 const data = {
     img: "/item-test.svg",
@@ -15,33 +16,28 @@ const data2 = {
     discountPrice: "10000",
 };
 
-const getLinkClass = (isActive) =>
-    `block px-4 py-3 transition-all duration-200 ` + (isActive ? "bg-gradient-to-r from-[#97cadb] to-[#d6e8ee] font-semibold" : "bg-white text-[#5F6C72] hover:bg-gray-50");
-
 export default function ProfileLayout() {
     return (
-        <div className="flex flex-1 flex-col gap-8">
-            <div className="flex flex-1 flex-row gap-8">
-                <div className="w-72 bg-white h-fit rounded-sm shadow-md">
-                    <div className="flex flex-col">
-                        <NavLink to="/profile" end className={({ isActive }) => getLinkClass(isActive)}>
-                            Thông tin cá nhân
-                        </NavLink>
-                        <NavLink to="/profile/address" className={({ isActive }) => getLinkClass(isActive)}>
-                            Địa chỉ giao hàng
-                        </NavLink>
-                        <NavLink to="/profile/history" className={({ isActive }) => getLinkClass(isActive)}>
-                            Lịch sử mua hàng
-                        </NavLink>
-                    </div>
+        <div className={styles.ProfileLayout}>
+            <div className={styles.container}>
+                <div className={styles.navbar}>
+                    <NavLink to="/profile" end className={({ isActive }) => (isActive ? `${styles.link} ${styles.linkActive}` : styles.link)}>
+                        Thông tin cá nhân
+                    </NavLink>
+                    <NavLink to="/profile/address" className={({ isActive }) => (isActive ? `${styles.link} ${styles.linkActive}` : styles.link)}>
+                        Địa chỉ giao hàng
+                    </NavLink>
+                    <NavLink to="/profile/history" className={({ isActive }) => (isActive ? `${styles.link} ${styles.linkActive}` : styles.link)}>
+                        Lịch sử mua hàng
+                    </NavLink>
                 </div>
 
-                <div className="w-full bg-white h-fit rounded-sm shadow-md p-4">
+                <div className={styles.content}>
                     <Outlet /> {/* Hiển thị route con ở đây */}
                 </div>
             </div>
 
-            <ProductCarousel data={[data, data2, data, data]} background="bg-white" title="SẢN PHẨM ĐÃ XEM" titleColor="text-black" cardItemBorder={1} />
+            {/* <ProductCarousel data={[data, data2, data, data]} background="bg-white" title="SẢN PHẨM ĐÃ XEM" titleColor="text-black" cardItemBorder={1} /> */}
         </div>
     );
 }
