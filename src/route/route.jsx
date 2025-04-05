@@ -4,14 +4,16 @@ import React from "react";
 import App from "../App";
 import Login from "../pages/LoginSignup/Login";
 import ForgotPassword from "../pages/LoginSignup/ForgotPassword";
+import Otp from "../pages/LoginSignup/Otp";
 import Cart from "../pages/ShoppingCart/Cart";
-import CartItem from "../components/Cart/CartItem";
 import CheckoutInfo from "../pages/Checkout/CheckoutInfo";
 import CustomerService from "../pages/CustomerService/CustomerService";
 import Question from "../pages/CustomerService/Question";
 import OrderFind from "../pages/OrderTrack/OrderFind";
 import OrderTrack from "../pages/OrderTrack/OrderTrack";
-
+import Overview from "../pages/Profile/Overview";
+import PurchaseHistory from "../pages/Profile/PurchaseHistory";
+import ShippingAddress from "../pages/Profile/ShippingAddress";
 import Home from "../pages/Home/Home";
 import Products from "../pages/Products/Products";
 import Detail from "../pages/Detail/Detail";
@@ -27,11 +29,15 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
+                element: <Home />,
+            },
+            {
+                path: "/authenticate",
                 element: <Login />,
             },
             {
-                path: "/login",
-                element: <Login />,
+                path: "/otp",
+                element: <Otp />,
             },
             {
                 path: "/forgotpassword",
@@ -48,6 +54,30 @@ const router = createBrowserRouter([
             {
                 path: "/detail",
                 element: <Detail />,
+            },
+            {
+                path: "/cart",
+                element: <Cart/>,
+            },
+            {
+                path: "/checkout",
+                element: <CheckoutInfo/>,
+            },
+            {
+                path: "/customerservice",
+                element: <CustomerService/>
+            },
+            {
+                path: "/question",
+                element: <Question/>
+            },
+            {
+                path: "/orderfind",
+                element: <OrderFind/>
+            },
+            {
+                path: "/ordertrack",
+                element: <OrderTrack/>
             },
             // Lồng route Profile vào đây
             {

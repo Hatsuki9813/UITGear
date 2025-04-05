@@ -38,7 +38,7 @@ export default function Cart() {
                     <span>Cần thanh toán</span>
                     <span>15.000.000đ</span>
                 </div>
-                <Button className={styles.SubmitButton}>
+                <Button className={styles.SubmitButton} >
                     Xác nhận thanh toán
                     <FaArrowRight className={styles.loginicon} />
                 </Button>
