@@ -1,0 +1,134 @@
+.Details {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1rem;
+    height: fit-content;
+}
+
+.Details .container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.Details .productName {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: justify;
+}
+
+.Details .statusContainer {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.Details .availability {
+    font-weight: 600;
+    color: #2DB224;
+}
+
+.Details .id {
+    font-weight: 600
+}
+
+.Details .priceContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.Details .price {
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #8c8c8c;
+    text-decoration: line-through;
+
+}
+
+.Details .discountPriceContainer {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.Details .discountPrice {
+    font-weight: 600;
+    font-size: 2rem;
+    color: #02457a;
+}
+
+.Details .discountPercent {
+    background-color: #d6e8ee;
+    border: 2px solid #02457a;
+    border-radius: 0.25rem;
+    padding: 0 0.5rem;
+    color: #02457a;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.Details .optionsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.Details .buyContainer {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.Details .addToCart {
+    flex: 2;
+    padding: 1rem 0;
+    background-color: white;
+    border: 2px solid #02457a;
+    color: #02457a;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease-in;
+}
+
+.Details .addToCart:hover {
+    border-color: #018abe;
+    color: #018abe;
+}
+
+.Details .buyButton {
+    width: 100%;
+    padding: 18px 0;
+    background-color: #02457a;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease-in;
+    border: none;
+}
+
+@media (min-width: 640px) {
+    .Details .buyContainer {
+        flex-direction: row;
+    }
+
+    .Details .buyButton {
+        flex: 2;
+        padding: 1rem 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .Details {
+        padding: 2rem;
+    }
+}

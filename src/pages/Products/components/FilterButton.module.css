@@ -1,0 +1,15 @@
+.FilterButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: medium;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #CFCFCF;
+    border-radius: 0.25rem;
+    background-color: white;
+}
+
+.FilterButton:hover {
+    border-color: #02457a;
+}

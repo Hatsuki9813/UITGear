@@ -3,7 +3,14 @@ import InfoAndSpecifications from "./layouts/InfoAndSpecifications";
 
 export default () => {
     return (
-        <div className="flex flex-1 flex-col gap-8">
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "2rem",
+                flex: 1,
+            }}
+        >
             <Display />
             <InfoAndSpecifications />
         </div>

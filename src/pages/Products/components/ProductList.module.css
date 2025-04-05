@@ -1,0 +1,62 @@
+.ProductList .container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+}
+
+.ProductList .list {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    place-items: center;
+    gap: 1rem;
+    padding: 2rem 0;
+}
+
+.ProductList .buttonContainer {
+    display: grid;
+    place-items: center;
+}
+
+.ProductList .buttonContainer>button {
+    /* border-2 rounded-sm transition-colors ease-in duration-200 border-[#02457a]
+    hover: text-white hover:bg-[#02457a] w-fit py-2 px-4 cursor-pointer font-medium */
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease-in-out;
+    border: 2px solid #02457a;
+    background-color: transparent;
+    color: black;
+}
+
+.ProductList .buttonContainer>button:hover {
+    background-color: #02457a;
+    color: white;
+}
+
+@media (min-width: 480px) {
+    .ProductList .list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .ProductList .list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .ProductList .list {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1280px) {
+    .ProductList .list {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}

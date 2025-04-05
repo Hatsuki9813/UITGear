@@ -1,0 +1,13 @@
+.HomeContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 2rem;
+}
+
+.HomeContainer section {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    gap: 20;
+}

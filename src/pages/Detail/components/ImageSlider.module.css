@@ -1,0 +1,125 @@
+.ImagePicker {
+    width: 5.5rem;
+    height: 5.5rem;
+    display: flex;
+    background-color: white;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    align-items: center;
+}
+
+.ImagePicker:hover {
+    border-color: #02457a;
+}
+
+.ImageSlider {
+    /* flex flex-col w-full lg: w-136 h-fit p-4 lg:p-8 gap-4 */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.ImageSlider .main {
+    /* border-2 border-[#e0e0e0] rounded-sm relative h-50 md: h-100 sm:h-75 group w-full */
+    border: 1px solid #cfcfcf;
+    border-radius: 0.25rem;
+    position: relative;
+    height: 12.5rem;
+    width: 100%;
+}
+
+.ImageSlider .main:hover .slideButton {
+    opacity: 1;
+}
+
+.ImageSlider .mainImg {
+    /* absolute inset-0 w-full h-full object-contain */
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.ImageSlider .slideButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    background-color: #cfcfcf;
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 0.2s;
+    border-radius: 100%;
+    padding: 0.5rem;
+    cursor: pointer;
+    border: none;
+}
+
+.ImageSlider .prevButton {
+    left: 0.5rem;
+}
+
+.ImageSlider .nextButton {
+    right: 0.5rem;
+}
+
+.ImageSlider .slideButton:hover {
+    opacity: 1;
+}
+
+.ImageSlider .buttonIcon {
+    width: 24px;
+    height: 24px;
+}
+
+.ImageSlider .slider {
+    position: relative;
+    display: flex;
+    height: 5.5rem;
+}
+
+.ImageSlider .slider:hover .slideButton {
+    opacity: 1;
+}
+
+.ImageSlider .sliderContainer {
+    /* w-full justify-center overflow-hidden */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.ImageSlider .child {
+    /* h-fit shrink-0 w-16 sm: w-22 pointer-events-auto */
+    height: fit-content;
+    flex-shrink: 0;
+    width: 5.5rem;
+    pointer-events: auto;
+}
+
+@media (min-width: 640px) {
+    .ImageSlider .main {
+        height: 18.75rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .ImageSlider .main {
+        height: 25rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .ImageSlider {
+        width: 34rem;
+        padding: 2rem;
+    }
+}

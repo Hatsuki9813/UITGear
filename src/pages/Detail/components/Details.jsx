@@ -4,48 +4,51 @@ import formatCurrency from "../../../utils/formatCurrency";
 import OptionSection from "./OptionSection";
 import QuantitySelector from "./QuantitySelector";
 
+import styles from "./Details.module.css";
+
 const isOption = true;
 
 export default function Details() {
     const [quantity, setQuantity] = useState(1);
 
     return (
-        <div className="flex flex-1 flex-col p-4 lg:p-8 gap-8 h-fit">
-            <div className="flex flex-1 flex-col gap-4">
-                <span className="text-xl font-semibold text-justify">2020 Apple MacBook Pro with Apple M1 Chip</span>
-                <div className="flex flex-1 gap-4 flex-wrap">
+        <div className={styles.Details}>
+            <div className={styles.container}>
+                <span className={styles.productName}>2020 Apple MacBook Pro with Apple M1 Chip</span>
+                <div className={styles.statusContainer}>
                     <span>
-                        Tình trạng: <span className="font-semibold text-[#2DB224]">Còn hàng</span>
+                        Tình trạng: <span className={styles.availability}>Còn hàng</span>
                     </span>
                     <span> | </span>
-                    <span className="">
-                        Mã: <span className="font-semibold">ABCD1234</span>
+                    <span>
+                        Mã: <span className={styles.id}>ABCD1234</span>
                     </span>
                 </div>
-                <div className="flex flex-wrap items-center gap-2">
-                    <span className="w-full font-medium text-[#8c8c8c] line-through text-xl">{formatCurrency(25990000)}</span>
-                    <span className="flex items-center gap-3">
-                        <span className="font-semibold text-[#02457a] text-3xl">{formatCurrency(28990000)}</span>
-                        <span className="bg-[#d6e8ee] border-2 border-[#02457a] rounded-sm px-2 text-[#02457a] font-semibold text-lg">-12%</span>
+                <div className={styles.priceContainer}>
+                    <span className={styles.price}>{formatCurrency(28990000)}</span>
+                    <span className={styles.discountPriceContainer}>
+                        <span className={styles.discountPrice}>{formatCurrency(25990000)}</span>
+                        <span className={styles.discountPercent}>-12%</span>
                     </span>
                 </div>
             </div>
 
             {isOption && (
-                <div className="flex flex-col gap-6">
+                <div className={styles.optionsContainer}>
                     <OptionSection title="Màu sắc" values={["Xám", "Xanh đen", "Bạc"]} />
                     <OptionSection title="Dung lượng" values={["256 GB", "512 GB", "1 TB"]} />
                     <OptionSection title="Kích thước màn hình" values={["13.4 inch", "14 inch", "15.6 inch"]} />
                 </div>
             )}
-            <div className={`flex ${isOption && "mt-6"} gap-4 flex-wrap flex-col sm:flex-row`}>
+            <div
+                style={{
+                    ...(isOption && { marginTop: "1.5rem" }),
+                }}
+                className={styles.buyContainer}
+            >
                 {/* <QuantitySelector quantity={quantity} setQuantity={setQuantity} /> */}
-                <button className="flex-2 py-4 bg-white border-[#02457a] text-[#02457a] border-2 cursor-pointer font-semibold rounded-sm hover:border-[#018abe] hover:text-[#018abe] transition-colors duration-200 ease-in">
-                    THÊM VÀO GIỎ HÀNG
-                </button>
-                <button className="w-full sm:flex-2 py-[18px] sm:py-4 bg-[#02457a] text-white cursor-pointer font-semibold rounded-sm hover:bg-[#018abe] transition-colors duration-200 ease-in">
-                    MUA NGAY
-                </button>
+                <button className={styles.addToCart}>THÊM VÀO GIỎ HÀNG</button>
+                <button className={styles.buyButton}>MUA NGAY</button>
             </div>
         </div>
     );

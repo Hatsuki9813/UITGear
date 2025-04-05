@@ -1,0 +1,121 @@
+.EditPopup .overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 50
+}
+
+.EditPopup .main {
+    /* bg-white p-6 rounded-lg shadow-lg w-132 */
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    width: 33rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.EditPopup .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #cfcfcf;
+}
+
+.EditPopup .headerName {
+    font-weight: 600;
+}
+
+.EditPopup .closeButton {
+    color: #99a1af;
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.EditPopup .closeButton:hover {
+    color: black;
+}
+
+.EditPopup .closeIcon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.EditPopup .contentContainer {
+    /* flex flex-col gap-4 mt-4 px-5 */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 0 1.25rem;
+}
+
+.EditPopup .inputSection {
+    /* flex flex-col gap-2 */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.EditPopup .inputLabel {
+    font-weight: 500;
+}
+
+.EditPopup .inputField {
+    /* border border-gray-300 rounded-sm p-2 outline-none */
+    border: 1px solid #cfcfcf;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.EditPopup .inputField:focus {
+    border-color: #02457a
+}
+
+.EditPopup .defaultAddress {
+    /* flex flex-1 justify-between items-center */
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.EditPopup .checkBox {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.EditPopup .confirmButtonContainer {
+    /* mt-4 flex justify-center */
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.EditPopup .confirmButtonContainer button {
+    /* border-2 rounded-sm transition-colors ease-in duration-200 border-[#02457a] hover: text-black
+    text-white hover:bg-white bg-[#02457a] py-2 w-full cursor-pointer font-medium */
+    border: 2px solid #02457a;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    color: #fff;
+    background-color: #02457a;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.EditPopup .confirmButtonContainer button:hover {
+    color: #000;
+    background-color: #fff;
+}
