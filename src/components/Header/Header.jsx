@@ -27,6 +27,8 @@ import SoftwareMenu from '../Menu/SoftwareMenu';
 export default function Header() {
     const [openSubmenu, setOpenSubmenu] = useState(null);
     const [openChildMenu, setopenChildMenu] = useState(null);
+    const [cartCount, setCartCount] = useState(0); 
+
     const toggleSubmenu = (menu) => {
         setOpenSubmenu(openSubmenu === menu ? null : menu);
     };
@@ -51,7 +53,9 @@ export default function Header() {
                     <CiUser className={styles.avatar} />
                 </div>
                 <Button className={styles.cartButton}>
-                    <FaShoppingCart /> Giỏ hàng
+                    <FaShoppingCart /> 
+                    {cartCount >= 0 && <span className={styles.badge}>{cartCount}</span>}
+                    Giỏ hàng
                 </Button>
             </div>
             <div className={styles.functioncontainer}>
@@ -142,137 +146,3 @@ export default function Header() {
         </div>
     );
 }
-
-
-
-{/* 
-<Dropdown.Menu className={styles.dropdownMenu}>
-                                    <Row>
-                                        <Col xs="12" md="6" className="text-left">
-                                            <Dropdown.Header>
-                                                Catering
-                                            </Dropdown.Header>
-                                            <Dropdown.Item>
-                                                <Link href="/">
-                                                    <a className="nav-link" role="button">
-                                                        Corporate
-                                                    </a>
-                                                </Link>
-                                            </Dropdown.Item>
-                                            <Dropdown.Item>
-                                                <Link href="/">
-                                                    <a className="nav-link" role="button">
-                                                        Private
-                                                    </a>
-                                                </Link>
-                                            </Dropdown.Item>
-
-                                            <Dropdown.Divider />
-                                            <Dropdown.Header>
-                                                Classes
-                                            </Dropdown.Header>
-                                            <Dropdown.Item>
-                                                <Link href="/">
-                                                    <a className="nav-link" role="button">
-                                                        Barista 101
-                                                    </a>
-                                                </Link>
-                                            </Dropdown.Item>
-                                            <Dropdown.Item>
-                                                <Link href="/">
-                                                    <a className="nav-link" role="button">
-                                                        History of Coffee
-                                                    </a>
-                                                </Link>
-                                            </Dropdown.Item>
-                                            <Dropdown.Item>
-                                                <Link href="/">
-                                                    <a className="nav-link" role="button">
-                                                        Intro to Cafe Snobbery
-                                                    </a>
-                                                </Link>
-                                            </Dropdown.Item>
-                                            <Dropdown.Divider className="d-md-none" />
-                                        </Col>
-
-                                        <Col xs="12" md="6" className="text-left">
-                                            <Dropdown.Header>
-                                                Rentals
-                                            </Dropdown.Header>
-                                            <Dropdown.Item>
-                                                <Link href="/">
-                                                    <a className="nav-link" role="button">
-                                                        Fireside Room
-                                                    </a>
-                                                </Link>
-                                            </Dropdown.Item>
-                                            <Dropdown.Item>
-                                                <Link href="/">
-                                                    <a className="nav-link" role="button">
-                                                        Roasting Room
-                                                    </a>
-                                                </Link>
-                                            </Dropdown.Item>
-                                            <Dropdown.Divider />
-                                            <Dropdown.Header>
-                                                Seasonal
-                                            </Dropdown.Header>
-                                            <Dropdown.Item>
-                                                <Link href="/">
-                                                    <a className="nav-link" role="button">
-                                                        Coldbrew Night
-                                                    </a>
-                                                </Link>
-                                            </Dropdown.Item>
-                                            <Dropdown.Item>
-                                                <Link href="/">
-                                                    <a className="nav-link text-wrap" role="button">
-                                                        Campfire Coffee Class
-                                                    </a>
-                                                </Link>
-                                            </Dropdown.Item>
-                                        </Col>
-                                    </Row>
-                                    </Dropdown.Menu>
-    */}
-
-{/*
-        <Navbar expand="lg" className={styles.navbar}>
-                    <Container className={styles.container}>
-                        <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="me-auto">
-                                    <Nav.Link href="#home">
-                                        <div className={styles.functionitem}> 
-                                        <img src={menunavigation} className={styles.menuicon} alt="Menu Icon" />
-                                        <div>Danh mục sản phẩm</div>
-                                        </div>
-                                    </Nav.Link>
-                                
-                                <Nav.Link href="#home">
-                                    <div className={styles.functionitem}>
-                                        <img src={menucash} className={styles.menuicon} />
-                                        <div>Hướng dẫn thanh toán</div>
-                                    </div>
-                                </Nav.Link>
-                                <Nav.Link href="#home">
-                                    <div className={styles.functionitem}>
-                                        <img src={menuwarranty} className={styles.menuicon} />
-                                        <div>Chính sách bảo hành</div>
-                                    </div>
-                                </Nav.Link>
-                                <Nav.Link href="#home">
-                                    <div className={styles.functionitem}>
-                                        <img src={menusaving} className={styles.menuicon} />
-                                        <div>Hướng dẫn trả góp</div>
-                                    </div>
-                                </Nav.Link>
-                                <Nav.Link href="#home">
-                                    <div className={styles.functionitem}>
-                                        <img src={menunews} className={styles.menuicon} />
-                                        <div>Tin tức công nghệ</div>
-                                    </div>
-                                </Nav.Link>
-                            </Nav>
-                        </Navbar.Collapse>
-                    </Container>
-                </Navbar>*/}
