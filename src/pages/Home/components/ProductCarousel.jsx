@@ -3,7 +3,6 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import CardItem from "../../../components/CardItem/CardItem";
 import { motion } from "framer-motion";
 import styles from "./ProductCarousel.module.css";
-
 export default ({ data, background, title, titleColor, cardItemBorder }) => {
     const [index, setIndex] = useState(data.length);
     const [isTransitioning, setIsTransitioning] = useState(true); // Điều khiển animation
@@ -68,6 +67,7 @@ export default ({ data, background, title, titleColor, cardItemBorder }) => {
                         >
                             {extendedData.map((item, idx) => (
                                 <div key={idx}>
+
                                     <CardItem data={item} border={cardItemBorder} />
                                 </div>
                             ))}

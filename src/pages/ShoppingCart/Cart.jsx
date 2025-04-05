@@ -3,7 +3,7 @@ import styles from './Cart.module.css';
 import CartItem from '../../components/Cart/CartItem';
 import { FaArrowRight } from "react-icons/fa";
 import Button from 'react-bootstrap/Button';
-
+import {Link} from 'react-router'
 export default function Cart() {
     return (
         <div className={styles.CartContainer}>
@@ -38,10 +38,12 @@ export default function Cart() {
                     <span>Cần thanh toán</span>
                     <span>15.000.000đ</span>
                 </div>
+                <Link to="/checkout" style={{ textDecoration: 'none' }}>
                 <Button className={styles.SubmitButton} >
                     Xác nhận thanh toán
                     <FaArrowRight className={styles.loginicon} />
                 </Button>
+                </Link>
             </div>
         </div>
     )

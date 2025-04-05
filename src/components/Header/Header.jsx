@@ -24,6 +24,7 @@ import GamingMenu from '../Menu/GamingMenu';
 import AccessoryMenu from '../Menu/AccessoryMenu';
 import ServiceMenu from '../Menu/ServiceMenu';
 import SoftwareMenu from '../Menu/SoftwareMenu';
+import {Link} from 'react-router';
 export default function Header() {
     const [openSubmenu, setOpenSubmenu] = useState(null);
     const [openChildMenu, setopenChildMenu] = useState(null);
@@ -38,8 +39,11 @@ export default function Header() {
     return (
         <div className={styles.AllHeader}>
             <div className={styles.HeaderContainer}>
+            <Link to="/">
                 <img src={logo} className={styles.logoimg} alt="logo" />
+            </Link>
                 <InputGroup size="sm" className={styles.searchBar}>
+                
                     <Form.Control
                         aria-label="Small"
                         aria-describedby="inputGroup-sizing-sm"
@@ -49,14 +53,20 @@ export default function Header() {
                         <FaSearch />
                     </InputGroup.Text>
                 </InputGroup>
+                <Link to="/profile" style={{ textDecoration: 'none' }}>
                 <div className={styles.avatarcontainer} onClick={() => console.log('clicked')}>
                     <CiUser className={styles.avatar} />
                 </div>
+                </Link>
+
+                <Link to="/cart" style={{ textDecoration: 'none' }}>
                 <Button className={styles.cartButton}>
+                    
                     <FaShoppingCart /> 
                     {cartCount >= 0 && <span className={styles.badge}>{cartCount}</span>}
-                    Giỏ hàng
+                    <span>Giỏ hàng</span>
                 </Button>
+                </Link>
             </div>
             <div className={styles.functioncontainer}>
                 <ul>
@@ -68,36 +78,46 @@ export default function Header() {
 
                             <ul className={styles.submenu}>
                                 <li onMouseEnter={() => toggleChildmenu("LaptopChildMenu")} onMouseLeave={() => toggleChildmenu(null)}>
+                                <Link to="/products" style={{ textDecoration: 'none' }}>
                                     <div className={styles.menuitem} >
                                         <img src={laptop} className={styles.menuicon} alt="Menu Icon" />
                                         <span style={{ color: "white" }}>Laptop</span>
 
                                     </div>
+                                    </Link>
                                     {openChildMenu === "LaptopChildMenu" && (<LaptopMenu />)}
 
                                 </li>
 
                                 
                                 <li onMouseEnter={() => toggleChildmenu("gamingmenu")} onMouseLeave={() => toggleChildmenu(null)}>
+                                <Link to="/products" style={{ textDecoration: 'none' }}>
+
                                     <div className={styles.menuitem} >
                                         <img src={console} className={styles.menuicon} alt="Menu Icon" />
                                         <span style={{ color: "white" }}>Laptop Gaming</span>
                                     </div>
+                                    </Link>
                                     {openChildMenu === "gamingmenu" && (<GamingMenu />)}
                                 </li>
                                 <li onMouseEnter={() => toggleChildmenu("accessorymenu")} onMouseLeave={() => toggleChildmenu(null)}>
+                                <Link to="/products" style={{ textDecoration: 'none' }}>
                                     <div className={styles.menuitem} >
                                         <img src={accessory} className={styles.menuicon} alt="Menu Icon" />
                                         <span style={{ color: "white" }}>Phụ kiện</span>
                                     </div>
+                                    </Link>
                                     {openChildMenu === "accessorymenu" && (<AccessoryMenu />)}
 
                                 </li>
                                 <li onMouseEnter={() => toggleChildmenu("servicemenu")} onMouseLeave={() => toggleChildmenu(null)}>
+                                <Link to="/products" style={{ textDecoration: 'none' }}>
+
                                     <div className={styles.menuitem} >
                                         <img src={service} className={styles.menuicon} alt="Menu Icon" />
                                         <span style={{ color: "white" }}>Dịch vụ</span>
                                     </div>
+                                    </Link>
                                     {openChildMenu === "servicemenu" && (<ServiceMenu />)}
                                 </li>
                                 <li onMouseEnter={() => toggleChildmenu("softmenu")} onMouseLeave={() => toggleChildmenu(null)}>
@@ -125,22 +145,34 @@ export default function Header() {
                             </div>
                         )}
                     </li>
+                    <Link to="/question" style={{ textDecoration: 'none' }}>
                     <li>
+                        
                         <img src={menucash} className={styles.menuicon} alt="Menu Icon" />
                         <span>Hướng dẫn thanh toán</span>
                     </li>
+                    </Link>
+                    <Link to="/question" style={{ textDecoration: 'none' }}>
+
                     <li>
                         <img src={menuwarranty} className={styles.menuicon} alt="Menu Icon" />
                         <span>Chính sách bảo hành</span>
                     </li>
+                    </Link>
+                    <Link to="/question" style={{ textDecoration: 'none' }}>
+
                     <li>
                         <img src={menusaving} className={styles.menuicon} alt="Menu Icon" />
                         <span>Hướng dẫn trả góp</span>
                     </li>
+                    </Link>
+                    <Link to="/question" style={{ textDecoration: 'none' }}>
+
                     <li>
                         <img src={menunews} className={styles.menuicon} alt="Menu Icon" />
                         <span>Tin tức công nghệ</span>
                     </li>
+                    </Link>
                 </ul>
             </div>
         </div>

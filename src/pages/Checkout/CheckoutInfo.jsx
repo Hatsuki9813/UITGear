@@ -7,7 +7,7 @@ import vnpay from '../../assets/icons/vnpay.svg';
 import { FaArrowRight } from "react-icons/fa";
 import { Button } from 'react-bootstrap';
 import OrderCart from '../../components/Cart/OrderCart';
-
+import { Link } from 'react-router';
 export default function CheckoutInfo() {
     return (
         <div className={styles.CheckoutContainer}>
@@ -119,10 +119,12 @@ export default function CheckoutInfo() {
                     <span>Cần thanh toán</span>
                     <span>15.000.000đ</span>
                 </div>
+                <Link to="/ordertrack" style={{ textDecoration: 'none' }}>
                 <Button className={styles.SubmitButton}>
                         ĐẶT HÀNG
                     <FaArrowRight className={styles.loginicon} />
                 </Button>
+                </Link>
             </div>
         </div>
     )

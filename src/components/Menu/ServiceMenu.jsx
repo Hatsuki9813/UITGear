@@ -8,14 +8,14 @@ export default function ServiceMenu() {
             <div className={styles.megamenuColumn}>
               <h4>Vệ sinh laptop</h4>
               <ul>
-                <li><Link className={styles.linkStyle}>Dịch vụ vệ sinh laptop 2 trong 1</Link></li>
+                <li><Link to="/products" className={styles.linkStyle}>Dịch vụ vệ sinh laptop 2 trong 1</Link></li>
               </ul>
             </div>
     
             <div className={styles.megamenuColumn}>
               <h4>Cân màu màn hình</h4>
               <ul>
-                <li><Link className={styles.linkStyle}>Cân màu màn hình bằng SpyderX</Link></li>
+                <li><Link to="/products"className={styles.linkStyle}>Cân màu màn hình bằng SpyderX</Link></li>
               </ul>
             </div>
           </div>

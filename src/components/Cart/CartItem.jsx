@@ -6,7 +6,7 @@ import { TiDeleteOutline } from "react-icons/ti";
 import Button from 'react-bootstrap/Button';
 
 export default function CartItem() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   const decrease = () => {
     if (count > 0) {

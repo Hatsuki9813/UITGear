@@ -21,16 +21,18 @@
 .ItemContainer .Price {
     font-size: 1.25rem;
     color: green;
+    padding: 10px;
+    
 }
 .ItemContainer .IncreaseDecrease {
     border: none;
-    background-color: #fff;
     font-size: 1.25rem;
     margin: 0 10px 0 10px;
 }
 .ItemContainer .IncreaseDecreaseContainer {
-    display: "flex"; 
+    display: flex; 
     align-items: "center"; 
+    
     justify-content: space-between;
     gap: "10px";  
     border: 1px solid #ccc;
