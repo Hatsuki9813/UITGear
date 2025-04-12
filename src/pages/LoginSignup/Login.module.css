@@ -79,8 +79,8 @@
 .FormContainer .forgotpass {
     text-align: right;
     margin-bottom: 10px;
-    color: #007bff;
-    cursor: pointer;
+    cursor: pointer;    
+    text-decoration: underline;
 }
 
 

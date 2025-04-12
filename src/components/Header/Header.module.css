@@ -1,3 +1,8 @@
+
+.AllHeader {
+    width: 100%;
+  }
+  
 .HeaderContainer {
     width:auto;
     height: 88px;
@@ -17,8 +22,7 @@
     width: 100%; 
     height: 45px;
     max-height: 150px;
-    border-radius: 25px;
-    overflow: hidden;
+    border-radius: 25px!;
 }
 .searchButton {
     border-radius: 0 20px 20px 0; 
@@ -62,4 +66,109 @@
     border-color: white!important;
     border-width: 1px!important;
     background-color: #02457A!important
+}
+.functioncontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    background-color: #191d1e;
+    margin: 0 auto;
+    width: 100%; 
+    padding: 0;
+    height: auto; 
+    position: relative; 
+
+}
+.menuicon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin: 5px;
+}
+.functionitem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+
+.container {
+    max-width: 1200px;
+}
+
+
+
+
+.menuRow {
+    display: flex !important;
+    flex-wrap: nowrap !important; 
+    justify-content: space-between !important; 
+}
+.menuitem {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    color: black;
+}
+.functioncontainer ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+
+}
+.functioncontainer li {
+    align-items: center; 
+    text-align: center;
+    color: white;
+    position: relative;
+    
+}
+.submenu {
+    position: absolute;
+    top: 100%;
+    width: 500%; 
+    min-width: 800px; 
+    max-width: 100vw; 
+    background-color: #001B48;
+    padding: 10px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    z-index: 999;
+
+}
+
+.submenu li:hover {
+    background-color: transparent;
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    font-size: 10px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cartButton {
+    position: relative; 
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }

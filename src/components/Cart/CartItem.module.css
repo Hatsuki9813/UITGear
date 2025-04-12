@@ -1,52 +1,62 @@
-
-.ItemContainer {
+.CartItemContainer {
     border: 1px solid #ccc;
-    margin: 50px;
-
+    margin-bottom: 10px;
 }
-.ItemContainer .ProductInfo {
+.ProductInfo {
     display: flex;
     align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 10px 10px 10px 10px;
-    padding: 10px;
-}
-.ItemContainer .ProductImage {
-    width: 100px;
-    height: 100px;
+    margin-bottom: 10px;
+    
+  }
+  
+  .ProductDetails {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .ProductImage {
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     border-radius: 5px;
-}
-.ItemContainer .Price {
-    font-size: 1.25rem;
-    color: green;
-}
-.ItemContainer .IncreaseDecrease {
+  }
+  
+  .PriceWrapper,
+  .QuantityWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .IncreaseDecreaseContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    height: 45px;
+    border-radius: 8px;
+    padding: 0 10px;
+  }
+  
+
+.IncreaseDecrease {
     border: none;
-    background-color: #fff;
-    font-size: 1.25rem;
-    margin: 0 10px 0 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+
+.Price {
+    color: green;
+    
 }
-.ItemContainer .IncreaseDecreaseContainer {
-    display: "flex"; 
-    align-items: "center"; 
-    justify-content: space-between;
-    gap: "10px";  
+ .CouponContainer {
     border: 1px solid #ccc;
-}
-.ItemContainer .ProductName {
-    font-size: 1.25rem;  
-}
-.ItemContainer .CouponContainer {
-    border: 1px solid #ccc;
-    border-radius: 10px; /* Bo góc */
     background-color: #f9f9f9;
-    margin: 20px;
-
+    margin: 10px;
 }
 
-.ItemContainer .CouponHeader {
+ .CouponHeader {
     background-color: #e0e0e0; /* Màu nền xám */
     color: #333; /* Màu chữ */
     font-size: 1rem;
@@ -57,7 +67,7 @@
 
 }
 
-.ItemContainer .SubmitButton{
+ .SubmitButton{
     border-radius: 0px !important;
     width: 100%;
     padding: 10px;
@@ -65,4 +75,11 @@
     color: #fff;
     border: none;
     cursor: pointer;
+}
+
+.deleteicon {
+    color: #DD3C5A;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 20px;
 }

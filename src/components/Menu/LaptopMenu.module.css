@@ -1,0 +1,52 @@
+.megamenu {
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  width: 500%; /* Same width as parent */
+  background-color: white;
+  padding: 15px;
+  z-index: 999; 
+  border: 1px solid #ccc;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+
+
+}
+
+.megamenuColumn {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.megamenu h4 {
+  color: black;
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: bold ;
+  text-align: left;
+
+}
+
+.megamenu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+.megamenu li {
+  padding: 5px 0;
+  color: black;
+  cursor: pointer;
+  text-align: left;
+}
+
+.megamenu li:hover {
+  text-decoration: None;
+}
+.linkStyle {
+  text-decoration: none;
+  color: inherit;
+}
