@@ -109,17 +109,6 @@ export default function Header() {
                         }),
                     }}
                 />
-
-        <InputGroup size="sm" className={styles.searchBar}>
-          <Form.Control
-            aria-label="Small"
-            aria-describedby="inputGroup-sizing-sm"
-            placeholder="Tìm kiếm..."
-          />
-          <InputGroup.Text className={styles.searchButton}>
-            <FaSearch />
-          </InputGroup.Text>
-        </InputGroup>
         {token ? (
           <Link to="/profile" style={{ textDecoration: "none" }}>
             <div
