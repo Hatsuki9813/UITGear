@@ -80,6 +80,10 @@ const router = createBrowserRouter([
         path: "/ordertrack",
         element: <OrderTrack />,
       },
+      {
+        path: "/changepassword",
+        element: <ChangePassword />,
+      },
       // Lồng route Profile vào đây
       {
         path: profileRoutes.path,
