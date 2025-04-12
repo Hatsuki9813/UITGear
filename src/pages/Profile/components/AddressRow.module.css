@@ -39,6 +39,7 @@
 
 .AddressRow .deleteButton {
     /* px-5 py-2 text-white bg-[#02457a] rounded-sm cursor-pointer font-medium */
+    border: none;
     padding: 0.5rem 1.25rem;
     color: white;
     background-color: #02457a;
