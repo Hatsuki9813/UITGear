@@ -25,6 +25,7 @@ import ServiceMenu from "../Menu/ServiceMenu";
 import SoftwareMenu from "../Menu/SoftwareMenu";
 import { Link } from "react-router";
 import { useAuthStore } from "../../store/useAuthStore";
+
 import Select, { components } from 'react-select';
 import AsyncSelect from 'react-select/async';
 
@@ -65,10 +66,11 @@ const SingleValue = (props) => (
     </components.SingleValue>
 );
 
+
 export default function Header() {
-    const [openSubmenu, setOpenSubmenu] = useState(null);
-    const [openChildMenu, setopenChildMenu] = useState(null);
-    const [cartCount, setCartCount] = useState(0);
+  const [openSubmenu, setOpenSubmenu] = useState(null);
+  const [openChildMenu, setopenChildMenu] = useState(null);
+  const [cartCount, setCartCount] = useState(0);
 
   //Check auth
   const token = localStorage.getItem("token");
@@ -84,6 +86,7 @@ export default function Header() {
         <Link to="/">
           <img src={logo} className={styles.logoimg} alt="logo" />
         </Link>
+
         <AsyncSelect
                     cacheOptions
                     loadOptions={loadOptions}
@@ -106,6 +109,17 @@ export default function Header() {
                         }),
                     }}
                 />
+
+        <InputGroup size="sm" className={styles.searchBar}>
+          <Form.Control
+            aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm"
+            placeholder="Tìm kiếm..."
+          />
+          <InputGroup.Text className={styles.searchButton}>
+            <FaSearch />
+          </InputGroup.Text>
+        </InputGroup>
         {token ? (
           <Link to="/profile" style={{ textDecoration: "none" }}>
             <div

@@ -8,6 +8,7 @@ import { FaArrowRight, FaFacebook, FaGoogle, FaPhone } from "react-icons/fa";
 import { useAuthStore } from "../../store/useAuthStore";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router';
+
 export default function Login() {
   const navigate = useNavigate();
 
