@@ -6,7 +6,7 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { FaArrowRight, FaFacebook, FaGoogle, FaPhone } from "react-icons/fa";
 import axios from "axios";
-
+import { Link } from 'react-router';
 export default function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [registerData, setRegisterData] = useState({
@@ -98,6 +98,7 @@ export default function Login() {
               onChange={(e) => handleChange(e, "login")}
             />
           </Form.Group>
+          <Link to="/forgotpassword" style={{ textDecoration: 'none' }}><div className={styles.forgotpass}>Quên mật khẩu?</div></Link>
           <Button className={styles.SubmitButton} onClick={handleLogin}>
             Đăng nhập <FaArrowRight />
           </Button>

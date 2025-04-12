@@ -17,7 +17,7 @@ import ShippingAddress from "../pages/Profile/ShippingAddress";
 import Home from "../pages/Home/Home";
 import Products from "../pages/Products/Products";
 import Detail from "../pages/Detail/Detail";
-
+import ChangePassword from "../pages/LoginSignup/ChangePassword";
 // Import route của Profile
 import profileRoutes from "./profileRoutes"; // Đường dẫn đúng với dự án của bạn
 
@@ -79,6 +79,10 @@ const router = createBrowserRouter([
             {
                 path: "/ordertrack",
                 element: <OrderTrack/>
+            },
+            {
+                path: "/changepassword",
+                element: <ChangePassword/>
             },
             // Lồng route Profile vào đây
             {

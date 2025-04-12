@@ -55,6 +55,8 @@ export default () => {
                     <input placeholder="Input here" className={styles.inputField}></input>
                 </div>
                 <button className={styles.confirmButton}>Cập nhật thông tin</button>
+                <button className={styles.logoutButton} ><a href="/authenticate/" style={{textDecoration: "None"}}>Đăng xuất</a></button>
+
             </form>
         </div>
     );

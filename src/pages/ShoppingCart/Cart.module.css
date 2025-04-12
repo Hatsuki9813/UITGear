@@ -1,21 +1,18 @@
 .CartContainer {
-    display: flex;
     margin-top: 20px;
 }
 .CartContainer .ItemList {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    margin: 20px;
-    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 20px;
 }
 .CartContainer .CheckoutContainer {
+    display: flex;
     flex-direction: column;
     border: 1px solid #ccc;
-    margin: 20px;
-    width: 30%;
-    height: fit-content;
     padding: 20px;
+    height: fit-content;
+    box-sizing: border-box;
 }
 .CartContainer .CheckoutHeader {
     font-size: 1.5rem;
@@ -65,14 +62,10 @@
     width: 100%;
 }
 .CartContainer .ListHeader {
-    display: grid;
-    grid-template-columns: 75% 12.5% 12.5%; /* Chia layout theo tỷ lệ */
-    align-items: center;
-    padding: 20px;
+    display: flex;
+    justify-content: space-between;
     font-weight: bold;
-    background-color: #f0f0f0;
-    border-bottom: 2px solid #ccc;
-    
+    margin-bottom: 10px;
 }
 .CartContainer .ListHeader span:first-child {
     padding-left: 100px; /* Dịch sang phải 20px */
