@@ -7,6 +7,7 @@ import Tabs from "react-bootstrap/Tabs";
 import { FaArrowRight, FaFacebook, FaGoogle, FaPhone } from "react-icons/fa";
 import { useAuthStore } from "../../store/useAuthStore";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ export default function Login() {
               onChange={(e) => handleChange(e, "login")}
             />
           </Form.Group>
+          <Link to="/forgotpassword" style={{ textDecoration: 'none' }}><div className={styles.forgotpass}>Quên mật khẩu?</div></Link>
           <Button
             className={styles.SubmitButton}
             onClick={() => handleLogin(navigate)}

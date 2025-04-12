@@ -91,3 +91,19 @@
     color: black;
     background-color: white;
 }
+
+.Overview .logoutButton {
+    /* border-2 rounded-sm transition-colors ease-in duration-200 border-[#02457a] hover: text-black
+    text-white hover:bg-white bg-[#02457a] w-fit py-2 flex px-20 cursor-pointer font-medium */
+    margin-top: 1rem;
+    border: 2px solid #02457a;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    color: black;
+    background-color: transparent;
+    padding: 0.5rem 0;
+    display: flex;
+    cursor: pointer;
+    font-weight: 500;
+    justify-content: center;
+}

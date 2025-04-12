@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import { FaPenToSquare } from "react-icons/fa6";
 import Button from 'react-bootstrap/Button';
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from 'react-router';
 export default function otp({ length = 6, onComplete }) {
   const inputRef = useRef(Array(length).fill(null))
 
@@ -52,7 +53,10 @@ export default function otp({ length = 6, onComplete }) {
       ))}
 
         <Button className={styles.SubmitButton}>
+        <Link to="/changepassword" style={{ textDecoration: 'none', color: 'white' }}>
         Xác nhận
+        </Link>
+
       </Button>
       <Nav className={styles.links}><Nav.Link>Gửi lại mã</Nav.Link></Nav>
 

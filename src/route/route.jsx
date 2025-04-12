@@ -15,6 +15,7 @@ import Home from "../pages/Home/Home";
 import Products from "../pages/Products/Products";
 import Detail from "../pages/Detail/Detail";
 import GuestRoute from "./GuestRoute ";
+import ChangePassword from "../pages/LoginSignup/ChangePassword";
 // Import route của Profile
 import profileRoutes from "./profileRoutes"; // Đường dẫn đúng với dự án của bạn
 

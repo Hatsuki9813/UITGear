@@ -35,7 +35,12 @@ export default function LaptopMenu() {
         <li><Link to="/products" className={styles.linkStyle}> Lenovo ThinkBook</Link></li>
       </ul>
     </div>
-
+    <div className={styles.megamenuColumn}>
+      <h4>MSI</h4>
+      <ul>
+        <li><Link to="/products" className={styles.linkStyle}> MSI Modern</Link></li>
+      </ul>
+    </div>
   </div>
   )
 };
