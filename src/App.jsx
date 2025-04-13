@@ -6,11 +6,13 @@ import "./index.css";
 import { useEffect } from "react";
 import { useAuthStore } from "./store/useAuthStore";
 function App() {
-  const fetchUser = useAuthStore((state) => state.fetchUser);
+  const store = useAuthStore();
 
   useEffect(() => {
-    fetchUser();
-  }, [fetchUser]);
+    if (store?.fetchUser) {
+      store.fetchUser();
+    }
+  }, [store]);
   return (
     <div
       className="AppContainer"

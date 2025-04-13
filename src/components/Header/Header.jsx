@@ -26,46 +26,58 @@ import SoftwareMenu from "../Menu/SoftwareMenu";
 import { Link } from "react-router";
 import { useAuthStore } from "../../store/useAuthStore";
 
-import Select, { components } from 'react-select';
-import AsyncSelect from 'react-select/async';
+import Select, { components } from "react-select";
+import AsyncSelect from "react-select/async";
 
 const options = [
-    { value: 'Lenovo LOQ 15IAX9', label: 'Lenovo LOQ 15IAX9', findimg: "https://product.hstatic.net/200000722513/product/pic_3_8cb2b6a7156b43128c86ffeee5196263_grande.png" },
-    { value: 'Acer Nitro V', label: 'Acer Nitro V', findimg: "https://product.hstatic.net/200000722513/product/pic_3_8cb2b6a7156b43128c86ffeee5196263_grande.png" },
-    { value: 'Asus TUF', label: 'Asus TUF', findimg: "https://product.hstatic.net/200000722513/product/pic_3_8cb2b6a7156b43128c86ffeee5196263_grande.png" }
-]
+  {
+    value: "Lenovo LOQ 15IAX9",
+    label: "Lenovo LOQ 15IAX9",
+    findimg:
+      "https://product.hstatic.net/200000722513/product/pic_3_8cb2b6a7156b43128c86ffeee5196263_grande.png",
+  },
+  {
+    value: "Acer Nitro V",
+    label: "Acer Nitro V",
+    findimg:
+      "https://product.hstatic.net/200000722513/product/pic_3_8cb2b6a7156b43128c86ffeee5196263_grande.png",
+  },
+  {
+    value: "Asus TUF",
+    label: "Asus TUF",
+    findimg:
+      "https://product.hstatic.net/200000722513/product/pic_3_8cb2b6a7156b43128c86ffeee5196263_grande.png",
+  },
+];
 const loadOptions = (inputValue, callback) => {
-    if (!inputValue) return callback([]);
+  if (!inputValue) return callback([]);
 
-    fetch(`http://localhost:5000/api/laptops?search=${inputValue}`)
-        .then((res) => res.json())
-        .then((data) => {
-            const options = data.map((item) => ({
-                value: item._id,
-                label: item.name,
-                findimg: item.image,
-            }));
-            callback(options);
-        })
-        .catch((err) => {
-            console.error(err);
-            callback([]);
-        });
+  fetch(`http://localhost:5000/api/laptops?search=${inputValue}`)
+    .then((res) => res.json())
+    .then((data) => {
+      const options = data.map((item) => ({
+        value: item._id,
+        label: item.name,
+        findimg: item.image,
+      }));
+      callback(options);
+    })
+    .catch((err) => {
+      console.error(err);
+      callback([]);
+    });
 };
 
 const customFormatOptionLabel = ({ label, findimg }) => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        {findimg && <img src={findimg} alt="" style={{ width: 40, height: 40 }} />}
-        <span>{label}</span>
-    </div>
+  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+    {findimg && <img src={findimg} alt="" style={{ width: 40, height: 40 }} />}
+    <span>{label}</span>
+  </div>
 );
 
 const SingleValue = (props) => (
-    <components.SingleValue {...props}>
-        {props.data.label}
-    </components.SingleValue>
+  <components.SingleValue {...props}>{props.data.label}</components.SingleValue>
 );
-
 
 export default function Header() {
   const [openSubmenu, setOpenSubmenu] = useState(null);
@@ -88,27 +100,27 @@ export default function Header() {
         </Link>
 
         <AsyncSelect
-                    cacheOptions
-                    loadOptions={loadOptions}
-                    defaultOptions={false}
-                    formatOptionLabel={customFormatOptionLabel}
-                    components={{ SingleValue }}
-                    placeholder="Tìm kiếm..."
-                    styles={{
-                        control: (base) => ({
-                            ...base,
-                            maxWidth: '500px',
-                            width: '500px',
-                            height: '45px',
-                            borderRadius: '25px',
-                        }),
-                        menu: (base) => ({
-                            ...base,
-                            maxHeight: '200px',
-                            overflowY: 'auto',
-                        }),
-                    }}
-                />
+          cacheOptions
+          loadOptions={loadOptions}
+          defaultOptions={false}
+          formatOptionLabel={customFormatOptionLabel}
+          components={{ SingleValue }}
+          placeholder="Tìm kiếm..."
+          styles={{
+            control: (base) => ({
+              ...base,
+              maxWidth: "500px",
+              width: "500px",
+              height: "45px",
+              borderRadius: "25px",
+            }),
+            menu: (base) => ({
+              ...base,
+              maxHeight: "200px",
+              overflowY: "auto",
+            }),
+          }}
+        />
         {token ? (
           <Link to="/profile" style={{ textDecoration: "none" }}>
             <div

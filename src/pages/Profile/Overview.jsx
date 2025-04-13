@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { UserIcon } from "@heroicons/react/24/outline";
 import styles from "./Overview.module.css";
 import { useAuthStore } from "../../store/useAuthStore";
+import { useProfileStore } from "../../store/useProfileStore";
 
 export const Overview = () => {
+  const { editProfile } = useProfileStore();
   const user = useAuthStore((state) => state.user);
   const fetchUser = useAuthStore((state) => state.fetchUser);
   const [isEditing, setIsEditing] = useState(false);
@@ -14,6 +16,8 @@ export const Overview = () => {
     email: "",
     phone: "",
     address: "",
+
+    profilePicture: "",
   });
 
   useEffect(() => {
@@ -33,10 +37,6 @@ export const Overview = () => {
     }
   }, [user]);
 
-  if (!user) {
-    return <p>Đang tải dữ liệu người dùng...</p>;
-  }
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -45,21 +45,22 @@ export const Overview = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Updated data:", formData);
-    // Gọi API update tại đây nếu cần
-    setIsEditing(false);
+    await editProfile(formData);
+    setIsEditing(false); // Đặt lại chế độ chỉnh sửa sau khi cập nhật
   };
+
+  if (!user) {
+    return <p>Đang tải dữ liệu người dùng...</p>;
+  }
 
   return (
     <div className={styles.Overview}>
       <h1>THÔNG TIN CÁ NHÂN</h1>
       <form onSubmit={handleSubmit}>
-        <div>
-          <div className={styles.avatarContainer}>
-            <UserIcon className={styles.avatar} />
-          </div>
+        <div className={styles.avatarContainer}>
+          <UserIcon className={styles.avatar} />
         </div>
 
         {/* Họ và tên */}
@@ -156,7 +157,11 @@ export const Overview = () => {
         {/* Nút cập nhật và chỉnh sửa */}
         <div className={styles.buttonGroup}>
           {isEditing && (
-            <button type="submit" className={styles.confirmButton}>
+            <button
+              type="submit"
+              onClick={handleSubmit}
+              className={styles.confirmButton}
+            >
               Cập nhật thông tin
             </button>
           )}
