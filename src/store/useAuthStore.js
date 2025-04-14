@@ -191,11 +191,10 @@ export const useAuthStore = create((set, get) => ({
       toast.error("Có lỗi xảy ra khi xác thực OTP!");
     }
   },
-  resetPassword: async (email, otp, newPassword) => {
+  resetPassword: async (email, newPassword) => {
     try {
-      const res = await axiosInstance.post("/auth/reset-password", {
+      const res = await axiosInstance.put("/auth/reset-password", {
         email,
-        otp,
         newPassword,
       });
       toast.success(res.data.message);
