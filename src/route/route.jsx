@@ -49,11 +49,16 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/products",
+        path: "/products/:slug",
         element: <Products />,
       },
       {
-        path: "/detail",
+        path: "/products",
+        element: <Products />,
+      },
+
+      {
+        path: "/detail/:product_id",
         element: <Detail />,
       },
       {
