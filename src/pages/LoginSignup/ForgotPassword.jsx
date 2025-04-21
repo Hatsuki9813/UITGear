@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import styles from "./ForgotPassword.module.css";
 import { useAuthStore } from "../../store/useAuthStore";
@@ -37,9 +38,11 @@ export default function ForgotPassword() {
     await resetPassword(inputEmail || email, newPassword);
   };
 
+
   return (
     <div className={styles.FormContainer}>
       <div className={styles.HeaderText}>Quên mật khẩu</div>
+
       <div className={styles.SubHeaderText}>
         {step === 1 && "Nhập email để nhận mã OTP."}
         {step === 2 && "Vui lòng kiểm tra email và nhập mã OTP xác nhận."}
@@ -81,7 +84,6 @@ export default function ForgotPassword() {
           </Nav>
         </Form.Group>
       )}
-
       {step === 3 && (
         <Form.Group className={styles.FormGroup}>
           <Form.Label>Mật khẩu mới</Form.Label>
@@ -103,7 +105,6 @@ export default function ForgotPassword() {
           </Button>
         </Form.Group>
       )}
-
       <div className={styles.divider}></div>
       <div className={styles.SubHeaderText}>
         Bạn đã có tài khoản? <a href="/authenticate">Đăng nhập tại đây</a>

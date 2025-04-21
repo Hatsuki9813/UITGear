@@ -4,7 +4,6 @@ import React from "react";
 import App from "../App";
 import Login from "../pages/LoginSignup/Login";
 import ForgotPassword from "../pages/LoginSignup/ForgotPassword";
-import Otp from "../pages/LoginSignup/Otp";
 import Cart from "../pages/ShoppingCart/Cart";
 import CheckoutInfo from "../pages/Checkout/CheckoutInfo";
 import CustomerService from "../pages/CustomerService/CustomerService";
@@ -35,10 +34,6 @@ const router = createBrowserRouter([
             <Login />
           </GuestRoute>
         ),
-      },
-      {
-        path: "/otp",
-        element: <Otp />,
       },
       {
         path: "/forgotpassword",
@@ -84,10 +79,6 @@ const router = createBrowserRouter([
       {
         path: "/ordertrack",
         element: <OrderTrack />,
-      },
-      {
-        path: "/changepassword",
-        element: <ChangePassword />,
       },
       // Lồng route Profile vào đây
       {
