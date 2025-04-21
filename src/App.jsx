@@ -9,8 +9,11 @@ function App() {
   const fetchUser = useAuthStore((state) => state.fetchUser);
 
   useEffect(() => {
-    fetchUser();
+    if (fetchUser) {
+      fetchUser();
+    }
   }, [fetchUser]);
+
   return (
     <div
       className="AppContainer"
