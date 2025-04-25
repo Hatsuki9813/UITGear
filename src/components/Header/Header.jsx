@@ -22,39 +22,10 @@ import AccessoryMenu from "../Menu/AccessoryMenu";
 import ServiceMenu from "../Menu/ServiceMenu";
 import SoftwareMenu from "../Menu/SoftwareMenu";
 import { Link } from "react-router";
-
+import SearchBar from "../SearchBar/SearchBar";
 import AsyncSelect from "react-select/async";
 import useCartStore from "../../store/useCartStore";
 import { useAuthStore } from "../../store/useAuthStore";
-const loadOptions = (inputValue, callback) => {
-  if (!inputValue) return callback([]);
-
-  fetch(`http://localhost:5000/api/laptops?search=${inputValue}`)
-    .then((res) => res.json())
-    .then((data) => {
-      const options = data.map((item) => ({
-        value: item._id,
-        label: item.name,
-        findimg: item.image,
-      }));
-      callback(options);
-    })
-    .catch((err) => {
-      console.error(err);
-      callback([]);
-    });
-};
-
-const customFormatOptionLabel = ({ label, findimg }) => (
-  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-    {findimg && <img src={findimg} alt="" style={{ width: 40, height: 40 }} />}
-    <span>{label}</span>
-  </div>
-);
-
-const SingleValue = (props) => (
-  <components.SingleValue {...props}>{props.data.label}</components.SingleValue>
-);
 
 export default function Header() {
   const [openSubmenu, setOpenSubmenu] = useState(null);
@@ -80,28 +51,7 @@ export default function Header() {
           <img src={logo} className={styles.logoimg} alt="logo" />
         </Link>
 
-        <AsyncSelect
-          cacheOptions
-          loadOptions={loadOptions}
-          defaultOptions={false}
-          formatOptionLabel={customFormatOptionLabel}
-          components={{ SingleValue }}
-          placeholder="Tìm kiếm..."
-          styles={{
-            control: (base) => ({
-              ...base,
-              maxWidth: "500px",
-              width: "500px",
-              height: "45px",
-              borderRadius: "25px",
-            }),
-            menu: (base) => ({
-              ...base,
-              maxHeight: "200px",
-              overflowY: "auto",
-            }),
-          }}
-        />
+        <SearchBar></SearchBar>
         {token ? (
           <Link to="/profile" style={{ textDecoration: "none" }}>
             <div
