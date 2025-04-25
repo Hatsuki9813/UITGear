@@ -125,7 +125,6 @@ export const useAuthStore = create((set, get) => ({
       if (event.data.token) {
         const token = event.data.token;
         localStorage.setItem("token", token);
-        console.log("res handleGoogle:", token);
         // Gọi API /me để lấy user
         try {
           const res = await axiosInstance.get("/auth/me", {
@@ -172,7 +171,6 @@ export const useAuthStore = create((set, get) => ({
 
   forgotPassword: async (data) => {
     try {
-      console.log("data:", data);
       await axiosInstance.post("/auth/forgot-password", { email: data });
       set({ email: data });
       toast.success("Mã OTP đã được gửi đến email của bạn!");

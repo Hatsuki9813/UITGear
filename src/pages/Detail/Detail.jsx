@@ -22,8 +22,6 @@ export default () => {
   if (error) return <div>Có lỗi: {error}</div>; // Display error state
   if (!product) return <div>Không tìm thấy sản phẩm!</div>; // If no product found
 
-  console.log("product in detail", product);
-
   return (
     <div
       style={{

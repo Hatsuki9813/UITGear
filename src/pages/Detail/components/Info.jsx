@@ -1,7 +1,6 @@
 import styles from "./Info.module.css";
 
 export default function Info({ description_obj }) {
-  console.log("description_obj", description_obj);
   return (
     <div className={styles.Info}>
       <div className={styles.header}>GIỚI THIỆU</div>

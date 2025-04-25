@@ -16,13 +16,10 @@ export const useProductStore = create((set, get) => ({
     try {
       // Xây dựng URL động dựa trên slug
       const url = slug ? `/product/${slug}` : "/product";
-      console.log("Fetching products from URL:", url); // Log URL để kiểm tra
       // Truyền các tham số qua query params
       const response = await axiosInstance.get(url, {
         params: { page, limit, sort, order },
       });
-
-      console.log("Response data:", response.data); // Log response để kiểm tra
 
       if (response.status === 200) {
         set({
