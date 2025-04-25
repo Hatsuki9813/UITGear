@@ -2,7 +2,6 @@ import Info from "../components/Info";
 import Specifications from "../components/Specifications";
 
 export default ({ product }) => {
-  console.log("product in InfoAndSpecifications", product);
   return (
     <div
       style={{

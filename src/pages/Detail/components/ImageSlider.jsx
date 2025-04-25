@@ -50,7 +50,6 @@ const ImagePicker = ({ item, index, selectIndex }) => {
 };
 
 const ImageSlider = ({ img_obj }) => {
-  console.log("Image list:", img_obj);
   const imageList = [
     { src: img_obj.productimg, index: 0 },
     { src: img_obj.slider_image1, index: 1 },

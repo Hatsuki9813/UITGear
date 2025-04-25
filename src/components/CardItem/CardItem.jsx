@@ -3,7 +3,6 @@ import styles from "./CardItem.module.css";
 import { Link } from "react-router";
 
 export default ({ data, border, whereToUse }) => {
-  console.log(data.id, "data in carditem");
   return (
     <div
       style={{

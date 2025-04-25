@@ -1,7 +1,6 @@
 import styles from "./Specifications.module.css";
 
 export default function Specifications({ specification_obj }) {
-  console.log("specification_obj", specification_obj);
   const data = [
     { name: "Bộ vi xử lý", value: specification_obj.processor },
     { name: "RAM", value: specification_obj.ram },

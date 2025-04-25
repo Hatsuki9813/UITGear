@@ -1,72 +1,97 @@
 .CartContainer {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .CartContainer .ItemList {
-    background-color: #f9f9f9;
-    padding: 15px;
-    margin-bottom: 20px;
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 20px;
 }
 .CartContainer .CheckoutContainer {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #ccc;
-    padding: 20px;
-    height: fit-content;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 20px;
+  height: fit-content;
+  box-sizing: border-box;
 }
 .CartContainer .CheckoutHeader {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: flex-start;
-    width: 100%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: flex-start;
+  width: 100%;
 }
 .CartContainer .SubmitButton {
-    border-radius: 0px !important;
-    width: 100%;
-    padding: 10px;
-    background-color: #011C49;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
+  border-radius: 0px !important;
+  width: 100%;
+  padding: 10px;
+  background-color: #011c49;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
 }
 .CartContainer .SubmitButton:active,
 .CartContainer .SubmitButton:focus,
 .CartContainer .SubmitButton:hover {
-    background-color: #011C49 !important;
-    color: white !important;
-    border-color: #011C49 !important;
-    box-shadow: none !important; /* Ngăn Bootstrap thêm viền xanh */
+  background-color: #011c49 !important;
+  color: white !important;
+  border-color: #011c49 !important;
+  box-shadow: none !important; /* Ngăn Bootstrap thêm viền xanh */
 }
 .CartContainer .divider {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    text-align: center;
-    color: #666;
-    margin: 20px 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  color: #666;
+  margin: 20px 0;
 }
 .divider::before,
 .divider::after {
-    content: "";
-    flex: 1;
-    border-bottom: 1px solid #ccc;
-
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ccc;
 }
 .CartContainer .CheckoutContent {
-    display: flex;
-    justify-content: space-between; /* Đẩy nội dung và giá sang hai bên */
-    align-items: center;
-    padding: 10px;
-    font-size: 1.2rem;
-    width: 100%;
+  display: flex;
+  justify-content: space-between; /* Đẩy nội dung và giá sang hai bên */
+  align-items: center;
+  padding: 10px;
+  font-size: 1.2rem;
+  width: 100%;
 }
 .CartContainer .ListHeader {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 .CartContainer .ListHeader span:first-child {
-    padding-left: 100px; /* Dịch sang phải 20px */
+  padding-left: 100px; /* Dịch sang phải 20px */
+}
+.Modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  margin: 50px auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ModalButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Modal h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.Modal p {
+  margin-bottom: 20px;
+}
+
+.Modal button {
+  padding: 10px 20px;
 }

@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Header.module.css";
 import logo from "../../assets/icons/croppedlogonobgr.png";
-import InputGroup from "react-bootstrap/InputGroup";
-import Form from "react-bootstrap/Form";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
 import { CiUser } from "react-icons/ci";
@@ -24,31 +22,10 @@ import AccessoryMenu from "../Menu/AccessoryMenu";
 import ServiceMenu from "../Menu/ServiceMenu";
 import SoftwareMenu from "../Menu/SoftwareMenu";
 import { Link } from "react-router";
-import { useAuthStore } from "../../store/useAuthStore";
 
-import Select, { components } from "react-select";
 import AsyncSelect from "react-select/async";
-
-const options = [
-  {
-    value: "Lenovo LOQ 15IAX9",
-    label: "Lenovo LOQ 15IAX9",
-    findimg:
-      "https://product.hstatic.net/200000722513/product/pic_3_8cb2b6a7156b43128c86ffeee5196263_grande.png",
-  },
-  {
-    value: "Acer Nitro V",
-    label: "Acer Nitro V",
-    findimg:
-      "https://product.hstatic.net/200000722513/product/pic_3_8cb2b6a7156b43128c86ffeee5196263_grande.png",
-  },
-  {
-    value: "Asus TUF",
-    label: "Asus TUF",
-    findimg:
-      "https://product.hstatic.net/200000722513/product/pic_3_8cb2b6a7156b43128c86ffeee5196263_grande.png",
-  },
-];
+import useCartStore from "../../store/useCartStore";
+import { useAuthStore } from "../../store/useAuthStore";
 const loadOptions = (inputValue, callback) => {
   if (!inputValue) return callback([]);
 
@@ -82,16 +59,20 @@ const SingleValue = (props) => (
 export default function Header() {
   const [openSubmenu, setOpenSubmenu] = useState(null);
   const [openChildMenu, setopenChildMenu] = useState(null);
-  const [cartCount, setCartCount] = useState(0);
-
-  //Check auth
+  const { cartCount, fetchCart, isLoading, error } = useCartStore(); //Check auth
   const token = localStorage.getItem("token");
+  const user = useAuthStore((state) => state.user);
   const toggleSubmenu = (menu) => {
     setOpenSubmenu(openSubmenu === menu ? null : menu);
   };
   const toggleChildmenu = (Childmenu) => {
     setopenChildMenu(openChildMenu === Childmenu ? null : Childmenu);
   };
+  useEffect(() => {
+    if (user) {
+      fetchCart(user._id);
+    }
+  }, [user, fetchCart]);
   return (
     <div className={styles.AllHeader}>
       <div className={styles.HeaderContainer}>
