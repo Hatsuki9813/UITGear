@@ -7,27 +7,16 @@ export const useProductStore = create((set) => ({
   totalProducts: 0,
   totalPages: 0,
   fetchProducts: async ({
-    category = "", // Thêm category vào params, mặc định là ""
-    brand = "", // Thêm brand vào params, mặc định là ""
-    product_line = "", // Thêm productLine vào params, mặc định là ""
+    category = "",
+    brand = "",
+    product_line = "",
     page = 1,
     limit = 20,
     sort = "price",
     order = "desc",
   }) => {
     try {
-      // Xây dựng URL với các tham số category, brand, productLine
-      const url = "/product"; // Giữ URL chung cho tất cả các trường hợp
-      console.log("Fetching products with params:", {
-        category,
-        brand,
-        product_line,
-        page,
-        limit,
-        sort,
-        order,
-      });
-      // Truyền các tham số qua query params
+      const url = "/product";
       const response = await axiosInstance.get(url, {
         params: {
           category,

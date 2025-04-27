@@ -104,10 +104,17 @@ export const useAuthStore = create((set, get) => ({
         "/auth/register",
         state.registerData
       );
-      toast.success(res.data.message);
+
+      if (res.status === 201) {
+        toast.success(res.data.message); // Thành công mới hiện success
+      } else {
+        toast.error(res.data.message || "Đăng ký thất bại!");
+      }
     } catch (error) {
       console.log(error);
-      toast.error("Lỗi đăng ký!");
+      toast.error(
+        error.response?.data?.message || "Có lỗi xảy ra khi đăng ký!"
+      );
     }
   },
 

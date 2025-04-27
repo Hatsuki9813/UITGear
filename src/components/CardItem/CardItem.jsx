@@ -13,7 +13,7 @@ export default ({ data, border, whereToUse }) => {
     >
       <Link to={`/detail/${data.id}`} style={{ textDecoration: "none" }}>
         <div className={styles.imgContainer}>
-          <img src={data.img_obj.productimg} alt={data.name} />
+          <img src={data.img_obj?.productimg || data.img} alt={data.name} />
         </div>
         <span className={styles.name}>{data.name}</span>
 
