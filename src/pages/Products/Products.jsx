@@ -1,20 +1,48 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // Thêm useParams
+import { useEffect, useState, useRef } from "react";
+import { useLocation } from "react-router-dom"; // Lấy các tham số từ URL
 import FilterBar from "./components/FilterBar";
 import ProductList from "./components/ProductList";
 import { useProductStore } from "../../store/useProductStore";
 
 export default function ProductPage() {
-  const { slug } = useParams(); // Lấy slug từ URL
+  const location = useLocation(); // Lấy thông tin từ URL
+  const params = new URLSearchParams(location.search); // Lấy brand, category, product_line từ query params
   const { products, fetchProducts, totalPages } = useProductStore();
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState("price");
   const [order, setOrder] = useState("desc");
-  const [loading, setLoading] = useState(false);
-  // Fetch products khi page/sort/order/slug thay đổi
+
+  const prevParams = useRef({
+    brand: params.get("brand"),
+    category: params.get("category"),
+    product_line: params.get("product_line"),
+  });
+
+  // Fetch products khi các tham số thay đổi
   useEffect(() => {
-    fetchProducts({ slug, page, limit: 20, sort, order }); // Thêm slug vào fetchProducts
-  }, [slug, page, sort, order, fetchProducts]);
+    const brand = params.get("brand") || "";
+    const category = params.get("category") || "";
+    const product_line = params.get("product_line") || "";
+
+    // So sánh các tham số hiện tại với các tham số cũ trong useRef
+    if (
+      brand !== prevParams.current.brand ||
+      category !== prevParams.current.category ||
+      product_line !== prevParams.current.product_line
+    ) {
+      prevParams.current = { brand, category, product_line }; // Cập nhật tham số cũ
+
+      fetchProducts({
+        brand,
+        category,
+        product_line,
+        page,
+        limit: 20,
+        sort,
+        order,
+      });
+    }
+  }, [params, page, sort, order, fetchProducts]);
 
   const handleSort = (type) => {
     if (type === "name") {
@@ -25,31 +53,16 @@ export default function ProductPage() {
       setOrder("desc");
     }
   };
+
   if (products.length === 0) {
     return <div>No products available.</div>;
   }
+
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        width: "100%",
-        backgroundColor: "white",
-        borderRadius: "0.25rem",
-        padding: "1rem",
-      }}
-    >
+    <div>
       <FilterBar onSort={handleSort} />
-      {loading ? (
-        <div style={{ textAlign: "center", marginTop: "20px" }}>
-          Loading products...
-        </div>
-      ) : products && products.length > 0 ? (
-        <ProductList products={products} />
-      ) : (
-        <div>No products available.</div>
-      )}
-      <div style={{ marginTop: "20px", textAlign: "center" }}>
+      <ProductList products={products} />
+      <div>
         <button
           onClick={() =>
             setPage((prev) => (prev < totalPages ? prev + 1 : prev))

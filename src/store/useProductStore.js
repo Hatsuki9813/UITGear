@@ -7,25 +7,44 @@ export const useProductStore = create((set) => ({
   totalProducts: 0,
   totalPages: 0,
   fetchProducts: async ({
-    slug = null, // Thêm slug vào params, mặc định là null
+    category = "", // Thêm category vào params, mặc định là ""
+    brand = "", // Thêm brand vào params, mặc định là ""
+    product_line = "", // Thêm productLine vào params, mặc định là ""
     page = 1,
     limit = 20,
     sort = "price",
     order = "desc",
   }) => {
     try {
-      // Xây dựng URL động dựa trên slug
-      const url = slug ? `/product/${slug}` : "/product";
+      // Xây dựng URL với các tham số category, brand, productLine
+      const url = "/product"; // Giữ URL chung cho tất cả các trường hợp
+      console.log("Fetching products with params:", {
+        category,
+        brand,
+        product_line,
+        page,
+        limit,
+        sort,
+        order,
+      });
       // Truyền các tham số qua query params
       const response = await axiosInstance.get(url, {
-        params: { page, limit, sort, order },
+        params: {
+          category,
+          brand,
+          product_line,
+          page,
+          limit,
+          sort,
+          order,
+        },
       });
 
       if (response.status === 200) {
         set({
-          products: response.data.products || [], // Đảm bảo products là mảng
+          products: response.data.products || [],
           totalProducts: response.data.totalProducts || 0,
-          totalPages: response.data.totalPages || 0, // Cập nhật totalPages
+          totalPages: response.data.totalPages || 0,
         });
       } else {
         toast.error("Failed to fetch products.");
