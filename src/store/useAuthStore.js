@@ -16,10 +16,12 @@ export const useAuthStore = create((set, get) => ({
   user: null,
   token: null,
   isAuthenticated: false,
-
+  sendOtp: false,
+  otp: "",
+  email: "",
   // Cập nhật user và token vào store
   setAuth: (user, token) => set({ user, token }),
-
+  setSendOtp: (sendOtp) => set({ sendOtp }),
   checkAuth: () => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -102,10 +104,17 @@ export const useAuthStore = create((set, get) => ({
         "/auth/register",
         state.registerData
       );
-      toast.success(res.data.message);
+
+      if (res.status === 201) {
+        toast.success(res.data.message); // Thành công mới hiện success
+      } else {
+        toast.error(res.data.message || "Đăng ký thất bại!");
+      }
     } catch (error) {
       console.log(error);
-      toast.error("Lỗi đăng ký!");
+      toast.error(
+        error.response?.data?.message || "Có lỗi xảy ra khi đăng ký!"
+      );
     }
   },
 
@@ -123,7 +132,6 @@ export const useAuthStore = create((set, get) => ({
       if (event.data.token) {
         const token = event.data.token;
         localStorage.setItem("token", token);
-        console.log("res handleGoogle:", token);
         // Gọi API /me để lấy user
         try {
           const res = await axiosInstance.get("/auth/me", {
@@ -167,6 +175,49 @@ export const useAuthStore = create((set, get) => ({
       set({ user: null, token: null });
     }
   },
+
+  forgotPassword: async (data) => {
+    try {
+      await axiosInstance.post("/auth/forgot-password", { email: data });
+      set({ email: data });
+      toast.success("Mã OTP đã được gửi đến email của bạn!");
+    } catch (error) {
+      console.error("Lỗi quên mật khẩu:", error.response?.data);
+      toast.error("Có lỗi xảy ra khi gửi yêu cầu!");
+    }
+  },
+  otpVerify: async (email, otp) => {
+    try {
+      const res = await axiosInstance.post("/auth/verify-otp", { email, otp });
+      set({ otp: otp });
+      toast.success(res.data.message);
+    } catch (error) {
+      console.error("Lỗi xác thực OTP:", error.response?.data);
+      toast.error("Có lỗi xảy ra khi xác thực OTP!");
+    }
+  },
+  resetPassword: async (email, newPassword) => {
+    try {
+      const res = await axiosInstance.put("/auth/reset-password", {
+        email,
+        newPassword,
+      });
+      toast.success(res.data.message);
+    } catch (error) {
+      console.error("Lỗi đặt lại mật khẩu:", error.response?.data);
+      toast.error("Có lỗi xảy ra khi đặt lại mật khẩu!");
+    }
+  },
+  resendOtp: async (email) => {
+    try {
+      const res = await axiosInstance.post("/auth/resend-otp", { email });
+      toast.success(res.data.message);
+    } catch (error) {
+      console.error("Lỗi gửi lại OTP:", error.response?.data);
+      toast.error("Có lỗi xảy ra khi gửi lại OTP!");
+    }
+  },
+
   // Toggle checkbox đồng ý điều khoản
   setIsAgreed: () => set((state) => ({ isAgreed: !state.isAgreed })),
 }));

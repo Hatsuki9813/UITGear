@@ -1,0 +1,34 @@
+.search-container {
+  position: relative;
+  width: 300px;
+  margin: auto;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.suggestion-list {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  border-radius: 0 0 10px 10px;
+}
+
+.suggestion-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-list li:hover {
+  background-color: #f2f2f2;
+}

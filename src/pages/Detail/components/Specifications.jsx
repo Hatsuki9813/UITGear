@@ -1,48 +1,52 @@
 import styles from "./Specifications.module.css";
 
-const data = [
-    { name: "Màn hình", value: "13,6 inch Liquid Retina, 2560 x 1664 pixel" },
-    { name: "Bộ vi xử lý", value: "Apple M3, CPU 8 nhân" },
-    { name: "Bộ nhớ", value: "8GB hợp nhất, có thể nâng cấp lên 24GB" },
-    { name: "Lưu trữ", value: "512GB SSD, có thể nâng cấp" },
-    { name: "Cổng kết nối", value: "MagSafe, 2x USB-C, jack 3.5mm" },
-    { name: "Hệ điều hành", value: "macOS Sonoma" },
-    { name: "Pin", value: "Lên đến 18 giờ phát video" },
-];
+export default function Specifications({ specification_obj }) {
+  const data = [
+    { name: "Bộ vi xử lý", value: specification_obj.processor },
+    { name: "RAM", value: specification_obj.ram },
+    { name: "Lưu trữ", value: specification_obj.storage },
+    { name: "Card đồ họa", value: specification_obj.graphics },
+    { name: "Màn hình", value: specification_obj.display || "Đang cập nhật" },
+    { name: "Pin", value: specification_obj.battery },
+    { name: "Trọng lượng", value: specification_obj.weight },
+    { name: "Hệ điều hành", value: specification_obj.os },
+    { name: "Cổng kết nối", value: specification_obj.port },
+    { name: "Kích thước", value: specification_obj.size || "Đang cập nhật" },
+    { name: "Màu sắc", value: specification_obj.color || "Đang cập nhật" },
+  ];
 
-export default () => {
-    return (
-        <div className={styles.Specifications}>
-            <div className={styles.header}>THÔNG SỐ KĨ THUẬT</div>
+  return (
+    <div className={styles.Specifications}>
+      <div className={styles.header}>THÔNG SỐ KĨ THUẬT</div>
 
-            <table>
-                <tbody>
-                    {data.map((item, index) => (
-                        <tr
-                            key={index}
-                            style={{
-                                backgroundColor: index % 2 === 0 ? "#ffffff" : "#ececec",
-                            }}
-                        >
-                            <td
-                                style={{
-                                    fontWeight: 600,
-                                    padding: "18px 12px",
-                                }}
-                            >
-                                {item.name}
-                            </td>
-                            <td
-                                style={{
-                                    padding: "18px 12px 18px 36px",
-                                }}
-                            >
-                                {item.value}
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
-};
+      <table>
+        <tbody>
+          {data.map((item, index) => (
+            <tr
+              key={index}
+              style={{
+                backgroundColor: index % 2 === 0 ? "#ffffff" : "#ececec",
+              }}
+            >
+              <td
+                style={{
+                  fontWeight: 600,
+                  padding: "18px 12px",
+                }}
+              >
+                {item.name}
+              </td>
+              <td
+                style={{
+                  padding: "18px 12px 18px 36px",
+                }}
+              >
+                {item.value}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
