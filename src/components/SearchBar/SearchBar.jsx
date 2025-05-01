@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import useSuggestionStore from "../../store/useSuggestionStore";
 import "./SearchBar.css";
 
-const SearchBar = () => {
+export default function SearchBar() {
   const [query, setQuery] = useState("");
   const { suggestions, fetchSuggestions, clearSuggestions } =
     useSuggestionStore();
@@ -30,7 +30,7 @@ const SearchBar = () => {
       {suggestions.length > 0 && (
         <ul className="suggestion-list">
           {suggestions.map((item) => (
-            <li key={item._id}>{item.name}</li>
+            <li key={item._id} style={{ listStyle: 'none' }}>{item.name}</li>
           ))}
         </ul>
       )}
@@ -38,4 +38,3 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;

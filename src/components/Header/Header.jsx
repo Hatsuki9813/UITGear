@@ -51,7 +51,7 @@ export default function Header() {
           <img src={logo} className={styles.logoimg} alt="logo" />
         </Link>
 
-        <SearchBar></SearchBar>
+        <SearchBar/>
         {token ? (
           <Link to="/profile" style={{ textDecoration: "none" }}>
             <div
