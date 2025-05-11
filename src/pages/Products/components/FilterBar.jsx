@@ -3,7 +3,7 @@ import FilterButton from "./FilterButton";
 import FilterPopup from "./FilterPopup";
 import SortButton from "./SortButton";
 
-export default ({ onSort }) => {
+export const FilterBar = ({ onSort }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

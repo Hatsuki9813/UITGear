@@ -1,5 +1,4 @@
 import { Outlet, NavLink } from "react-router-dom";
-import ProductCarousel from "../../Home/components/ProductCarousel";
 import styles from "./ProfileLayout.module.css";
 
 export const ProfileLayout = () => {

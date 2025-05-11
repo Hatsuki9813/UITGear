@@ -2,7 +2,7 @@ import formatCurrency from "../../utils/formatCurrency";
 import styles from "./CardItem.module.css";
 import { Link } from "react-router";
 
-export default ({ data, border, whereToUse }) => {
+export const CardItem = ({ data, border, whereToUse }) => {
   return (
     <div
       style={{
@@ -11,7 +11,7 @@ export default ({ data, border, whereToUse }) => {
       }}
       className={styles.CardItem}
     >
-      <Link to={`/detail/${data.id}`} style={{ textDecoration: "none" }}>
+      <Link to={`/detail/${data._id}`} style={{ textDecoration: "none" }}>
         <div className={styles.imgContainer}>
           <img src={data.img_obj?.productimg || data.img} alt={data.name} />
         </div>

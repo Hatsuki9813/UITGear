@@ -13,17 +13,27 @@ export default function SortButton({ onSort }) {
         setIsOpen(false);
       }
     };
+
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
 
-  const handleSort = (type) => {
-    onSort?.(type);
-    setButtonText(type === "name" ? "Tên từ A đến Z" : "Giá giảm dần");
+  const handleSort = (type, order) => {
+    onSort?.(type, order);
+
+    let label = "";
+    if (type === "name") {
+      label = order === "asc" ? "Tên A → Z" : "Tên Z → A";
+    } else if (type === "price") {
+      label = order === "asc" ? "Giá tăng dần" : "Giá giảm dần";
+    }
+
+    setButtonText(label);
     setIsOpen(false);
   };
 
@@ -45,13 +55,25 @@ export default function SortButton({ onSort }) {
         <div className={styles.dropdown2}>
           <button
             className={styles.sortOption}
-            onClick={() => handleSort("name")}
+            onClick={() => handleSort("name", "asc")}
           >
-            Tên từ A đến Z
+            Tên A → Z
           </button>
           <button
             className={styles.sortOption}
-            onClick={() => handleSort("price")}
+            onClick={() => handleSort("name", "desc")}
+          >
+            Tên Z → A
+          </button>
+          <button
+            className={styles.sortOption}
+            onClick={() => handleSort("price", "asc")}
+          >
+            Giá tăng dần
+          </button>
+          <button
+            className={styles.sortOption}
+            onClick={() => handleSort("price", "desc")}
           >
             Giá giảm dần
           </button>
