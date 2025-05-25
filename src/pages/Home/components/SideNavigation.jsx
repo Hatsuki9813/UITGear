@@ -27,16 +27,14 @@ export default function SideNavigation() {
                         if (!e.relatedTarget?.closest(".submenu-container")) {
                             setHoverIndex(null);
                         }
-                    }}
-                >
+                    }}>
                     <Link
-                        to={`/products/`}
+                        to={`/products/:category/`}
                         className={`flex flex-row px-4 py-2 transition-colors ease-in duration-100 cursor-pointer justify-between ${
                             hoverIndex === index
                                 ? "bg-[#02457a] text-white" // Giữ màu hover khi tooltip hiển thị
                                 : "text-[#333333] hover:bg-[#02457a] hover:text-white"
-                        }`}
-                    >
+                        }`}>
                         <span className="flex flex-row gap-2 items-center">
                             <ComputerDesktopIcon className="h-5" />
                             <span>{item.name}</span>
@@ -55,8 +53,7 @@ export default function SideNavigation() {
                                 if (!e.relatedTarget?.closest(".submenu-container")) {
                                     setHoverIndex(null);
                                 }
-                            }}
-                        >
+                            }}>
                             {/* Tạo khoảng trống vô hình để tránh mất hover khi di chuột qua */}
                             <div className="absolute -left-2 top-0 w-2 h-full"></div>
 
@@ -65,9 +62,10 @@ export default function SideNavigation() {
                                 {item.subMenu.map((subItem, subIndex) => (
                                     <Link
                                         key={subIndex}
-                                        to={`/products/${subItem.toLowerCase().replace(/\s+/g, "-")}`}
-                                        className="block px-4 py-2 text-gray-700 hover:bg-[#02457a] hover:text-white transition-colors"
-                                    >
+                                        to={`/products/:category/${subItem
+                                            .toLowerCase()
+                                            .replace(/\s+/g, "-")}`}
+                                        className="block px-4 py-2 text-gray-700 hover:bg-[#02457a] hover:text-white transition-colors">
                                         {subItem}
                                     </Link>
                                 ))}

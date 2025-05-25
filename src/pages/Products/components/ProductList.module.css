@@ -37,6 +37,15 @@
     color: white;
 }
 
+.ProductList .announcement {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    font-size: 1.25rem;
+}
+
 @media (min-width: 480px) {
     .ProductList .list {
         grid-template-columns: repeat(2, minmax(0, 1fr));

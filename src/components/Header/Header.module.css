@@ -1,38 +1,34 @@
-
 .AllHeader {
     width: 100%;
-  }
-  
-.HeaderContainer {
-    width:auto;
-    height: 88px;
+}
+
+.HeaderContainerBackground {
     background: linear-gradient(to right, #001B48, #02457A);
+}
+
+.HeaderContainer {
+    max-width: 1280px;
+    height: 88px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     gap: 20px;
+    margin: 0 auto;
+    padding: 10px 0;
+    align-items: center;
 }
-.logoimg {
-    width: 200px;
-    height: 80px;
-}
-.searchBar {
-    max-width: 400px;
-    width: 100%; 
-    height: 45px;
-    max-height: 150px;
-    border-radius: 25px!;
-}
-.searchButton {
-    border-radius: 0 20px 20px 0; 
-    border: none;
-    padding: 8px 12px; 
-    cursor: pointer; 
+
+.logoLink {
     display: flex;
     align-items: center;
-    justify-content: center;
+    height: 100%;
 }
+
+.logoimg {
+    width: auto;
+    height: 100%;
+}
+
 .userSection {
     display: flex;
     align-items: center;
@@ -44,49 +40,57 @@
     width: 30px;
     height: 30px;
 }
+
 .avatarcontainer {
     width: 40px;
     height: 40px;
-    border-radius: 50%!important;
+    border-radius: 50% !important;
     border-width: 0.5px !important;
     border: 1px solid white;
-    background-color: #02457A!important;
+    background-color: #02457A !important;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-
 }
 
 .cartButton {
     display: flex;
     align-items: center;
-    gap: 5px !important; 
-    border-radius: 24px!important;
-    border-color: white!important;
-    border-width: 1px!important;
-    background-color: #02457A!important
+    gap: 5px !important;
+    border-radius: 24px !important;
+    border-color: white !important;
+    border-width: 1px !important;
+    background-color: #02457A !important
 }
+
+.functioncontainerbackground {
+    background-color: #191d1e;
+}
+
 .functioncontainer {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 10px;
     cursor: pointer;
-    background-color: #191d1e;
     margin: 0 auto;
-    width: 100%; 
+    width: 100%;
     padding: 0;
-    height: auto; 
-    position: relative; 
-
+    height: auto;
+    position: relative;
+    list-style-type: none;
+    padding-left: 0;
+    max-width: 1280px;
 }
+
 .menuicon {
     width: 24px;
     height: 24px;
     cursor: pointer;
     margin: 5px;
 }
+
 .functionitem {
     display: flex;
     align-items: center;
@@ -106,18 +110,20 @@
 
 .menuRow {
     display: flex !important;
-    flex-wrap: nowrap !important; 
-    justify-content: space-between !important; 
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
 }
+
 .menuitem {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 10px;
     cursor: pointer;
     color: black;
 }
+
 .functioncontainer ul {
     list-style-type: none;
     display: flex;
@@ -126,24 +132,24 @@
     margin: 0;
 
 }
+
 .functioncontainer li {
-    align-items: center; 
+    align-items: center;
     text-align: center;
     color: white;
     position: relative;
-    
+
 }
+
 .submenu {
     position: absolute;
     top: 100%;
-    width: 500%; 
-    min-width: 800px; 
-    max-width: 100vw; 
+    width: 1280px;
     background-color: #001B48;
     padding: 10px;
     list-style: none;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     z-index: 999;
 
 }
@@ -165,9 +171,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .cartButton {
-    position: relative; 
+}
+
+.cartButton {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 6px;

@@ -1,11 +1,16 @@
-.footercontainer {
-    background-image: url('../../assets/footerbg/footerbg2.png');
+.backgroundContainer {
+    width: 100%;
     background-repeat: no-repeat;
     background-color: #191C1F;
     background-position: center;
     background-size: cover;
-    padding: 20px;
+}
+
+.footercontainer {
+    padding: 20px 0 10px 0;
     width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 .footercontainer .titletext {
