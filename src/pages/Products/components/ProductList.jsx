@@ -1,4 +1,4 @@
-import { CardItem } from "../../../components/CardItem/CardItem";
+import CardItem from "../../../components/CardItem/CardItem";
 import styles from "./ProductList.module.css";
 
 const ProductList = ({ products }) => {

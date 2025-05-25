@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import useSuggestionStore from "../../store/useSuggestionStore";
+import { Link } from "react-router-dom";
 import "./SearchBar.css";
 
 export default function SearchBar() {
@@ -27,13 +28,11 @@ export default function SearchBar() {
                 onChange={(e) => setQuery(e.target.value)}
             />
             {suggestions.length > 0 && (
-                <ul className="suggestion-list">
+                <div className="suggestion-list">
                     {suggestions.map((item) => (
-                        <li key={item._id} style={{ listStyle: "none" }}>
-                            {item.name}
-                        </li>
+                        <Link key={item._id}>{item.name}</Link>
                     ))}
-                </ul>
+                </div>
             )}
         </div>
     );
