@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, use } from "react";
 import { useLocation } from "react-router-dom";
 import FilterBar from "./components/FilterBar";
 import ProductList from "./components/ProductList";
@@ -51,6 +51,10 @@ export default function ProductPage() {
         setPage(1); // Reset về trang 1 khi thay đổi sort
     };
 
+    useEffect(() => {
+        setProductsToShow(products);
+    }, [products]);
+
     const handleFilter = ({ brand, ram, storage }) => {
         const filteredProducts = products.filter((product) => {
             const productBrand = (product.brand || "").toLowerCase();
@@ -92,16 +96,18 @@ export default function ProductPage() {
             <FilterBar
                 onFilter={handleFilter}
                 products={products}
-                category="laptop"
+                category={params.get("category")}
                 onSort={handleSort}
             />
             <ProductList products={productsToShow} />
             <div>
-                <button
-                    onClick={() => setPage((prev) => (prev < totalPages ? prev + 1 : prev))}
-                    disabled={page >= totalPages}>
-                    Xem thêm
-                </button>
+                {totalPages > 1 && (
+                    <button
+                        onClick={() => setPage((prev) => (prev < totalPages ? prev + 1 : prev))}
+                        disabled={page >= totalPages}>
+                        Xem thêm
+                    </button>
+                )}
             </div>
         </div>
     );

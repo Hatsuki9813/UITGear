@@ -9,12 +9,12 @@ export default function SoftwareMenu() {
                 <h4>Microsoft Window</h4>
                 <ul>
                     <li>
-                        <Link to="/products/:category" className={styles.linkStyle}>
+                        <Link to="/" className={styles.linkStyle}>
                             Window 10
                         </Link>
                     </li>
                     <li>
-                        <Link to="/products/:category" className={styles.linkStyle}>
+                        <Link to="/" className={styles.linkStyle}>
                             Window 11
                         </Link>
                     </li>
@@ -25,7 +25,7 @@ export default function SoftwareMenu() {
                 <h4>Microsoft Office</h4>
                 <ul>
                     <li>
-                        <Link to="/products/:category" className={styles.linkStyle}>
+                        <Link to="/" className={styles.linkStyle}>
                             Office 365
                         </Link>
                     </li>

@@ -43,6 +43,9 @@ export default function Header() {
             fetchCart(user._id);
         }
     }, [user, fetchCart]);
+
+    const encodedGearText = encodeURI("Phụ kiện");
+
     return (
         <div className={styles.AllHeader}>
             <div className={styles.HeaderContainerBackground}>
@@ -54,21 +57,13 @@ export default function Header() {
                     <SearchBar />
                     {token ? (
                         <Link to="/profile" style={{ textDecoration: "none" }}>
-                            <div
-                                className={styles.avatarcontainer}
-                                onClick={() => {
-                                    console.log("clicked");
-                                }}>
+                            <div className={styles.avatarcontainer} onClick={() => {}}>
                                 <CiUser className={styles.avatar} />
                             </div>
                         </Link>
                     ) : (
                         <Link to="/login" style={{ textDecoration: "none" }}>
-                            <div
-                                className={styles.avatarcontainer}
-                                onClick={() => {
-                                    console.log("clicked");
-                                }}>
+                            <div className={styles.avatarcontainer} onClick={() => {}}>
                                 <CiUser className={styles.avatar} />
                             </div>
                         </Link>
@@ -97,7 +92,7 @@ export default function Header() {
                                         onMouseEnter={() => toggleChildmenu("LaptopChildMenu")}
                                         onMouseLeave={() => toggleChildmenu(null)}>
                                         <Link
-                                            to="/products/:category"
+                                            to="/products?category=Laptop"
                                             style={{ textDecoration: "none" }}>
                                             <div className={styles.menuitem}>
                                                 <img
@@ -115,7 +110,7 @@ export default function Header() {
                                         onMouseEnter={() => toggleChildmenu("gamingmenu")}
                                         onMouseLeave={() => toggleChildmenu(null)}>
                                         <Link
-                                            to="/products/:category"
+                                            to="/products?category=Laptop%20gaming"
                                             style={{ textDecoration: "none" }}>
                                             <div className={styles.menuitem}>
                                                 <img
@@ -134,7 +129,7 @@ export default function Header() {
                                         onMouseEnter={() => toggleChildmenu("accessorymenu")}
                                         onMouseLeave={() => toggleChildmenu(null)}>
                                         <Link
-                                            to="/products/:category"
+                                            to={`/products?category=${encodedGearText}`}
                                             style={{ textDecoration: "none" }}>
                                             <div className={styles.menuitem}>
                                                 <img
@@ -150,9 +145,7 @@ export default function Header() {
                                     <li
                                         onMouseEnter={() => toggleChildmenu("servicemenu")}
                                         onMouseLeave={() => toggleChildmenu(null)}>
-                                        <Link
-                                            to="/products/:category"
-                                            style={{ textDecoration: "none" }}>
+                                        <Link to="/" style={{ textDecoration: "none" }}>
                                             <div className={styles.menuitem}>
                                                 <img
                                                     src={service}

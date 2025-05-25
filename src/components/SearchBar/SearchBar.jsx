@@ -30,7 +30,9 @@ export default function SearchBar() {
             {suggestions.length > 0 && (
                 <div className="suggestion-list">
                     {suggestions.map((item) => (
-                        <Link key={item._id}>{item.name}</Link>
+                        <Link to={`/detail/${item._id}`} key={item._id}>
+                            {item.name}
+                        </Link>
                     ))}
                 </div>
             )}

@@ -8,6 +8,7 @@
     cursor: pointer;
     box-sizing: border-box;
     text-decoration: none;
+    height: 362px;
 }
 
 .CardItem .imgContainer {

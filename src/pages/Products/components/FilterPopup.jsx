@@ -46,6 +46,7 @@ export default ({ filters, isOpen, onClose, selectedFilters, setSelectedFilters 
         brand: "Hãng",
         ram: "RAM",
         storage: "Bộ nhớ",
+        connection: "Kiểu kết nối",
     };
 
     return (

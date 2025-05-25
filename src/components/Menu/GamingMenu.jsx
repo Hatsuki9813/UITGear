@@ -9,14 +9,14 @@ export default function GamingMenu() {
                 <ul>
                     <li>
                         <Link
-                            to="/products/:category?product_line=Asus%20TUF"
+                            to="/products?category=Laptop%20gaming&product_line=Asus%20TUF"
                             className={styles.linkStyle}>
                             Asus TUF
                         </Link>
                     </li>
                     <li>
                         <Link
-                            to="/products/:category?product_line=Asus%20ROG"
+                            to="/products?category=Laptop%20gaming&product_line=Asus%20ROG"
                             className={styles.linkStyle}>
                             Asus ROG
                         </Link>
@@ -28,36 +28,16 @@ export default function GamingMenu() {
                 <ul>
                     <li>
                         <Link
-                            to="/products/:category?product_line=Lenovo%20LOQ"
+                            to="/products?category=Laptop%20gaming&product_line=Lenovo%20LOQ"
                             className={styles.linkStyle}>
                             Lenovo LOQ
                         </Link>
                     </li>
                     <li>
                         <Link
-                            to="/products/:category?product_line=Lenovo%20Legion"
+                            to="/products?category=Laptop%20gaming&product_line=Lenovo%20Legion"
                             className={styles.linkStyle}>
                             Lenovo Legion
-                        </Link>
-                    </li>
-                </ul>
-            </div>
-            <div className={styles.megamenuColumn}>
-                <h4>Giá</h4>
-                <ul>
-                    <li>
-                        <Link to="/products/:category" className={styles.linkStyle}>
-                            Dưới 15 triệu
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/products/:category" className={styles.linkStyle}>
-                            15-30 triệu
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/products/:category" className={styles.linkStyle}>
-                            Trên 30 triệu
                         </Link>
                     </li>
                 </ul>
@@ -67,21 +47,21 @@ export default function GamingMenu() {
                 <ul>
                     <li>
                         <Link
-                            to="/products/:category?product_line=MSI%20GF"
+                            to="/products?category=Laptop%20gaming&product_line=MSI%20GF"
                             className={styles.linkStyle}>
                             MSI GF
                         </Link>
                     </li>
                     <li>
                         <Link
-                            to="/products/:category?product_line=MSI%20Cyborg"
+                            to="/products?category=Laptop%20gaming&product_line=MSI%20Cyborg"
                             className={styles.linkStyle}>
                             MSI Cyborg
                         </Link>
                     </li>
                     <li>
                         <Link
-                            to="/products/:category?product_line=MSI%20Steath"
+                            to="/products?category=Laptop%20gaming&product_line=MSI%20Steath"
                             className={styles.linkStyle}>
                             MSI Steath
                         </Link>
@@ -93,21 +73,21 @@ export default function GamingMenu() {
                 <ul>
                     <li>
                         <Link
-                            to="/products/:category?product_line=Acer%20Nitro%20V"
+                            to="/products?category=Laptop%20gaming&product_line=Acer%20Nitro%20V"
                             className={styles.linkStyle}>
                             Acer Nitro V
                         </Link>
                     </li>
                     <li>
                         <Link
-                            to="/products/:category?product_line=Acer%20Nitro%20Tiger"
+                            to="/products?category=Laptop%20gaming&product_line=Acer%20Nitro%20Tiger"
                             className={styles.linkStyle}>
                             Acer Nitro Tiger
                         </Link>
                     </li>
                     <li>
                         <Link
-                            to="/products/:category?product_line=Acer%20Helios"
+                            to="/products?category=Laptop%20gaming&product_line=Acer%20Helios"
                             className={styles.linkStyle}>
                             Acer Helios
                         </Link>

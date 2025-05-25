@@ -64,7 +64,7 @@
 .FilterPopup .filterOptions {
     display: flex;
     flex-wrap: wrap;
-    width: 20rem;
+    width: 25rem;
     gap: 0.5rem;
     padding-top: 0.5rem;
 }
@@ -74,7 +74,7 @@
     border: none;
     outline: none;
     border-radius: 0.25rem;
-    width: 5rem;
+    width: 5.5rem;
     height: 2.5rem;
     border: 1px solid #CFCFCF;
     background-color: rgb(236, 236, 236);
