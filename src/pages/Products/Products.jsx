@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from "react";
-import { useLocation } from "react-router-dom"; // Lấy các tham số từ URL
-import FilterBar from "./components/FilterBar";
+import { useLocation } from "react-router-dom";
+import { FilterBar } from "./components/FilterBar";
 import ProductList from "./components/ProductList";
 import { useProductStore } from "../../store/useProductStore";
 
 export default function ProductPage() {
+<<<<<<< HEAD
     const location = useLocation(); // Lấy thông tin từ URL
     const params = new URLSearchParams(location.search); // Lấy brand, category, product_line từ query params
     const { products, fetchProducts, totalPages } = useProductStore();
@@ -12,6 +13,15 @@ export default function ProductPage() {
     const [page, setPage] = useState(1);
     const [sort, setSort] = useState("price");
     const [order, setOrder] = useState("desc");
+=======
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const { products, fetchProducts, totalPages } = useProductStore();
+
+  const [page, setPage] = useState(1);
+  const [sort, setSort] = useState("price");
+  const [order, setOrder] = useState("desc");
+>>>>>>> 1b5c195c9a0365b401f3b074c9b1f7977855c79e
 
     const prevParams = useRef({
         brand: params.get("brand"),
@@ -19,6 +29,7 @@ export default function ProductPage() {
         product_line: params.get("product_line"),
     });
 
+<<<<<<< HEAD
     // Fetch products khi các tham số thay đổi
     useEffect(() => {
         const brand = params.get("brand") || "";
@@ -48,6 +59,39 @@ export default function ProductPage() {
     useEffect(() => {
         setProductsToShow(products);
     }, [products]);
+=======
+  useEffect(() => {
+    const brand = params.get("brand") || "";
+    const category = params.get("category") || "";
+    const product_line = params.get("product_line") || "";
+
+    if (
+      brand !== prevParams.current.brand ||
+      category !== prevParams.current.category ||
+      product_line !== prevParams.current.product_line ||
+      sort !== prevParams.current.sort ||
+      order !== prevParams.current.order
+    ) {
+      prevParams.current = { brand, category, product_line, sort, order };
+
+      fetchProducts({
+        brand,
+        category,
+        product_line,
+        page,
+        limit: 20,
+        sort,
+        order,
+      });
+    }
+  }, [location.search, page, sort, order]);
+
+  const handleSort = (type, sortOrder) => {
+    setSort(type);
+    setOrder(sortOrder);
+    setPage(1); // Reset về trang 1 khi thay đổi sort
+  };
+>>>>>>> 1b5c195c9a0365b401f3b074c9b1f7977855c79e
 
     const handleSort = (type) => {
         if (type === "name") {

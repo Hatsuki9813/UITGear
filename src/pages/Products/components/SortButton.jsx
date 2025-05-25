@@ -26,6 +26,7 @@ export default function SortButton({ onSort }) {
         setButtonText(type === "name" ? "Tên từ A đến Z" : "Giá giảm dần");
         setIsOpen(false);
     };
+<<<<<<< HEAD
 
     return (
         <div className={styles.SortButton} ref={dropdownRef}>
@@ -40,6 +41,31 @@ export default function SortButton({ onSort }) {
                     )}
                 </div>
             </button>
+=======
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
+  const handleSort = (type, order) => {
+    onSort?.(type, order);
+
+    let label = "";
+    if (type === "name") {
+      label = order === "asc" ? "Tên A → Z" : "Tên Z → A";
+    } else if (type === "price") {
+      label = order === "asc" ? "Giá tăng dần" : "Giá giảm dần";
+    }
+
+    setButtonText(label);
+    setIsOpen(false);
+  };
+>>>>>>> 1b5c195c9a0365b401f3b074c9b1f7977855c79e
 
             {isOpen && (
                 <div className={styles.dropdown2}>
@@ -52,5 +78,40 @@ export default function SortButton({ onSort }) {
                 </div>
             )}
         </div>
+<<<<<<< HEAD
     );
+=======
+      </button>
+
+      {isOpen && (
+        <div className={styles.dropdown2}>
+          <button
+            className={styles.sortOption}
+            onClick={() => handleSort("name", "asc")}
+          >
+            Tên A → Z
+          </button>
+          <button
+            className={styles.sortOption}
+            onClick={() => handleSort("name", "desc")}
+          >
+            Tên Z → A
+          </button>
+          <button
+            className={styles.sortOption}
+            onClick={() => handleSort("price", "asc")}
+          >
+            Giá tăng dần
+          </button>
+          <button
+            className={styles.sortOption}
+            onClick={() => handleSort("price", "desc")}
+          >
+            Giá giảm dần
+          </button>
+        </div>
+      )}
+    </div>
+  );
+>>>>>>> 1b5c195c9a0365b401f3b074c9b1f7977855c79e
 }

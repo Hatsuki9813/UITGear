@@ -1,9 +1,15 @@
 import { useEffect, useState, useRef } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import CardItem from "../../../components/CardItem/CardItem";
+import { CardItem } from "../../../components/CardItem/CardItem";
 import { motion } from "framer-motion";
 import styles from "./ProductCarousel.module.css";
-export default ({ data, background, title, titleColor, cardItemBorder }) => {
+export const ProductCarousel = ({
+  data,
+  background,
+  title,
+  titleColor,
+  cardItemBorder,
+}) => {
   const [index, setIndex] = useState(data.length);
   const [isTransitioning, setIsTransitioning] = useState(true); // Điều khiển animation
   const itemWidth = 220; // Chiều rộng mỗi sản phẩm
@@ -67,7 +73,7 @@ export default ({ data, background, title, titleColor, cardItemBorder }) => {
                 isTransitioning
                   ? { type: "spring", stiffness: 100, damping: 15 }
                   : { duration: 0 }
-              } // Tắt animation khi reset vị trí
+              }
             >
               {extendedData.map((item, idx) => (
                 <div key={idx}>

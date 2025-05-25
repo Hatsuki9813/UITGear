@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./CartItem.module.css";
 import Form from "react-bootstrap/Form";
 import { TiDeleteOutline } from "react-icons/ti";

@@ -4,9 +4,14 @@ import FilterPopup from "./FilterPopup";
 import SortButton from "./SortButton";
 import FilterList from "./FilterList";
 
+<<<<<<< HEAD
 export default ({ products, category, onSort, onFilter }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedFilters, setSelectedFilters] = useState({});
+=======
+export const FilterBar = ({ onSort }) => {
+  const [isOpen, setIsOpen] = useState(false);
+>>>>>>> 1b5c195c9a0365b401f3b074c9b1f7977855c79e
 
     const categoryFilters = {
         laptop: ["brand", "ram", "storage"],

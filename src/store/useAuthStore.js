@@ -100,6 +100,7 @@ export const useAuthStore = create((set, get) => ({
     const state = get();
     if (!state.validateRegister()) return;
     try {
+      toast.success("Vui lòng chờ trong giây lát");
       const res = await axiosInstance.post(
         "/auth/register",
         state.registerData
@@ -107,6 +108,7 @@ export const useAuthStore = create((set, get) => ({
 
       if (res.status === 201) {
         toast.success(res.data.message); // Thành công mới hiện success
+        window.location.reload();
       } else {
         toast.error(res.data.message || "Đăng ký thất bại!");
       }

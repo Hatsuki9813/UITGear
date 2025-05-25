@@ -4,7 +4,7 @@ import styles from "./Home.module.css";
 
 // import SideNavigation from "./components/SideNavigation";
 import AdsCarousel from "./components/AdsCarousel";
-import ProductCarousel from "./components/ProductCarousel";
+import { ProductCarousel } from "./components/ProductCarousel";
 
 export default function Home() {
   const imageList = ["/carousel/carousel-6.png", "/carousel/carousel-7.png"];
