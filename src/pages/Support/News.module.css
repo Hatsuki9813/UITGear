@@ -1,0 +1,5 @@
+.newImage {
+  aspect-ratio: 1 / 1; /* Tỷ lệ khung hình 1:1 */
+  object-fit: cover; /* Cắt ảnh cho vừa khung */
+  width: 100%;
+}

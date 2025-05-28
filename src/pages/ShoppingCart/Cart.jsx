@@ -80,16 +80,22 @@ export default function Cart() {
 
           {cartItems && cartItems.length > 0 ? (
             cartItems.map((item) => (
+              
               <div key={item._id} className={styles.CartItemWrapper}>
+                <div className={styles.CartItemContent}>
                 <CartItem
                   product={item.product_detail}
                   quantity={item.quantity}
                 />
-                <TiDeleteOutline
+                </div>
+                <div className={styles.DeleteWrapper}>
+                  <TiDeleteOutline
                   onClick={() => handleDeleteItem(item.product_id)}
                   className={styles.deleteicon}
                 />
+                </div>
               </div>
+              
             ))
           ) : (
             <p className={styles.EmptyCart}>Giỏ hàng của bạn đang trống!</p>

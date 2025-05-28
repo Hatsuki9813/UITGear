@@ -31,16 +31,19 @@ export default function CartItem({ product, quantity }) {
 
       <Row className={styles.CouponContainer}>
         <div className={styles.CouponHeader}>Chọn gói giảm giá</div>
+        <div className={styles.CouponDescription}> 
         <Form.Check
           type="radio"
           id={`discount-10-${product.product_id}`}
           label={`Giảm ${product.discount}% trực tiếp vào giá máy`}
+          
         />
         <Form.Check
           type="radio"
           id={`bonus-ram-${product.product_id}`}
           label={`Tặng thêm RAM 16GB`}
         />
+        </div>
       </Row>
     </Container>
   );
