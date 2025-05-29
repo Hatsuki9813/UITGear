@@ -56,11 +56,29 @@ export default function CheckoutInfo() {
     }, 0);
 
     const handleSubmit = async () => {
+        const total = cartItems.reduce((total, item) => {
+            const price = item.product_detail?.price || 0;
+            return total + price * item.quantity;
+        }, 0);
+
+        const discount = cartItems.reduce((discount, item) => {
+            const product = item.product_detail;
+            const isDiscountApplied = selectedDiscounts[item.product_id] === "discount";
+
+            if (!isDiscountApplied) return discount;
+
+            const discountAmount = ((product?.price || 0) * (product?.discount || 0)) / 100;
+            return discount + discountAmount * item.quantity;
+        }, 0);
+
+        const pr = total - discount;
+
         const shipping_address = `${formData.address}, ${formData.name}, ${formData.phone},${FormData.note}`;
         const data = {
             user_id: user?._id, // Thay bằng user id thật nếu có
             payment_name: formData.paymentMethod,
             shipping_address,
+            pr
         };
 
         try {
