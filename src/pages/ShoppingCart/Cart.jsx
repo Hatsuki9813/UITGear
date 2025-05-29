@@ -20,13 +20,20 @@ export default function Cart() {
 
   const [isModalOpen, setIsModalOpen] = useState(false); // Để điều khiển mở đóng modal
   const [itemToDelete, setItemToDelete] = useState(null); // Sản phẩm cần xóa
+  const [selectedDiscounts, setSelectedDiscounts] = useState({});
+  const setSelectedDiscountsStore = useCartStore((state) => state.setSelectedDiscounts);
 
   useEffect(() => {
     if (user?._id) {
       fetchCart(user._id);
     }
   }, [user?._id, fetchCart]);
-
+  const handleDiscountSelect = (productId, selectedValue) => {
+    setSelectedDiscounts((prev) => ({
+      ...prev,
+      [productId]: selectedValue,
+    }));
+  };
   // Tính tổng giá
   const totalPrice = cartItems.reduce((total, item) => {
     const price = item.product_detail?.price || 0;
@@ -36,6 +43,9 @@ export default function Cart() {
   // Tính tổng khuyến mãi
   const totalDiscount = cartItems.reduce((discount, item) => {
     const product = item.product_detail;
+    const isDiscountApplied = selectedDiscounts[item.product_id] === "discount";
+    if (!isDiscountApplied) return discount;
+
     const discountAmount =
       ((product?.price || 0) * (product?.discount || 0)) / 100;
     return discount + discountAmount * item.quantity;
@@ -61,7 +71,11 @@ export default function Cart() {
     setIsModalOpen(false); // Đóng modal khi người dùng hủy
   };
 
-  const handleCreateOrder = async () => {};
+  const handleCreateOrder = () => {
+    setSelectedDiscountsStore(selectedDiscounts); // lưu vào store
+    navigate("/checkout");
+
+  };
   return (
     <Container fluid className={styles.CartContainer}>
       <Row>
@@ -80,22 +94,24 @@ export default function Cart() {
 
           {cartItems && cartItems.length > 0 ? (
             cartItems.map((item) => (
-              
+
               <div key={item._id} className={styles.CartItemWrapper}>
                 <div className={styles.CartItemContent}>
-                <CartItem
-                  product={item.product_detail}
-                  quantity={item.quantity}
-                />
+                  <CartItem
+                    product={item.product_detail}
+                    quantity={item.quantity}
+                    onDiscountSelect={handleDiscountSelect}
+
+                  />
                 </div>
                 <div className={styles.DeleteWrapper}>
                   <TiDeleteOutline
-                  onClick={() => handleDeleteItem(item.product_id)}
-                  className={styles.deleteicon}
-                />
+                    onClick={() => handleDeleteItem(item.product_id)}
+                    className={styles.deleteicon}
+                  />
                 </div>
               </div>
-              
+
             ))
           ) : (
             <p className={styles.EmptyCart}>Giỏ hàng của bạn đang trống!</p>
@@ -129,7 +145,7 @@ export default function Cart() {
           </div>
 
           <Link to="/checkout" style={{ textDecoration: "none" }}>
-            <Button className={styles.SubmitButton}>
+            <Button className={styles.SubmitButton} onClick={handleCreateOrder}>
               Xác nhận thanh toán
               <FaArrowRight className={styles.loginicon} />
             </Button>
