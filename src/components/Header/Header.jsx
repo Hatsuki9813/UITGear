@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
+import { UserIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { useState, useEffect, useRef } from "react"; // Import useRef
 import styles from "./Header.module.css";
 import logo from "../../assets/icons/croppedlogonobgr.png";
-import { FaSearch, FaShoppingCart } from "react-icons/fa";
-import Button from "react-bootstrap/Button";
-import { CiUser } from "react-icons/ci";
-import menunavigation from "../../assets/icons/menunavigation.svg";
-import menucash from "../../assets/icons/menucash.svg";
-import menusaving from "../../assets/icons/menusaving.svg";
-import menunews from "../../assets/icons/menunews.svg";
-import menuwarranty from "../../assets/icons/menuwarranty.svg";
-import laptop from "../../assets/icons/laptop.png";
-import console from "../../assets/icons/console.png";
-import accessory from "../../assets/icons/accessory.png";
-import service from "../../assets/icons/services.png";
-import news from "../../assets/icons/news.png";
-import windowicon from "../../assets/icons/windows.png";
-import saleicon from "../../assets/icons/sales.png";
+import {
+    menunavigation,
+    menucash,
+    menusaving,
+    menunews,
+    menuwarranty,
+    laptop,
+    consoleIcon,
+    accessory,
+    service,
+    news,
+    windowicon,
+    saleicon,
+} from "../../assets/subHeaderIcons";
 import LaptopMenu from "../Menu/LaptopMenu";
 import GamingMenu from "../Menu/GamingMenu";
 import AccessoryMenu from "../Menu/AccessoryMenu";
@@ -32,19 +32,72 @@ export default function Header() {
     const { cartCount, fetchCart, isLoading, error } = useCartStore(); //Check auth
     const token = localStorage.getItem("token");
     const user = useAuthStore((state) => state.user);
-    const toggleSubmenu = (menu) => {
-        setOpenSubmenu(openSubmenu === menu ? null : menu);
-    };
+    const encodedGearText = encodeURI("Phụ kiện");
+
+    // Refs for the main menu item and the submenu container
+    const danhMucSanPhamRef = useRef(null); // Ref for "Danh mục sản phẩm" li
+    const subMenuRef = useRef(null); // Ref for the submenu div
+    const closeSubmenuTimeout = useRef(null); // To store the timeout ID
+
     const toggleChildmenu = (Childmenu) => {
         setopenChildMenu(openChildMenu === Childmenu ? null : Childmenu);
     };
+
     useEffect(() => {
         if (user) {
             fetchCart(user._id);
         }
     }, [user, fetchCart]);
 
-    const encodedGearText = encodeURI("Phụ kiện");
+    const Greeting = () => {
+        const hour = new Date().getHours();
+        if (hour >= 5 && hour < 12) {
+            return "Chào buổi sáng,";
+        } else if (hour >= 12 && hour < 18) {
+            return "Chào buổi chiều,";
+        } else {
+            return "Chào buổi tối,";
+        }
+    };
+
+    // --- New Event Handlers for "Danh mục sản phẩm" and its submenu ---
+
+    const handleMouseEnterDanhMuc = () => {
+        // Clear any pending timeout when entering the main menu item
+        clearTimeout(closeSubmenuTimeout.current);
+        setOpenSubmenu("SubMenu");
+    };
+
+    const handleMouseLeaveDanhMuc = (event) => {
+        // Set a timeout to close the submenu.
+        // `event.relatedTarget` is the element the mouse cursor moved to.
+        // We check if the mouse moved into the submenu itself.
+        closeSubmenuTimeout.current = setTimeout(() => {
+            if (
+                subMenuRef.current && // Ensure the submenu element exists
+                !subMenuRef.current.contains(event.relatedTarget) // If the mouse is NOT moving into the submenu
+            ) {
+                setOpenSubmenu(null);
+                setopenChildMenu(null);
+            }
+        }, 1); // Small delay to allow transition to submenu
+    };
+
+    const handleMouseEnterSubmenu = () => {
+        // Clear the timeout when entering the submenu, preventing it from closing
+        clearTimeout(closeSubmenuTimeout.current);
+    };
+
+    const handleMouseLeaveSubmenu = () => {
+        // When leaving the submenu, reset the timeout to close it after a delay
+        // This ensures it closes if the mouse truly leaves the entire area.
+        closeSubmenuTimeout.current = setTimeout(() => {
+            setOpenSubmenu(null);
+            setopenChildMenu(null);
+        }, 1);
+    };
+
+    // --- End of New Event Handlers ---
 
     return (
         <div className={styles.AllHeader}>
@@ -56,169 +109,181 @@ export default function Header() {
 
                     <SearchBar />
                     {token ? (
-                        <Link to="/profile" style={{ textDecoration: "none" }}>
-                            <div className={styles.avatarcontainer} onClick={() => {}}>
-                                <CiUser className={styles.avatar} />
-                            </div>
+                        <Link className={styles.userButton} to="/profile">
+                            {user && user.profilePicture ? (
+                                <img
+                                    src={user.profilePicture}
+                                    className={styles.avatar}
+                                    alt="Avatar"
+                                />
+                            ) : (
+                                <UserIcon className={styles.avatarIcon} />
+                            )}
+                            <span style={{ color: "white" }}>
+                                <div>{Greeting()}</div>
+                                <div style={{ fontWeight: 700 }}>{user && user.fullname}</div>
+                            </span>
                         </Link>
                     ) : (
-                        <Link to="/login" style={{ textDecoration: "none" }}>
-                            <div className={styles.avatarcontainer} onClick={() => {}}>
-                                <CiUser className={styles.avatar} />
-                            </div>
+                        <Link className={styles.userButton} to="/login">
+                            <UserIcon className={styles.avatarIcon} />
+                            <span style={{ color: "white", fontWeight: 500 }}>
+                                <div>Đăng nhập</div>
+                                <div>Đăng kí</div>
+                            </span>
                         </Link>
                     )}
-                    <Link to="/cart" style={{ textDecoration: "none" }}>
-                        <Button className={styles.cartButton}>
-                            <FaShoppingCart />
-                            {cartCount >= 0 && <span className={styles.badge}>{cartCount}</span>}
-                            <span>Giỏ hàng</span>
-                        </Button>
+                    <Link className={styles.cartButton} to="/cart">
+                        <ShoppingCartIcon className={styles.cartIcon} />
+                        {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
+                        <span style={{ color: "white", fontWeight: 500 }}>Giỏ hàng</span>
                     </Link>
                 </div>
             </div>
 
             <div className={styles.functioncontainerbackground}>
-                <ul className={styles.functioncontainer}>
-                    <li
-                        onMouseEnter={() => toggleSubmenu("SubMenu")}
-                        onMouseLeave={() => toggleSubmenu(null)}>
-                        <img src={menunavigation} className={styles.menuicon} alt="Menu Icon" />
-                        <span>Danh mục sản phẩm</span>
-                        {openSubmenu === "SubMenu" && (
-                            <div className={styles.submenuContainer}>
-                                <ul className={styles.submenu}>
-                                    <li
-                                        onMouseEnter={() => toggleChildmenu("LaptopChildMenu")}
-                                        onMouseLeave={() => toggleChildmenu(null)}>
-                                        <Link
-                                            to="/products?category=Laptop"
-                                            style={{ textDecoration: "none" }}>
-                                            <div className={styles.menuitem}>
-                                                <img
-                                                    src={laptop}
-                                                    className={styles.menuicon}
-                                                    alt="Menu Icon"
-                                                />
-                                                <span style={{ color: "white" }}>Laptop</span>
-                                            </div>
-                                        </Link>
-                                        {openChildMenu === "LaptopChildMenu" && <LaptopMenu />}
-                                    </li>
+                <div className={styles.functioncontainer}>
+                    <div
+                        ref={danhMucSanPhamRef} // Attach ref here
+                        onMouseEnter={handleMouseEnterDanhMuc} // Use the new handler
+                        onMouseLeave={handleMouseLeaveDanhMuc} // Use the new handler
+                        className={styles.dmsp}>
+                        <div
+                            style={{
+                                alignItems: "center",
+                                justifyContent: "center",
+                                flexDirection: "row",
+                                color: "white",
+                            }}
+                            className={styles.menuitem}>
+                            <img src={menunavigation} className={styles.menuicon} alt="Menu Icon" />
+                            <span>Danh mục sản phẩm</span>
+                        </div>
+                    </div>
+                    {/* Other menu items remain unchanged */}
+                    <Link to="/question" style={{ textDecoration: "none" }}>
+                        <img src={menucash} className={styles.menuicon} alt="Menu Icon" />
+                        <span>Hướng dẫn thanh toán</span>
+                    </Link>
+                    <Link to="/question" style={{ textDecoration: "none" }}>
+                        <img src={menuwarranty} className={styles.menuicon} alt="Menu Icon" />
+                        <span>Chính sách bảo hành</span>
+                    </Link>
+                    <Link to="/question" style={{ textDecoration: "none" }}>
+                        <img src={menusaving} className={styles.menuicon} alt="Menu Icon" />
+                        <span>Hướng dẫn trả góp</span>
+                    </Link>
+                    <Link to="/question" style={{ textDecoration: "none" }}>
+                        <img src={menunews} className={styles.menuicon} alt="Menu Icon" />
+                        <span>Tin tức công nghệ</span>
+                    </Link>
+                </div>
 
-                                    <li
-                                        onMouseEnter={() => toggleChildmenu("gamingmenu")}
-                                        onMouseLeave={() => toggleChildmenu(null)}>
-                                        <Link
-                                            to="/products?category=Laptop%20gaming"
-                                            style={{ textDecoration: "none" }}>
-                                            <div className={styles.menuitem}>
-                                                <img
-                                                    src={console}
-                                                    className={styles.menuicon}
-                                                    alt="Menu Icon"
-                                                />
-                                                <span style={{ color: "white" }}>
-                                                    Laptop Gaming
-                                                </span>
-                                            </div>
-                                        </Link>
-                                        {openChildMenu === "gamingmenu" && <GamingMenu />}
-                                    </li>
-                                    <li
-                                        onMouseEnter={() => toggleChildmenu("accessorymenu")}
-                                        onMouseLeave={() => toggleChildmenu(null)}>
-                                        <Link
-                                            to={`/products?category=${encodedGearText}`}
-                                            style={{ textDecoration: "none" }}>
-                                            <div className={styles.menuitem}>
-                                                <img
-                                                    src={accessory}
-                                                    className={styles.menuicon}
-                                                    alt="Menu Icon"
-                                                />
-                                                <span style={{ color: "white" }}>Phụ kiện</span>
-                                            </div>
-                                        </Link>
-                                        {openChildMenu === "accessorymenu" && <AccessoryMenu />}
-                                    </li>
-                                    <li
-                                        onMouseEnter={() => toggleChildmenu("servicemenu")}
-                                        onMouseLeave={() => toggleChildmenu(null)}>
-                                        <Link to="/" style={{ textDecoration: "none" }}>
-                                            <div className={styles.menuitem}>
-                                                <img
-                                                    src={service}
-                                                    className={styles.menuicon}
-                                                    alt="Menu Icon"
-                                                />
-                                                <span style={{ color: "white" }}>Dịch vụ</span>
-                                            </div>
-                                        </Link>
-                                        {openChildMenu === "servicemenu" && <ServiceMenu />}
-                                    </li>
-                                    <li
-                                        onMouseEnter={() => toggleChildmenu("softmenu")}
-                                        onMouseLeave={() => toggleChildmenu(null)}>
-                                        <div className={styles.menuitem}>
-                                            <img
-                                                src={windowicon}
-                                                className={styles.menuicon}
-                                                alt="Menu Icon"
-                                            />
-                                            <span style={{ color: "white" }}>Phần mềm</span>
-                                        </div>
-                                        {openChildMenu === "softmenu" && <SoftwareMenu />}
-                                    </li>
-                                    <li>
-                                        <div className={styles.menuitem}>
-                                            <img
-                                                src={news}
-                                                className={styles.menuicon}
-                                                alt="Menu Icon"
-                                            />
-                                            <span style={{ color: "white" }}>Tin tức</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className={styles.menuitem}>
-                                            <img
-                                                src={saleicon}
-                                                className={styles.menuicon}
-                                                alt="Menu Icon"
-                                            />
-                                            <span style={{ color: "white" }}>Khuyến mãi</span>
-                                        </div>
-                                    </li>
-                                </ul>
+                {openSubmenu === "SubMenu" && (
+                    <div
+                        ref={subMenuRef} // Attach ref here
+                        onMouseEnter={handleMouseEnterSubmenu} // Use the new handler
+                        onMouseLeave={handleMouseLeaveSubmenu} // Use the new handler
+                        className={styles.submenuContainer}>
+                        <div className={styles.submenu}>
+                            <div
+                                onMouseEnter={() => toggleChildmenu("LaptopChildMenu")}
+                                onMouseLeave={() => toggleChildmenu(null)}>
+                                <Link
+                                    to="/products?category=Laptop"
+                                    style={{ textDecoration: "none" }}>
+                                    <div className={styles.menuitem}>
+                                        <img
+                                            src={laptop}
+                                            className={styles.menuicon}
+                                            alt="Menu Icon"
+                                        />
+                                        <span style={{ color: "white" }}>Laptop</span>
+                                    </div>
+                                </Link>
+                                {openChildMenu === "LaptopChildMenu" && <LaptopMenu />}
                             </div>
-                        )}
-                    </li>
-                    <Link to="/question" style={{ textDecoration: "none" }}>
-                        <li>
-                            <img src={menucash} className={styles.menuicon} alt="Menu Icon" />
-                            <span>Hướng dẫn thanh toán</span>
-                        </li>
-                    </Link>
-                    <Link to="/question" style={{ textDecoration: "none" }}>
-                        <li>
-                            <img src={menuwarranty} className={styles.menuicon} alt="Menu Icon" />
-                            <span>Chính sách bảo hành</span>
-                        </li>
-                    </Link>
-                    <Link to="/question" style={{ textDecoration: "none" }}>
-                        <li>
-                            <img src={menusaving} className={styles.menuicon} alt="Menu Icon" />
-                            <span>Hướng dẫn trả góp</span>
-                        </li>
-                    </Link>
-                    <Link to="/question" style={{ textDecoration: "none" }}>
-                        <li>
-                            <img src={menunews} className={styles.menuicon} alt="Menu Icon" />
-                            <span>Tin tức công nghệ</span>
-                        </li>
-                    </Link>
-                </ul>
+                            <div
+                                onMouseEnter={() => toggleChildmenu("gamingmenu")}
+                                onMouseLeave={() => toggleChildmenu(null)}>
+                                <Link
+                                    to="/products?category=Laptop%20gaming"
+                                    style={{ textDecoration: "none" }}>
+                                    <div className={styles.menuitem}>
+                                        <img
+                                            src={consoleIcon}
+                                            className={styles.menuicon}
+                                            alt="Menu Icon"
+                                        />
+                                        <span style={{ color: "white" }}>Laptop Gaming</span>
+                                    </div>
+                                </Link>
+                                {openChildMenu === "gamingmenu" && <GamingMenu />}
+                            </div>
+                            <div
+                                onMouseEnter={() => toggleChildmenu("accessorymenu")}
+                                onMouseLeave={() => toggleChildmenu(null)}>
+                                <Link
+                                    to={`/products?category=${encodedGearText}`}
+                                    style={{ textDecoration: "none" }}>
+                                    <div className={styles.menuitem}>
+                                        <img
+                                            src={accessory}
+                                            className={styles.menuicon}
+                                            alt="Menu Icon"
+                                        />
+                                        <span style={{ color: "white" }}>Phụ kiện</span>
+                                    </div>
+                                </Link>
+                                {openChildMenu === "accessorymenu" && <AccessoryMenu />}
+                            </div>
+                            <div
+                                onMouseEnter={() => toggleChildmenu("servicemenu")}
+                                onMouseLeave={() => toggleChildmenu(null)}>
+                                <Link to="/" style={{ textDecoration: "none" }}>
+                                    <div className={styles.menuitem}>
+                                        <img
+                                            src={service}
+                                            className={styles.menuicon}
+                                            alt="Menu Icon"
+                                        />
+                                        <span style={{ color: "white" }}>Dịch vụ</span>
+                                    </div>
+                                </Link>
+                                {openChildMenu === "servicemenu" && <ServiceMenu />}
+                            </div>
+                            <div
+                                onMouseEnter={() => toggleChildmenu("softmenu")}
+                                onMouseLeave={() => toggleChildmenu(null)}>
+                                <div className={styles.menuitem}>
+                                    <img
+                                        src={windowicon}
+                                        className={styles.menuicon}
+                                        alt="Menu Icon"
+                                    />
+                                    <span style={{ color: "white" }}>Phần mềm</span>
+                                </div>
+                                {openChildMenu === "softmenu" && <SoftwareMenu />}
+                            </div>
+                            <div>
+                                <div className={styles.menuitem}>
+                                    <img src={news} className={styles.menuicon} alt="Menu Icon" />
+                                    <span style={{ color: "white" }}>Tin tức</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div className={styles.menuitem}>
+                                    <img
+                                        src={saleicon}
+                                        className={styles.menuicon}
+                                        alt="Menu Icon"
+                                    />
+                                    <span style={{ color: "white" }}>Khuyến mãi</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

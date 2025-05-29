@@ -1,12 +1,12 @@
 .FormContainer {
-    display: flex!important;
-    flex-direction: column!important;
-    align-items: stretch!important;
-    justify-content: center!important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: center !important;
     width: 30%;
     height: auto;
     background-color: #fff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35) ;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     margin: 20px auto;
     padding: 20px;
     max-width: 100%;
@@ -14,29 +14,34 @@
 
 .FormContainer .FormGroup {
     width: 100%;
-    margin-bottom: 20px;
+    margin: 20px 0 20px 0;
 }
+
 .FormContainer .SubmitButton {
-    border-radius: 0px !important;
+    border-radius: 4px !important;
     width: 100%;
     padding: 10px;
-    background-color: #011C49;
+    background-color: #02457a;
     color: #fff;
     border: none;
     cursor: pointer;
 }
+
 .FormContainer .SubmitButton:active,
 .FormContainer .SubmitButton:focus,
 .FormContainer .SubmitButton:hover {
-    background-color: #011C49 !important;
+    background-color: #02457a !important;
     color: white !important;
-    border-color: #011C49 !important;
-    box-shadow: none !important; /* Ngăn Bootstrap thêm viền xanh */
+    border-color: #02457a !important;
+    box-shadow: none !important;
+    /* Ngăn Bootstrap thêm viền xanh */
 }
-.FormContainer .Header{
+
+.FormContainer .Header {
     font-size: 24px;
     font-weight: 600;
 }
+
 .FormContainer .divider {
     display: flex;
     align-items: center;
@@ -53,8 +58,9 @@
     border-bottom: 1px solid #ccc;
     margin: 0 10px;
 }
+
 .FormContainer .LoginMethod {
-    border-radius: 0px !important;
+    border-radius: 4px !important;
     display: flex;
     width: 100%;
     margin-top: 20px;
@@ -63,23 +69,25 @@
     justify-content: center;
     background-color: transparent;
     color: black;
-    gap: 10px; /* Giữ khoảng cách giữa icon và text */
-    border-color:black;
+    gap: 10px;
+    /* Giữ khoảng cách giữa icon và text */
+    border-color: black;
+    padding: 9px 0;
 }
 
 .FormContainer .LoginMethod:active,
-.FormContainer .LoginMethod:focus,
 .FormContainer .LoginMethod:hover {
-    background-color: #011C49 !important;
+    background-color: #02457a !important;
     color: white !important;
-    border-color: #011C49 !important;
-    box-shadow: none !important; /* Ngăn Bootstrap thêm viền xanh */
+    border-color: #02457a !important;
+    box-shadow: none !important;
+    /* Ngăn Bootstrap thêm viền xanh */
 }
 
 .FormContainer .forgotpass {
     text-align: right;
-    margin-bottom: 10px;
-    cursor: pointer;    
+    margin-bottom: 20px;
+    cursor: pointer;
     text-decoration: underline;
 }
 
@@ -90,9 +98,11 @@
 }
 
 .FormContainer .methodicon {
-    width: 20px;  /* Đặt kích thước cố định cho icon */
+    width: 20px;
+    /* Đặt kích thước cố định cho icon */
     height: 20px;
 }
+
 .FormGroup input {
-    border-radius: 0 !important;
+    border-radius: 4px !important;
 }

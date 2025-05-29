@@ -7,27 +7,69 @@
 }
 
 .footercontainer {
-    padding: 20px 0 10px 0;
+    padding: 20px 0;
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.footercontainer .infoContainer {
+    display: flex;
+    width: 100%;
+    gap: 100px;
+}
+
+.footercontainer a {
+    all: unset;
+}
+
+.footercontainer .info {
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footercontainer .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    column-gap: 50px;
+    flex: 1;
+}
+
+.footercontainer .grid>div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footercontainer .flexColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
 }
 
 .footercontainer .titletext {
-    opacity: 0.6;
+    opacity: 1;
     font-size: 18px;
     color: #77878F;
+    padding: 0;
+    margin: 0;
 }
 
 .footercontainer .contenttext {
+    all: unset;
+    padding: 0;
     font-size: 16px;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .footercontainer .logoimg {
-    width: 250px;
-    height: 100px;
-    margin-bottom: 20px;
+    width: 100%;
+    height: auto;
 }
 
 .footercontainer .footericon {
@@ -36,18 +78,26 @@
 }
 
 .footercontainer .iconcontainer {
+    all: unset;
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 10px;
-    /* Tạo khoảng cách giữa icon và text */
 }
 
 .footercontainer .contenttext:hover {
-    color: #02457A;
-    transition: color 0.3s ease-in-out;
+    color: #018abe;
+    font-weight: 700;
 }
 
 .footercontainer .stacontenttext {
     font-size: 16px;
     color: #FFFFFF;
+}
+
+.footercontainer .copyrightText {
+    width: 100%;
+    margin-top: 24px;
+    color: white;
+    opacity: 0.5;
 }

@@ -14,6 +14,7 @@ export default ({ products, category, onSort, onFilter }) => {
         laptop: ["brand", "ram", "storage"],
         "laptop gaming": ["brand", "ram", "storage"],
         "phụ kiện": ["brand", "connection"],
+        default: ["brand"],
     };
 
     const filters = useMemo(() => {

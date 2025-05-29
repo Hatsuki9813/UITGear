@@ -5,26 +5,26 @@ import { PurchaseHistory } from "../pages/Profile/PurchaseHistory";
 import ProtectedRoute from "./ProtectedRoute";
 
 const profileRoutes = {
-  path: "/profile",
-  element: (
-    <ProtectedRoute>
-      <ProfileLayout />
-    </ProtectedRoute>
-  ),
-  children: [
-    {
-      index: true, // tương ứng path: "/profile"
-      element: <Overview />,
-    },
-    {
-      path: "address",
-      element: <ShippingAddress />,
-    },
-    {
-      path: "history",
-      element: <PurchaseHistory />,
-    },
-  ],
+    path: "/profile",
+    element: (
+        <ProtectedRoute>
+            <ProfileLayout />
+        </ProtectedRoute>
+    ),
+    children: [
+        {
+            index: true, // tương ứng path: "/profile"
+            element: <Overview />,
+        },
+        {
+            path: "address",
+            element: <ShippingAddress />,
+        },
+        {
+            path: "history",
+            element: <PurchaseHistory />,
+        },
+    ],
 };
 
 export default profileRoutes;

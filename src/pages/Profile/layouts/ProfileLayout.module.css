@@ -38,6 +38,9 @@
     background-color: white;
     color: #5F6C72;
     text-decoration: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
 }
 
 .link:hover {

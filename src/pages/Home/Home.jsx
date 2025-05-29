@@ -7,7 +7,7 @@ import AdsCarousel from "./components/AdsCarousel";
 import { ProductCarousel } from "./components/ProductCarousel";
 
 export default function Home() {
-    const imageList = ["/carousel/carousel-6.png", "/carousel/carousel-7.png"];
+    const imageList = ["/carousel/banner1.png", "/carousel/banner2.png", "/carousel/banner3.png"];
 
     // Lấy sản phẩm từ store Zustand
     const { products, fetchProducts, loading, error } = useProductStore();

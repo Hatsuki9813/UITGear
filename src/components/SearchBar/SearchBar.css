@@ -1,14 +1,31 @@
 .search-container {
 	position: relative;
-	width: 500px
+	width: 400px;
+	display: flex;
+	flex-direction: row;
+	background-color: white;
+	border-radius: 5px;
 }
 
 .search-container input {
 	width: 500px;
 	padding: 10px;
-	border-radius: 5px;
-	border: 1px solid #ccc;
 	outline: none;
+	background: none;
+	border: none;
+}
+
+.search-container .search-icon-container {
+	all: unset;
+	width: fit-content;
+	height: 100%;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.search-container .search-icon {
+	width: 20px;
+	height: 100%;
 }
 
 .suggestion-list {
@@ -17,8 +34,7 @@
 	left: 0;
 	right: 0;
 	background: white;
-	border: 1px solid #ccc;
-	max-height: 500px;
+	max-height: 400px;
 	overflow-y: auto;
 	z-index: 10;
 	border-radius: 5px;
@@ -26,14 +42,60 @@
 	padding: 0;
 	display: flex;
 	flex-direction: column;
-}
-
-.suggestion-list a {
-	all: unset;
-	padding: 10px;
-	cursor: pointer;
+	border: 1px solid #ececec
 }
 
 .suggestion-list a:hover {
 	background-color: #f2f2f2;
+}
+
+.suggestion-list .suggestion-item {
+	all: unset;
+	cursor: pointer;
+	display: flex;
+	gap: 5px;
+	justify-content: space-between;
+	height: 50px;
+	padding: 10px;
+	border-bottom: 1px solid #ececec;
+	align-items: center;
+}
+
+.suggestion-list .suggestion-item .suggestion-info {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-width: 0;
+}
+
+.suggestion-list .suggestion-item img {
+	width: 50px;
+	height: 50px;
+	border-radius: 2px;
+	border: 1px solid #ececec
+}
+
+.suggestion-list .view-all-button {
+	all: unset;
+	display: grid;
+	place-items: center;
+	height: 50px;
+	cursor: pointer;
+}
+
+.suggestion-list .view-all-button:hover {
+	background-color: #f2f2f2;
+}
+
+.suggestion-name {
+	font-weight: 400;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	flex: 1;
+	min-width: 0;
+}
+
+.suggestion-info .suggestion-price {
+	flex: 1;
 }

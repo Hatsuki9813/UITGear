@@ -9,7 +9,7 @@ const useSuggestionStore = create((set) => ({
             return;
         }
         try {
-            const res = await axiosInstance.get(`/product/search?q=${query}`);
+            const res = await axiosInstance.get(`/product/search?q=${query}&rcm=1`);
             set({ suggestions: res.data });
         } catch (err) {
             console.error("Error fetching suggestions:", err);

@@ -6,6 +6,24 @@ export const useProductStore = create((set) => ({
     products: [],
     totalProducts: 0,
     totalPages: 0,
+    fetchSearchProducts: async (query) => {
+        try {
+            const res = await axiosInstance.get(`/product/search?q=${query}&rcm=0`);
+            if (res.status === 200) {
+                set({
+                    products: res.data.products || [],
+                    totalProducts: res.data.totalProducts || 0,
+                    totalPages: res.data.totalPages || 0,
+                });
+            } else {
+                toast.error("Failed to fetch search results.");
+            }
+        } catch (error) {
+            console.error("Error fetching search products:", error);
+            toast.error("An error occurred while searching for products.");
+        }
+    },
+
     fetchProducts: async ({
         category = "",
         brand = "",
@@ -16,6 +34,7 @@ export const useProductStore = create((set) => ({
         order = "desc",
     }) => {
         try {
+            console.log("page", page);
             const url = "/product";
             const response = await axiosInstance.get(url, {
                 params: {

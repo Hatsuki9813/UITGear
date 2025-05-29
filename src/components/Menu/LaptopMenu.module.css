@@ -1,53 +1,54 @@
 .megamenu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 800%;
-  background-color: white;
-  padding: 15px;
-  z-index: 999;
-  border: 1px solid #ccc;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-
+	position: absolute;
+	top: 100%;
+	width: fit-content;
+	background-color: white;
+	padding: 15px;
+	z-index: 999;
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 175px;
+	border: 2px solid #018abe;
+	border-top: none;
 }
 
 .megamenuColumn {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
 
 }
 
 .megamenu h4 {
-  color: black;
-  font-size: 16px;
-  margin-bottom: 10px;
-  font-weight: bold;
-  text-align: left;
+	color: black;
+	font-size: 16px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	text-align: left;
 
 }
 
 .megamenu ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: block;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: block;
 }
 
 .megamenu li {
-  padding: 5px 0;
-  color: black;
-  cursor: pointer;
-  text-align: left;
+	padding: 5px 0;
+	color: black;
+	cursor: pointer;
+	text-align: left;
 }
 
 .megamenu li:hover {
-  text-decoration: None;
+	text-decoration: None;
+	color: #018abe;
+	font-weight: 700;
 }
 
 .linkStyle {
-  text-decoration: none;
-  color: inherit;
+	text-decoration: none;
+	color: inherit;
 }

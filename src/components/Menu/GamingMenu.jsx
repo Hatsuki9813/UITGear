@@ -3,7 +3,7 @@ import styles from "./LaptopMenu.module.css";
 import { Link } from "react-router-dom";
 export default function GamingMenu() {
     return (
-        <div className={styles.megamenu}>
+        <div style={{ left: "calc(100%/7)" }} className={styles.megamenu}>
             <div className={styles.megamenuColumn}>
                 <h4>Asus</h4>
                 <ul>

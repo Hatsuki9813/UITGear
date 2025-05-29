@@ -68,7 +68,10 @@ export const ProductCarousel = ({ data, background, title, titleColor, cardItemB
                             }>
                             {extendedData.map((item, idx) => (
                                 <div key={idx}>
-                                    <CardItem data={item} border={cardItemBorder} />
+                                    <CardItem
+                                        data={{ ...item, id: item._id }}
+                                        border={cardItemBorder}
+                                    />
                                 </div>
                             ))}
                         </motion.div>
