@@ -53,7 +53,7 @@
  .CouponContainer {
     border: 1px solid #ccc;
     background-color: #f9f9f9;
-    margin: 10px;
+    margin: 20px;
 }
 
  .CouponHeader {
@@ -82,4 +82,7 @@
     cursor: pointer;
     font-size: 20px;
     margin-left: 20px;
+}
+.CouponDescription {
+  padding: 10px;
 }

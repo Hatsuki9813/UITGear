@@ -165,15 +165,15 @@ export default function Header() {
                         <img src={menucash} className={styles.menuicon} alt="Menu Icon" />
                         <span>Hướng dẫn thanh toán</span>
                     </Link>
-                    <Link to="/question" style={{ textDecoration: "none" }}>
+                    <Link to="/warranty-policies" style={{ textDecoration: "none" }}>
                         <img src={menuwarranty} className={styles.menuicon} alt="Menu Icon" />
                         <span>Chính sách bảo hành</span>
                     </Link>
-                    <Link to="/question" style={{ textDecoration: "none" }}>
+                    <Link to="/installment-policies" style={{ textDecoration: "none" }}>
                         <img src={menusaving} className={styles.menuicon} alt="Menu Icon" />
                         <span>Hướng dẫn trả góp</span>
                     </Link>
-                    <Link to="/question" style={{ textDecoration: "none" }}>
+                    <Link to="/news" style={{ textDecoration: "none" }}>
                         <img src={menunews} className={styles.menuicon} alt="Menu Icon" />
                         <span>Tin tức công nghệ</span>
                     </Link>

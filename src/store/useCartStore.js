@@ -7,6 +7,10 @@ const useCartStore = create((set) => ({
   cartCount: 0,
   isLoading: false,
   error: null,
+  selectedDiscounts: {},
+
+  setSelectedDiscounts: (discounts) => set({ selectedDiscounts: discounts }),
+
 
   addCart: async (user_id, product_id, quantity) => {
     set({ isLoading: true, error: null });

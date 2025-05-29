@@ -109,3 +109,18 @@
 .Modal button {
   padding: 10px 20px;
 }
+
+.CartItemWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.DeleteWrapper {
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.CartItemContent {
+  flex-grow: 1;
+}

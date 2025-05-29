@@ -13,6 +13,11 @@ import Products from "../pages/Products/Products";
 import Detail from "../pages/Detail/Detail";
 import GuestRoute from "./GuestRoute";
 import OrderDetails from "../pages/OrderDetails/OrderDetails";
+import ChangePassword from "../pages/LoginSignup/ChangePassword";
+import WarrantyPolicies from "../pages/Support/WarrantyPolicies";
+import InstallmentPolicies from "../pages/Support/InstallmentPolicies";
+import News from "../pages/Support/News";
+import Sale from "../pages/Support/Sale";
 // Import route của Profile
 import profileRoutes from "./profileRoutes"; // Đường dẫn đúng với dự án của bạn
 
@@ -78,7 +83,6 @@ const router = createBrowserRouter([
                 path: "/ordertrack",
                 element: <OrderTrack />,
             },
-            // Lồng route Profile vào đây
             {
                 path: profileRoutes.path,
                 element: profileRoutes.element,
@@ -87,6 +91,22 @@ const router = createBrowserRouter([
             {
                 path: "/order-details/:orderId",
                 element: <OrderDetails />,
+            },
+            {
+                path: "/warranty-policies",
+                element: <WarrantyPolicies />,
+            },
+            {
+                path: "/installment-policies",
+                element: <InstallmentPolicies />,
+            },
+            {
+                path: "/news",
+                element: <News />,
+            },
+            {
+                path: "/sales",
+                element: <Sale />,
             },
         ],
     },
