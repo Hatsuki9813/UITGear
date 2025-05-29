@@ -9,7 +9,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useAuthStore } from "../../store/useAuthStore";
 import useCartStore from "../../store/useCartStore";
 import Modal from "react-modal";
-
+import { useNavigate } from "react-router";
 Modal.setAppElement("#root"); // Thêm cho accessibility
 
 export default function Cart() {
@@ -22,7 +22,7 @@ export default function Cart() {
   const [itemToDelete, setItemToDelete] = useState(null); // Sản phẩm cần xóa
   const [selectedDiscounts, setSelectedDiscounts] = useState({});
   const setSelectedDiscountsStore = useCartStore((state) => state.setSelectedDiscounts);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (user?._id) {
       fetchCart(user._id);
@@ -144,12 +144,10 @@ export default function Cart() {
             <span>{(totalPrice - totalDiscount).toLocaleString("vi-VN")}đ</span>
           </div>
 
-          <Link to="/checkout" style={{ textDecoration: "none" }}>
             <Button className={styles.SubmitButton} onClick={handleCreateOrder}>
               Xác nhận thanh toán
               <FaArrowRight className={styles.loginicon} />
             </Button>
-          </Link>
         </Col>
       </Row>
 
