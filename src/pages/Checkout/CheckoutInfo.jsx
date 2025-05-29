@@ -18,6 +18,9 @@ export default function CheckoutInfo() {
     const user = useAuthStore((state) => state.user);
     const fetchCart = useCartStore((state) => state.fetchCart);
     const cartItems = useCartStore((state) => state.cartItems);
+
+    const selectedDiscounts = useCartStore((state) => state.selectedDiscounts);
+
     useEffect(() => {
         if (user?._id) {
             fetchCart(user._id);
@@ -44,6 +47,10 @@ export default function CheckoutInfo() {
 
     const totalDiscount = cartItems.reduce((discount, item) => {
         const product = item.product_detail;
+        const isDiscountApplied = selectedDiscounts[item.product_id] === "discount";
+
+        if (!isDiscountApplied) return discount;
+
         const discountAmount = ((product?.price || 0) * (product?.discount || 0)) / 100;
         return discount + discountAmount * item.quantity;
     }, 0);
