@@ -1,55 +1,81 @@
 .ProfileLayout {
-    /* flex flex-1 flex-col gap-8 */
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+	/* flex flex-1 flex-col gap-8 */
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
 }
 
 .ProfileLayout .container {
-    /* flex flex-1 flex-row gap-8 */
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
+	/* flex flex-1 flex-row gap-8 */
+	display: flex;
+	flex-direction: row;
+	gap: 2rem;
 }
 
 .ProfileLayout .navbar {
-    /* flex flex-col w-72 bg-white h-fit rounded-sm shadow-md */
-    display: flex;
-    flex-direction: column;
-    width: 18rem;
-    background-color: white;
-    height: fit-content;
-    border-radius: 0.25rem;
+	/* flex flex-col w-72 bg-white h-fit rounded-sm shadow-md */
+	display: flex;
+	flex-direction: column;
+	width: 18rem;
+	background-color: white;
+	height: fit-content;
+	border-radius: 0.25rem;
 }
 
 .ProfileLayout .content {
-    /* w-full bg-white h-fit rounded-sm shadow-md p-4 */
-    width: 100%;
-    background-color: white;
-    height: fit-content;
-    border-radius: 0.25rem;
-    padding: 1rem;
+	/* w-full bg-white h-fit rounded-sm shadow-md p-4 */
+	width: 100%;
+	background-color: white;
+	height: fit-content;
+	border-radius: 0.25rem;
+	padding: 1rem;
 }
 
 .link {
-    display: block;
-    padding: 0.75rem 1rem;
-    transition: all 0.2s ease-in-out;
-    background-color: white;
-    color: #5F6C72;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    text-align: left;
+	display: block;
+	padding: 0.75rem 1rem;
+	transition: all 0.2s ease-in-out;
+	background-color: white;
+	color: #5F6C72;
+	text-decoration: none;
+	border: none;
+	cursor: pointer;
+	text-align: left;
 }
 
 .link:hover {
-    background-color: #f9fafb;
+	background-color: #f9fafb;
 }
 
 /* Khi link active */
 .linkActive {
-    background-image: linear-gradient(to right, #97cadb, #d6e8ee);
-    font-weight: 600;
-    color: black;
+	background-image: linear-gradient(to right, #97cadb, #d6e8ee);
+	font-weight: 600;
+	color: black;
+}
+
+.modalContainer {
+	position: fixed;
+	width: fit-content;
+	height: fit-content;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	background-color: white;
+}
+
+.modalButtons {
+	display: flex;
+	gap: 10px;
+	width: 100%;
+	align-items: center;
+	justify-content: flex-end;
 }

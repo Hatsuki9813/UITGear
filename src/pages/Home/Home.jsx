@@ -29,7 +29,6 @@ export default function Home() {
     if (error) {
         return <div>Error: {error}</div>;
     }
-    console.log(products, "products");
     return (
         <div className={styles.HomeContainer}>
             {/* <section>

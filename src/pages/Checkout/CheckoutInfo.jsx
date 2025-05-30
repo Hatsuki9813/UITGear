@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./CheckoutInfo.module.css";
 import Form from "react-bootstrap/Form";
 import cash from "../../assets/icons/cash.svg";
@@ -12,32 +12,51 @@ import useCartStore from "../../store/useCartStore";
 import { useCheckOut } from "../../store/useCheckOut";
 import toast from "react-hot-toast";
 import { useAuthStore } from "../../store/useAuthStore";
+import formatCurrency from "../../utils/formatCurrency";
+import { useAddressStore } from "../../store/useAddressStore";
+
 export default function CheckoutInfo() {
     const navigate = useNavigate();
     const { createOrder } = useCheckOut();
     const user = useAuthStore((state) => state.user);
     const fetchCart = useCartStore((state) => state.fetchCart);
     const cartItems = useCartStore((state) => state.cartItems);
-
     const selectedDiscounts = useCartStore((state) => state.selectedDiscounts);
-
-    useEffect(() => {
-        if (user?._id) {
-            fetchCart(user._id);
-        }
-    }, [user?._id, fetchCart]);
+    const { addresses, initializeAddresses } = useAddressStore();
 
     const [formData, setFormData] = useState({
         name: "",
-        email: "",
         phone: "",
         address: "",
         note: "",
         paymentMethod: "",
     });
 
+    const setDefaultAddress = () => {
+        const defaultAddress = addresses?.find((addr) => addr.isDefault) || {};
+        setFormData((prev) => ({
+            ...prev,
+            name: defaultAddress.name || "",
+            phone: defaultAddress.phone || "",
+            address: defaultAddress.address || "",
+        }));
+    };
+
+    useEffect(() => {
+        if (user?._id) {
+            fetchCart(user._id);
+            if (!addresses || addresses.length === 0) {
+                initializeAddresses();
+            } else setDefaultAddress();
+        }
+    }, [user?._id, fetchCart, initializeAddresses, addresses]);
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleMethodSelect = (method) => {
+        setFormData({ ...formData, paymentMethod: method });
     };
 
     const totalPrice = cartItems.reduce((total, item) => {
@@ -78,7 +97,7 @@ export default function CheckoutInfo() {
             user_id: user?._id, // Thay bằng user id thật nếu có
             payment_name: formData.paymentMethod,
             shipping_address,
-            pr
+            pr,
         };
 
         try {
@@ -97,125 +116,122 @@ export default function CheckoutInfo() {
     return (
         <div className={styles.CheckoutContainer}>
             <div className={styles.CheckoutInfo}>
-                <div className={styles.CheckoutHeader}>Thông tin thanh toán</div>
-
-                <Form>
-                    <Form.Group className={styles.Input}>
-                        <div className="row">
-                            <div className="col-sm">
-                                <Form.Label>Họ tên</Form.Label>
-                                <Form.Control
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                />
+                <div>
+                    <div className={styles.CheckoutHeader}>Thông tin thanh toán</div>
+                    <Form style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                        <Form.Group className={styles.Input}>
+                            <div className="row">
+                                <div className="col-sm">
+                                    <Form.Label style={{ fontWeight: 500 }}>Họ tên</Form.Label>
+                                    <Form.Control
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                                <div className="col-sm">
+                                    <Form.Label style={{ fontWeight: 500 }}>
+                                        Số điện thoại
+                                    </Form.Label>
+                                    <Form.Control
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                    </Form.Group>
+                        </Form.Group>
 
-                    <Form.Group className={styles.Input}>
-                        <Form.Label>Địa chỉ</Form.Label>
-                        <Form.Control
-                            name="address"
-                            value={formData.address}
-                            onChange={handleChange}
-                        />
-                    </Form.Group>
+                        <Form.Group className={styles.Input}>
+                            <Form.Label style={{ fontWeight: 500 }}>Địa chỉ</Form.Label>
+                            <Form.Control
+                                name="address"
+                                value={formData.address}
+                                onChange={handleChange}
+                            />
+                        </Form.Group>
+                    </Form>
+                </div>
 
-                    <Form.Group className={styles.Input}>
-                        <div className="row">
-                            <div className="col-sm">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control
-                                    name="email"
-                                    type="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className="col-sm">
-                                <Form.Label>Số điện thoại</Form.Label>
-                                <Form.Control
-                                    name="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                        </div>
-                    </Form.Group>
-                </Form>
-
-                <div className={styles.CheckoutHeader}>Phương thức thanh toán</div>
-                <div className={styles.PaymentMethods}>
-                    <div className={styles.Method}>
-                        <img src={cash} alt="cash" />
-                        <p>Tiền mặt</p>
-                        <Form.Check
-                            type="radio"
-                            name="paymentMethod"
-                            value="cash"
-                            onChange={handleChange}
-                            checked={formData.paymentMethod === "cash"}
-                        />
-                    </div>
-                    <div className={styles.Method}>
-                        <img src={momo} alt="momo" />
-                        <p>Ví điện tử Momo</p>
-                        <Form.Check
-                            type="radio"
-                            name="paymentMethod"
-                            value="momo"
-                            onChange={handleChange}
-                            checked={formData.paymentMethod === "momo"}
-                        />
-                    </div>
-                    <div className={styles.Method}>
-                        <img src={vnpay} alt="vnpay" />
-                        <p>Ví điện tử VNpay</p>
-                        <Form.Check
-                            type="radio"
-                            name="paymentMethod"
-                            value="vnpay"
-                            onChange={handleChange}
-                            checked={formData.paymentMethod === "vnpay"}
-                        />
+                <div>
+                    <div className={styles.CheckoutHeader}>Phương thức thanh toán</div>
+                    <div className={styles.PaymentMethods}>
+                        <button
+                            style={{
+                                backgroundColor:
+                                    formData.paymentMethod === "cash" ? "#02457a" : "white",
+                                color: formData.paymentMethod === "cash" ? "white" : "black",
+                            }}
+                            onClick={() => handleMethodSelect("cash")}
+                            className={styles.Method}>
+                            <img src={cash} alt="cash" className={styles.methodLogo} />
+                            <div>Tiền mặt</div>
+                        </button>
+                        <button
+                            style={{
+                                backgroundColor:
+                                    formData.paymentMethod === "momo" ? "#02457a" : "white",
+                                color: formData.paymentMethod === "momo" ? "white" : "black",
+                            }}
+                            onClick={() => handleMethodSelect("momo")}
+                            className={styles.Method}>
+                            <img src={momo} alt="momo" className={styles.methodLogo} />
+                            <div>Ví điện tử MoMo</div>
+                        </button>
+                        <button
+                            style={{
+                                backgroundColor:
+                                    formData.paymentMethod === "vnpay" ? "#02457a" : "white",
+                                color: formData.paymentMethod === "vnpay" ? "white" : "black",
+                            }}
+                            onClick={() => handleMethodSelect("vnpay")}
+                            className={styles.Method}>
+                            <img src={vnpay} alt="vnpay" className={styles.methodLogo} />
+                            <div>Ví điện tử VNPAY</div>
+                        </button>
                     </div>
                 </div>
 
-                <div className={styles.CheckoutHeader}>Ghi chú</div>
-                <div className={styles.Notes}>
-                    <Form.Group className={styles.Input}>
-                        <Form.Control
-                            as="textarea"
-                            rows={4}
-                            name="note"
-                            value={formData.note}
-                            onChange={handleChange}
-                        />
-                    </Form.Group>
+                <div>
+                    <div className={styles.CheckoutHeader}>Ghi chú</div>
+                    <div className={styles.Notes}>
+                        <Form.Group className={styles.Input}>
+                            <Form.Control
+                                as="textarea"
+                                rows={4}
+                                name="note"
+                                value={formData.note}
+                                onChange={handleChange}
+                                style={{ borderRadius: "4px" }}
+                            />
+                        </Form.Group>
+                    </div>
                 </div>
             </div>
 
             <div className={styles.Order}>
                 <div className={styles.OrderContent}>
                     <span>Tổng cộng</span>
-                    <span>{totalPrice.toLocaleString()}₫</span>
+                    <span style={{ fontWeight: 700 }}>{formatCurrency(totalPrice)}</span>
                 </div>
                 <div className={styles.OrderContent}>
                     <span>Phí vận chuyển</span>
-                    <span>Free</span>
+                    <span style={{ fontWeight: 700 }}>Free</span>
                 </div>
                 <div className={styles.OrderContent}>
                     <span>Khuyến mãi</span>
-                    <span>{totalDiscount.toLocaleString()}₫</span>
+                    <span style={{ fontWeight: 700 }}>{formatCurrency(totalDiscount)}</span>
                 </div>
                 <div className={styles.divider}></div>
                 <div className={styles.OrderContent}>
                     <span>Cần thanh toán</span>
-                    <span>{(totalPrice - totalDiscount).toLocaleString()}₫</span>
+                    <span style={{ fontWeight: 700 }}>
+                        {formatCurrency(totalPrice - totalDiscount)}
+                    </span>
                 </div>
                 <Button className={styles.SubmitButton} onClick={handleSubmit}>
-                    ĐẶT HÀNG <FaArrowRight className={styles.loginicon} />
+                    <span>ĐẶT HÀNG</span>&nbsp;
+                    <FaArrowRight />
                 </Button>
             </div>
         </div>

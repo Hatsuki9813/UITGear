@@ -2,31 +2,30 @@ import CardItem from "../../../components/CardItem/CardItem";
 import styles from "./ProductList.module.css";
 
 const ProductList = ({ products }) => {
-  console.log(products, "products ssss");
-  return (
-    <div className={`${styles.ProductList} ${styles.container}`}>
-      {products.length === 0 ? (
-        <div className={styles.announcement}>Không có sản phẩm nào</div>
-      ) : (
-        <div className={styles.list}>
-          {products.map((product, index) => (
-            <CardItem
-              key={index}
-              data={{
-                name: product.name,
-                img: product.img_obj?.productimg,
-                price: product.price,
-                discountPrice: product.price / (product.discount / 9),
-                id: product._id,
-              }}
-              border={1}
-              whereToUse={"list"}
-            />
-          ))}
+    return (
+        <div className={`${styles.ProductList} ${styles.container}`}>
+            {products.length === 0 ? (
+                <div className={styles.announcement}>Không có sản phẩm nào</div>
+            ) : (
+                <div className={styles.list}>
+                    {products.map((product, index) => (
+                        <CardItem
+                            key={index}
+                            data={{
+                                name: product.name,
+                                img: product.img_obj?.productimg,
+                                price: product.price,
+                                discountPrice: product.price / (product.discount / 9),
+                                id: product._id,
+                            }}
+                            border={1}
+                            whereToUse={"list"}
+                        />
+                    ))}
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 };
 
 export default ProductList;

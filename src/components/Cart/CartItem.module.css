@@ -1,88 +1,70 @@
-.CartItemContainer {
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-}
-.ProductInfo {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    
-  }
-  
-  .ProductDetails {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .ProductImage {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 5px;
-  }
-  
-  .PriceWrapper,
-  .QuantityWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .IncreaseDecreaseContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #ccc;
-    height: 45px;
-    border-radius: 8px;
-    padding: 0 10px;
-  }
-  
-
-.IncreaseDecrease {
-    border: none;
-    cursor: pointer;
-    padding: 5px 10px;
-  }
-
-.Price {
-    color: green;
-    
-}
- .CouponContainer {
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    margin: 20px;
+.container {
+	display: flex;
+	height: fit-content;
+	flex-direction: column;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin: 10px;
+	gap: 10px;
+	width: 100%;
 }
 
- .CouponHeader {
-    background-color: #e0e0e0; /* Màu nền xám */
-    color: #333; /* Màu chữ */
-    font-size: 1rem;
-    font-weight: bold;
-    text-align: flex-start;
-    padding: 10px;
-    width: 100%;
-
+.info {
+	display: flex;
+	flex: 1;
 }
 
- .SubmitButton{
-    border-radius: 0px !important;
-    width: 100%;
-    padding: 10px;
-    background-color: #DD3C5A;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+.col1 {
+	flex: 4;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	font-weight: 500;
+	padding: 5px 10px
 }
 
-.deleteicon {
-    color: #DD3C5A;
-    cursor: pointer;
-    font-size: 20px;
-    margin-left: 20px;
+.col2 {
+	flex: 3;
+	display: grid;
+	place-items: center;
+	font-weight: 500;
+	font-size: 1.25rem;
+	padding: 5px 10px
 }
-.CouponDescription {
-  padding: 10px;
+
+.col3 {
+	flex: 1;
+	display: grid;
+	place-items: center;
+	font-weight: 1.25rem;
+	padding: 5px 10px
+}
+
+.imageContainer {
+	border-radius: 4px;
+	width: 80px;
+	height: 80px;
+}
+
+.image {
+	width: 100%;
+	height: auto;
+	align-self: center;
+}
+
+.name {
+	flex: 1;
+}
+
+.discount {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	padding: 10px 10px;
+}
+
+select {
+	padding: 5px 15px 5px 5px;
+	border-radius: 4px;
+	outline: none;
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./PurchaseHistory.module.css";
 import useOrderStore from "../../store/useOrderStore";
 import { useAuthStore } from "../../store/useAuthStore";
+import formatCurrency from "../../utils/formatCurrency";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -71,7 +72,7 @@ export const PurchaseHistory = () => {
                                         {item.order_status?.toUpperCase()}
                                     </td>
                                     <td>{new Date(item.createdAt).toLocaleDateString()}</td>
-                                    <td>{item.total_price.toLocaleString()} VND</td>
+                                    <td>{formatCurrency(item.total_price)}</td>
                                 </tr>
                             ))}
                         </tbody>

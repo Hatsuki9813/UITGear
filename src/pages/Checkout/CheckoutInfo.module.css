@@ -1,119 +1,124 @@
 .CheckoutContainer {
-    display: flex;
-    margin-top: 20px;
+	display: flex;
+	gap: 40px;
 }
 
 .CheckoutContainer .CheckoutInfo {
-    width: 70%;
-    margin: 20px;
-    border: 1px solid #ccc;
+	flex: 7;
+	border: 1px solid #ccc;
+	background-color: white;
+	border-radius: 4px;
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	gap: 20px;
 }
 
-.CheckoutContainer .Input {
-    margin: 20px;
-}
-
-.CheckoutContainer .CheckoutMethod {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    margin: 20px;
-    border: 1px solid #ccc;
-    height: fit-content;
-    padding: 20px;
+.CheckoutContainer .Input input {
+	border-radius: 4px;
 }
 
 .CheckoutContainer .CheckoutHeader {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: flex-start;
-    width: 100%;
-    margin: 20px;
-}
-
-.CheckoutContainer .Method {
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-    border: 1px solid #ccc;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-align: flex-start;
+	width: 100%;
+	margin-bottom: 10px;
 }
 
 .CheckoutContainer .PaymentMethods {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin: 20px;
-
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	justify-content: center;
 }
 
+.CheckoutContainer .methodLogo {
+	width: 32px;
+	height: 32px;
+	border-radius: 4px;
+}
+
+.CheckoutContainer .Method {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #ccc;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	border-radius: 4px;
+	padding: 10px;
+	font-weight: 500;
+	width: 200px;
+}
+
+
 .CheckoutContainer .Order {
-    flex-direction: column;
-    border: 1px solid #ccc;
-    margin: 20px;
-    width: 30%;
-    height: fit-content;
-    padding: 20px;
+	flex-direction: column;
+	border: 1px solid #ccc;
+	flex: 3;
+	height: fit-content;
+	background-color: white;
+	border-radius: 4px;
+	padding: 20px;
+	display: flex;
+	gap: 10px;
 }
 
 .CheckoutContainer .OrderHeader {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: flex-start;
-    width: 100%;
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-align: flex-start;
+	width: 100%;
 }
 
 .CheckoutContainer .SubmitButton {
-    border-radius: 0px !important;
-    width: 100%;
-    padding: 10px;
-    background-color: #02457a;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
+	border-radius: 4px !important;
+	width: 100%;
+	background-color: #02457a;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	font-weight: 500;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	margin-top: 10px;
 }
 
 .CheckoutContainer .SubmitButton:active,
 .CheckoutContainer .SubmitButton:focus,
 .CheckoutContainer .SubmitButton:hover {
-    background-color: #02457a !important;
-    color: white !important;
-    border-color: #02457a !important;
-    box-shadow: none !important;
-    /* Ngăn Bootstrap thêm viền xanh */
+	background-color: #02457a !important;
+	color: white !important;
+	border-color: #02457a !important;
+	box-shadow: none !important;
+	/* Ngăn Bootstrap thêm viền xanh */
 }
 
 .CheckoutContainer .divider {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    text-align: center;
-    color: #666;
-    margin: 20px 0;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	text-align: center;
+	color: #666;
+	margin: 10px 0;
 }
 
 .divider::before,
 .divider::after {
-    content: "";
-    flex: 1;
-    border-bottom: 1px solid #ccc;
+	content: "";
+	flex: 1;
+	border-bottom: 1px solid #ccc;
 
 }
 
 .CheckoutContainer .OrderContent {
-    display: flex;
-    justify-content: space-between;
-    /* Đẩy nội dung và giá sang hai bên */
-    align-items: center;
-    padding: 10px;
-    font-size: 1.2rem;
-    width: 100%;
-}
-
-.loginicon {
-    color: white;
-    margin-left: 5px;
+	display: flex;
+	justify-content: space-between;
+	/* Đẩy nội dung và giá sang hai bên */
+	align-items: center;
+	font-size: 1.2rem;
+	width: 100%;
 }
