@@ -1,65 +1,66 @@
 .OrderTrackContainer {
-    display: flex;
-    flex-direction: column;
-    margin: 20px auto;
-    border: 1px solid #ccc;
-    width: 50%;
-    padding: 15px;
-    background-color: #f9f9f9;
+	display: flex;
+	flex-direction: column;
+	margin: 0px auto;
+	border: 1px solid #ccc;
+	width: fit-content;
+	padding: 20px;
+	background-color: #f9f9f9;
+	border-radius: 4px;
+	min-width: 600px;
+	max-width: 100%;
+	gap: 10px;
 }
 
-/* Header chứa ID, ngày đặt và giá */
-.HeaderContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #E7F1FD;
-    padding: 15px;
-    border: 1px solid #ccc;
+h1 {
+	font-size: 1.5rem;
+	align-self: center;
+	font-weight: bold;
 }
 
-/* Vùng chứa thông tin đơn hàng */
-.ProductInfo {
-    display: flex;
-    flex-direction: column;
+.infoContainer {
+	display: flex;
+	flex-direction: column;
+	background-color: #E7F1FD;
+	border: 1px solid #ccc;
+	padding: 10px;
+	gap: 10px;
 }
 
-/* ID được highlight */
+.result {
+	font-weight: bold;
+	font-size: 1.25rem;
+}
+
 .OrderID {
-    font-size: 18px;
-    font-weight: bold;
-    color: #0056b3;
-    background-color: #d1e7ff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    width: fit-content;
+	font-size: 1.25rem;
+	font-weight: bold;
+	color: #0056b3;
+	background-color: #d1e7ff;
+	padding: 5px 5px;
+	border-radius: 5px;
+	width: fit-content;
+	border-radius: 4px;
 }
 
-/* Text ngày đặt hàng, ngày giao */
-.ContentText {
-    font-size: 14px;
-    color: #333;
-    margin-top: 5px;
+.amount {
+	font-size: 1.25rem;
+	font-weight: 800;
+	color: #1c7007;
+	background-color: #d1ffe6;
+	padding: 5px 5px;
+	border-radius: 5px;
+	width: fit-content;
+	border-radius: 4px;
 }
 
-/* Giá nằm bên phải */
-.Price {
-    font-size: 18px;
-    font-weight: bold;
-    color: green;
-}
-.status {
-    display: flex;
-    align-items: center; /* Căn giữa theo chiều dọc */
-    gap: 10px; /* Khoảng cách giữa ảnh và chữ */
-
-}
-.OrderTrackContainer .HeaderText {
-    font-weight: bold;
-    font-size: 1.5rem;
-    color:#02457A;
-}
-.OrderTrackContainer .ordercontent {
-    font-size: 1rem;
-    color:#02457A;
+.error {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: #700a07;
+	background-color: #ffd8d1;
+	padding: 5px 5px;
+	border-radius: 5px;
+	width: fit-content;
+	border-radius: 4px;
 }
