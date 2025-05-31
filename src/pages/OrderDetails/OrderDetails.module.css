@@ -1,0 +1,69 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	width: 1080px;
+	background-color: white;
+	border-radius: 4px;
+	margin: 0 auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.OrderId {
+	font-size: 1.25rem;
+	font-weight: bold;
+	color: #0056b3;
+	background-color: #d1e7ff;
+	padding: 5px 5px;
+	border-radius: 5px;
+	width: fit-content;
+	border-radius: 4px;
+}
+
+.tableHead {
+	border-bottom: 1px solid #ccc;
+}
+
+.nameCol {
+	width: 60%;
+	text-align: left;
+	gap: 10px;
+}
+
+.priceCol {
+	width: 20%;
+	padding: 8px 5px;
+	text-align: center;
+}
+
+.quantityCol {
+	width: 20%;
+	padding: 8px 5px;
+	text-align: center;
+}
+
+.tableRow {
+	border-bottom: 1px solid #eee;
+}
+
+.imageContainer {
+	border-radius: 4px;
+	width: 80px;
+	height: 80px;
+	cursor: pointer;
+}
+
+.productImg {
+	width: 100%;
+	height: auto;
+	align-self: center;
+}
+
+.tableFoot td {
+	padding-top: 20px;
+}

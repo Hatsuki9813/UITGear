@@ -111,7 +111,6 @@
 	content: "";
 	flex: 1;
 	border-bottom: 1px solid #ccc;
-
 }
 
 .CheckoutContainer .OrderContent {
@@ -121,4 +120,107 @@
 	align-items: center;
 	font-size: 1.2rem;
 	width: 100%;
+}
+
+.overlay {
+	position: fixed;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 50;
+}
+
+.main {
+	background-color: white;
+	padding: 1.5rem;
+	border-radius: 0.5rem;
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+	width: fit-content;
+	border-width: 1px;
+	border-color: #cfcfcf;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 1rem;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #cfcfcf;
+}
+
+.headerName {
+	font-weight: 600;
+}
+
+.closeButton {
+	color: #99a1af;
+	cursor: pointer;
+	border: none;
+	background: none;
+	transition: color 0.3s ease-in-out;
+}
+
+.closeButton:hover {
+	color: black;
+}
+
+.closeIcon {
+	width: 1rem;
+	height: 1rem;
+}
+
+.content {
+	padding: 1rem 0;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.openPopup {
+	align-self: flex-end;
+	border: 2px solid #02457a;
+	border-radius: 0.25rem;
+	transition: background-color 0.2s ease-in, color 0.2s ease-in;
+	color: white;
+	background-color: #02457a;
+	width: fit-content;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	font-weight: 500;
+	margin-bottom: 10px;
+}
+
+.openPopup:hover {
+	color: black;
+	background-color: white;
+}
+
+.addressRow {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	min-width: 500px;
+	max-width: 600px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	transition: all 0.2s ease-in-out;
+	padding: 10px;
+}
+
+.addressRow:hover {
+	background-color: #02457a;
+	cursor: pointer;
+	color: white;
+}
+
+.icon {
+	width: 1.5rem;
+	height: 1.5rem;
+	margin-right: 4px;
+	margin-left: -3px;
 }

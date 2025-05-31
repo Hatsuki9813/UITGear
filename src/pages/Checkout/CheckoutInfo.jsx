@@ -1,19 +1,26 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import toast from "react-hot-toast";
+import { Button } from "react-bootstrap";
+import { AnimatePresence, motion } from "framer-motion";
+
 import styles from "./CheckoutInfo.module.css";
+
 import Form from "react-bootstrap/Form";
 import cash from "../../assets/icons/cash.svg";
 import momo from "../../assets/icons/momo.svg";
 import vnpay from "../../assets/icons/vnpay.svg";
+
 import { FaArrowRight } from "react-icons/fa";
-import { Button } from "react-bootstrap";
-import OrderCart from "../../components/Cart/OrderCart";
-import { useNavigate } from "react-router-dom";
+import { XMarkIcon, PhoneIcon, MapPinIcon } from "@heroicons/react/24/outline";
+
 import useCartStore from "../../store/useCartStore";
 import { useCheckOut } from "../../store/useCheckOut";
-import toast from "react-hot-toast";
 import { useAuthStore } from "../../store/useAuthStore";
-import formatCurrency from "../../utils/formatCurrency";
 import { useAddressStore } from "../../store/useAddressStore";
+
+import formatCurrency from "../../utils/formatCurrency";
 
 export default function CheckoutInfo() {
     const navigate = useNavigate();
@@ -23,6 +30,8 @@ export default function CheckoutInfo() {
     const cartItems = useCartStore((state) => state.cartItems);
     const selectedDiscounts = useCartStore((state) => state.selectedDiscounts);
     const { addresses, initializeAddresses } = useAddressStore();
+    const [isOpen, setIsOpen] = useState(false);
+    const [mouseDownInside, setMouseDownInside] = useState(false);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -57,6 +66,16 @@ export default function CheckoutInfo() {
 
     const handleMethodSelect = (method) => {
         setFormData({ ...formData, paymentMethod: method });
+    };
+
+    const handleAddressSelect = (data) => {
+        setFormData({
+            ...formData,
+            name: data.name || "",
+            phone: data.phone || "",
+            address: data.address || "",
+        });
+        setIsOpen(false);
     };
 
     const totalPrice = cartItems.reduce((total, item) => {
@@ -113,11 +132,31 @@ export default function CheckoutInfo() {
         }
     };
 
+    useEffect(() => {
+        const preventScroll = (e) => e.preventDefault();
+
+        if (isOpen) {
+            document.addEventListener("wheel", preventScroll, { passive: false });
+            document.addEventListener("touchmove", preventScroll, { passive: false });
+        } else {
+            document.removeEventListener("wheel", preventScroll);
+            document.removeEventListener("touchmove", preventScroll);
+        }
+
+        return () => {
+            document.removeEventListener("wheel", preventScroll);
+            document.removeEventListener("touchmove", preventScroll);
+        };
+    }, [isOpen]);
+
     return (
         <div className={styles.CheckoutContainer}>
             <div className={styles.CheckoutInfo}>
-                <div>
+                <div style={{ display: "flex", flexDirection: "column" }}>
                     <div className={styles.CheckoutHeader}>Thông tin thanh toán</div>
+                    <button className={styles.openPopup} onClick={() => setIsOpen(true)}>
+                        Chọn địa chỉ
+                    </button>
                     <Form style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                         <Form.Group className={styles.Input}>
                             <div className="row">
@@ -234,6 +273,67 @@ export default function CheckoutInfo() {
                     <FaArrowRight />
                 </Button>
             </div>
+
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className={styles.overlay}
+                        onMouseDown={() => setMouseDownInside(false)}
+                        onMouseUp={() => {
+                            if (!mouseDownInside) {
+                                setIsOpen(false);
+                            }
+                        }}>
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ scale: 0.8 }}
+                            transition={{ duration: 0.3 }}
+                            className={styles.main}
+                            onMouseDown={(e) => {
+                                e.stopPropagation();
+                                setMouseDownInside(true);
+                            }}>
+                            <div className={styles.header}>
+                                <span className={styles.headerName}>Chọn địa chỉ</span>
+                                <button
+                                    onClick={() => setIsOpen(false)}
+                                    className={styles.closeButton}>
+                                    <XMarkIcon className={styles.closeIcon} />
+                                </button>
+                            </div>
+                            <div className={styles.content}>
+                                {Object.entries(addresses).map(([key, values]) => (
+                                    <button
+                                        onClick={() => handleAddressSelect(values)}
+                                        key={key}
+                                        className={styles.addressRow}>
+                                        <div
+                                            style={{
+                                                display: "flex",
+                                                justifyContent: "space-between",
+                                            }}>
+                                            <span style={{ fontWeight: 600 }}>{values.name}</span>
+                                            <span style={{ display: "flex", alignItems: "center" }}>
+                                                <PhoneIcon className={styles.icon} />
+                                                {values.phone}
+                                            </span>
+                                        </div>
+                                        <div style={{ textAlign: "left" }}>
+                                            <MapPinIcon className={styles.icon} />
+                                            <span>{values.address}</span>
+                                        </div>
+                                    </button>
+                                ))}
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }

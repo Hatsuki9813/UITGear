@@ -5,7 +5,6 @@
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	margin: 10px;
-	gap: 10px;
 	width: 100%;
 }
 
@@ -20,7 +19,7 @@
 	align-items: center;
 	gap: 16px;
 	font-weight: 500;
-	padding: 5px 10px
+	padding: 10px 10px;
 }
 
 .col2 {
@@ -29,15 +28,17 @@
 	place-items: center;
 	font-weight: 500;
 	font-size: 1.25rem;
-	padding: 5px 10px
+	padding: 5px 10px;
 }
 
 .col3 {
-	flex: 1;
-	display: grid;
-	place-items: center;
+	flex: 2;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	justify-content: center;
 	font-weight: 1.25rem;
-	padding: 5px 10px
+	padding: 5px 10px;
 }
 
 .imageContainer {
@@ -66,5 +67,21 @@
 select {
 	padding: 5px 15px 5px 5px;
 	border-radius: 4px;
+	outline: none;
+}
+
+.quantityButton {
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	width: 25px;
+	font-weight: bold;
+}
+
+.quantityInput {
+	max-width: 30px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	text-align: center;
+	font-weight: bold;
 	outline: none;
 }

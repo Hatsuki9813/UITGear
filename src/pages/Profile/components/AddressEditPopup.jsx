@@ -7,6 +7,7 @@ import { useAddressStore } from "../../../store/useAddressStore";
 import styles from "./AddressEditPopup.module.css";
 
 export default ({ isOpen, onClose, isEditing, data }) => {
+    const [mouseDownInside, setMouseDownInside] = useState(false);
     const { addAddress, updateAddress } = useAddressStore();
     const [addressData, setAddressData] = useState({
         name: "",
@@ -88,14 +89,22 @@ export default ({ isOpen, onClose, isEditing, data }) => {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
                         className={styles.overlay}
-                        onClick={onClose}>
+                        onMouseDown={() => setMouseDownInside(false)}
+                        onMouseUp={() => {
+                            if (!mouseDownInside) {
+                                onClose();
+                            }
+                        }}>
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ scale: 0.8 }}
                             transition={{ duration: 0.3 }}
                             className={styles.main}
-                            onClick={(e) => e.stopPropagation()}>
+                            onMouseDown={(e) => {
+                                e.stopPropagation();
+                                setMouseDownInside(true);
+                            }}>
                             <div className={styles.header}>
                                 <span className={styles.headerName}>
                                     {isEditing ? "Cập nhật địa chỉ" : "Thêm địa chỉ"}

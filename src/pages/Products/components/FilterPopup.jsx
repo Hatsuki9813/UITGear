@@ -42,6 +42,8 @@ export default ({ filters, isOpen, onClose, selectedFilters, setSelectedFilters 
         };
     }, [isOpen]);
 
+    const [mouseDownInside, setMouseDownInside] = useState(false);
+
     const fieldLabels = {
         brand: "Hãng",
         ram: "RAM",
@@ -59,14 +61,22 @@ export default ({ filters, isOpen, onClose, selectedFilters, setSelectedFilters 
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
                         className={styles.overlay}
-                        onClick={onClose}>
+                        onMouseDown={() => setMouseDownInside(false)}
+                        onMouseUp={() => {
+                            if (!mouseDownInside) {
+                                onClose();
+                            }
+                        }}>
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ scale: 0.8 }}
                             transition={{ duration: 0.3 }}
                             className={styles.main}
-                            onClick={(e) => e.stopPropagation()}>
+                            onMouseDown={(e) => {
+                                e.stopPropagation();
+                                setMouseDownInside(true);
+                            }}>
                             <div className={styles.header}>
                                 <span className={styles.headerName}>Bộ lọc sản phẩm</span>
                                 <button onClick={onClose} className={styles.closeButton}>

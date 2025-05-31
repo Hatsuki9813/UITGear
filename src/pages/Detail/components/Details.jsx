@@ -6,10 +6,13 @@ import styles from "./Details.module.css";
 import { useAuthStore } from "../../../store/useAuthStore";
 import toast from "react-hot-toast";
 
+import { useNavigate } from "react-router-dom";
+
 const isOption = true;
 
 export default function Details({ product }) {
-    const [quantity, setQuantity] = useState(1);
+    const navigate = useNavigate();
+    //const [quantity, setQuantity] = useState(1);
     const { addCart } = useCartStore();
     const { user } = useAuthStore();
     const handleAddToCart = () => {
@@ -18,12 +21,26 @@ export default function Details({ product }) {
             return;
         }
         if (product.is_available) {
-            addCart(user._id, product.product_id, quantity);
+            addCart(user._id, product.product_id);
             toast.success("Thêm vào giỏ hàng thành công!");
         } else {
             toast.error("Sản phẩm đã hết hàng!");
         }
     };
+
+    const handleBuyNow = () => {
+        if (!user) {
+            toast.error("Vui lòng đăng nhập để mua hàng!");
+            return;
+        }
+        if (product.is_available) {
+            addCart(user._id, product.product_id);
+            navigate("/cart");
+        } else {
+            toast.error("Sản phẩm đã hết hàng!");
+        }
+    };
+
     return (
         <div className={styles.Details}>
             <div className={styles.container}>
@@ -58,11 +75,12 @@ export default function Details({ product }) {
                     ...(isOption && { marginTop: "1.5rem" }),
                 }}
                 className={styles.buyContainer}>
-                {/* <QuantitySelector quantity={quantity} setQuantity={setQuantity} /> */}
                 <button onClick={handleAddToCart} className={styles.addToCart}>
                     THÊM VÀO GIỎ HÀNG
                 </button>
-                <button className={styles.buyButton}>MUA NGAY</button>
+                <button onClick={handleBuyNow} className={styles.buyButton}>
+                    MUA NGAY
+                </button>
             </div>
         </div>
     );

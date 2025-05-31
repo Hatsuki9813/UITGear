@@ -2,6 +2,8 @@ import { create } from "zustand";
 import { axiosInstance } from "../lib/axios";
 const useOrderStore = create((set) => ({
     orders: [],
+    orderDetails: [],
+    totalPrice: 0,
     loading: false,
     error: null,
 
@@ -15,6 +17,7 @@ const useOrderStore = create((set) => ({
             set({ error: error.message, loading: false });
         }
     },
+
     updateStatusOrder: async (orderId, status) => {
         set({ loading: true, error: null });
         try {
@@ -30,6 +33,22 @@ const useOrderStore = create((set) => ({
             }));
         } catch (error) {
             console.error("Error updating order status:", error);
+            set({ error: error.message, loading: false });
+        }
+    },
+
+    getOrderDetails: async (user_id, orderId) => {
+        set({ loading: true, error: null });
+        try {
+            const response = await axiosInstance.get(`/order/${user_id}/${orderId}`);
+            console.log("Order details fetched:", response.data);
+            set({
+                orderDetails: response.data.order_details,
+                loading: false,
+                totalPrice: response.data.total_price,
+            });
+        } catch (error) {
+            console.error("Error fetching order details:", error);
             set({ error: error.message, loading: false });
         }
     },

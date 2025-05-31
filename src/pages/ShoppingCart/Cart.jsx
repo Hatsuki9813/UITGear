@@ -13,14 +13,21 @@ Modal.setAppElement("#root"); // Thêm cho accessibility
 
 export default function Cart() {
     const user = useAuthStore((state) => state.user);
+    const [localCartItems, setLocalCartItems] = useState([]);
     const fetchCart = useCartStore((state) => state.fetchCart);
     const cartItems = useCartStore((state) => state.cartItems);
     const deleteCart = useCartStore((state) => state.deleteCart);
+    const updateCart = useCartStore((state) => state.updateCart);
 
     const [isModalOpen, setIsModalOpen] = useState(false); // Để điều khiển mở đóng modal
     const [itemToDelete, setItemToDelete] = useState(null); // Sản phẩm cần xóa
     const [selectedDiscounts, setSelectedDiscounts] = useState({});
     const setSelectedDiscountsStore = useCartStore((state) => state.setSelectedDiscounts);
+
+    useEffect(() => {
+        setLocalCartItems(cartItems);
+    }, [cartItems]);
+
     const navigate = useNavigate();
     useEffect(() => {
         if (user?._id) {
@@ -34,20 +41,45 @@ export default function Cart() {
         }));
     };
     // Tính tổng giá
-    const totalPrice = cartItems.reduce((total, item) => {
-        const price = item.product_detail?.price || 0;
-        return total + price * item.quantity;
-    }, 0);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [totalDiscount, setTotalDiscount] = useState(0);
 
-    // Tính tổng khuyến mãi
-    const totalDiscount = cartItems.reduce((discount, item) => {
-        const product = item.product_detail;
-        const isDiscountApplied = selectedDiscounts[item.product_id] === "discount";
-        if (!isDiscountApplied) return discount;
+    useEffect(() => {
+        const totalPrice = localCartItems.reduce((total, item) => {
+            const price = item.product_detail?.price || 0;
+            return total + price * item.quantity;
+        }, 0);
 
-        const discountAmount = ((product?.price || 0) * (product?.discount || 0)) / 100;
-        return discount + discountAmount * item.quantity;
-    }, 0);
+        const totalDiscount = localCartItems.reduce((discount, item) => {
+            const product = item.product_detail;
+            const isDiscountApplied = selectedDiscounts[item.product_id] === "discount";
+            if (!isDiscountApplied) return discount;
+
+            const discountAmount = ((product?.price || 0) * (product?.discount || 0)) / 100;
+            return discount + discountAmount * item.quantity;
+        }, 0);
+
+        setTotalPrice(totalPrice);
+        setTotalDiscount(totalDiscount);
+        console.log("Tổng giá:", totalPrice);
+    }, [selectedDiscounts, localCartItems]);
+
+    useEffect(() => {
+        if (cartItems && cartItems.length > 0) {
+            const initialDiscounts = {};
+            cartItems.forEach((item) => {
+                // Nếu chưa có trong selectedDiscounts thì set mặc định là "discount"
+                if (!selectedDiscounts[item.product_id]) {
+                    initialDiscounts[item.product_id] = "discount";
+                }
+            });
+            // Gộp vào state hiện tại (để không reset nếu user đã chọn cái khác)
+            setSelectedDiscounts((prev) => ({
+                ...initialDiscounts,
+                ...prev,
+            }));
+        }
+    }, [cartItems]);
 
     const handleDeleteItem = (productid) => {
         // Mở modal xác nhận
@@ -105,7 +137,22 @@ export default function Cart() {
                             <CartItem
                                 product={item.product_detail}
                                 quantity={item.quantity}
-                                onDiscountSelect={handleDiscountSelect}
+                                onUpdateQuantity={(newQuantity) => {
+                                    // Gửi lên backend
+                                    updateCart(user._id, item.product_id, newQuantity);
+
+                                    // Cập nhật local state để render lại ngay
+                                    setLocalCartItems((prev) =>
+                                        prev.map((i) =>
+                                            i.product_id === item.product_id
+                                                ? { ...i, quantity: newQuantity }
+                                                : i
+                                        )
+                                    );
+                                }}
+                                onDiscountSelect={(productId, selectedValue) =>
+                                    handleDiscountSelect(productId, selectedValue)
+                                }
                             />
                             <button
                                 className={styles.deleteButton}

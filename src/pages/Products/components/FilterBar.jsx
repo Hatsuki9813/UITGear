@@ -8,8 +8,6 @@ export default ({ products, category, onSort, onFilter }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedFilters, setSelectedFilters] = useState({});
 
-    console.log(category, "category in FilterBar");
-
     const categoryFilters = {
         laptop: ["brand", "ram", "storage"],
         "laptop gaming": ["brand", "ram", "storage"],

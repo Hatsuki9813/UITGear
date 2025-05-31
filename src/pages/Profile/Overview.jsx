@@ -87,7 +87,7 @@ export const Overview = () => {
     }, [isEditing]);
 
     if (!user) {
-        return <p>Đang tải dữ liệu người dùng...</p>;
+        return <div>Đang tải dữ liệu người dùng...</div>;
     }
 
     return (

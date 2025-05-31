@@ -52,6 +52,7 @@ export default function SearchBar() {
                         setIsFocused(false);
                     }
                 }}
+                spellCheck="false"
             />
             <Link
                 onClick={() => setIsFocused(false)}
