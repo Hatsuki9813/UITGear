@@ -224,7 +224,7 @@ export default function Header() {
                                 onMouseEnter={() => toggleChildmenu("accessorymenu")}
                                 onMouseLeave={() => toggleChildmenu(null)}>
                                 <Link
-                                    to={`/products?category=${encodedGearText}`}
+                                    to={`/products?category=Accessories`}
                                     style={{ textDecoration: "none" }}>
                                     <div className={styles.menuitem}>
                                         <img
@@ -240,7 +240,7 @@ export default function Header() {
                             <div
                                 onMouseEnter={() => toggleChildmenu("servicemenu")}
                                 onMouseLeave={() => toggleChildmenu(null)}>
-                                <Link to="/" style={{ textDecoration: "none" }}>
+                                <Link to="/products?category=Services" style={{ textDecoration: "none" }}>
                                     <div className={styles.menuitem}>
                                         <img
                                             src={service}
@@ -255,31 +255,41 @@ export default function Header() {
                             <div
                                 onMouseEnter={() => toggleChildmenu("softmenu")}
                                 onMouseLeave={() => toggleChildmenu(null)}>
-                                <div className={styles.menuitem}>
-                                    <img
-                                        src={windowicon}
-                                        className={styles.menuicon}
-                                        alt="Menu Icon"
-                                    />
-                                    <span style={{ color: "white" }}>Phần mềm</span>
-                                </div>
+                                <Link to="/products?category=Software" style={{ textDecoration: "none" }}>
+                                    <div className={styles.menuitem}>
+                                        <img
+                                            src={windowicon}
+                                            className={styles.menuicon}
+                                            alt="Menu Icon"
+                                        />
+                                        <span style={{ color: "white" }}>Phần mềm</span>
+                                    </div>
+                                </Link>
                                 {openChildMenu === "softmenu" && <SoftwareMenu />}
                             </div>
                             <div>
-                                <div className={styles.menuitem}>
-                                    <img src={news} className={styles.menuicon} alt="Menu Icon" />
-                                    <span style={{ color: "white" }}>Tin tức</span>
-                                </div>
+                                <Link to="/news" style={{ textDecoration: "none" }}>
+
+                                    <div className={styles.menuitem}>
+                                        <img src={news} className={styles.menuicon} alt="Menu Icon" />
+                                        <span style={{ color: "white" }}>Tin tức</span>
+                                    </div>
+                                </Link>
+
                             </div>
                             <div>
-                                <div className={styles.menuitem}>
-                                    <img
-                                        src={saleicon}
-                                        className={styles.menuicon}
-                                        alt="Menu Icon"
-                                    />
-                                    <span style={{ color: "white" }}>Khuyến mãi</span>
-                                </div>
+                                <Link to="/sales" style={{ textDecoration: "none" }}>
+
+                                    <div className={styles.menuitem}>
+                                        <img
+                                            src={saleicon}
+                                            className={styles.menuicon}
+                                            alt="Menu Icon"
+                                        />
+                                        <span style={{ color: "white" }}>Khuyến mãi</span>
+                                    
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
