@@ -111,11 +111,16 @@ export default function CheckoutInfo() {
 
         const pr = total - discount;
 
-        const shipping_address = `${formData.address}, ${formData.name}, ${formData.phone},${FormData.note}`;
         const data = {
             user_id: user?._id, // Thay bằng user id thật nếu có
             payment_name: formData.paymentMethod,
-            shipping_address,
+            shipping_address: {
+                name: formData.name,
+                phone: formData.phone,
+                address: formData.address,
+                note: formData.note,
+                email: user?.email || "",
+            },
             pr,
         };
 
