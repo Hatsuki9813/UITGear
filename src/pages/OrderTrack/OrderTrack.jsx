@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import useOrderStore from "../../store/useOrderStore"; // đường dẫn tới file useOrderStore
 import styles from "./OrderTrack.module.css";
 import formatCurrency from "../../utils/formatCurrency"; // đường dẫn tới file formatCurrency
 import { Link } from "react-router-dom";
@@ -11,21 +9,7 @@ export default function OrderTrack() {
     const amount = searchParams.get("amount");
     const resultCode = Number(searchParams.get("resultCode"));
     const message = searchParams.get("message");
-    const { updateStatusOrder } = useOrderStore();
 
-    const [statusUpdated, setStatusUpdated] = useState(false);
-
-    useEffect(() => {
-        if (orderId && !statusUpdated) {
-            updateStatusOrder(orderId, "Đã thanh toán");
-            console.log("Order status updated to 'Đã thanh toán'");
-            setStatusUpdated(true);
-        }
-    }, [orderId]);
-
-    useEffect(() => {
-        console.log(resultCode);
-    }, [resultCode]);
     return (
         <div className={styles.OrderTrackContainer}>
             <h1>KẾT QUẢ THANH TOÁN</h1>

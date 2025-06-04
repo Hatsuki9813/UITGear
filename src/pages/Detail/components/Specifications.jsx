@@ -22,6 +22,9 @@ const labelMap = {
 };
 
 export default function Specifications({ specification_obj }) {
+    if (!specification_obj || Object.keys(specification_obj).length === 0) {
+        return null; // Không hiển thị nếu không có thông số
+    }
     const data = Object.entries(specification_obj)
         .filter(([_, value]) => value && value.trim() !== "") // loại bỏ giá trị rỗng
         .map(([key, value]) => {

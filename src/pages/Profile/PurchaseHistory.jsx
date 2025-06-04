@@ -28,15 +28,15 @@ export const PurchaseHistory = () => {
 
     const getStatusColor = (status) => {
         switch (status) {
-            case "pending":
-                return "orange";
-            case "processing":
-                return "blue";
-            case "shipped":
-                return "purple";
-            case "delivered":
+            case "Đang chờ":
+                return "#b96f00";
+            case "Đang xử lý":
+                return "#4b83f8";
+            case "Đang giao":
+                return "#8a8a00";
+            case "Đã giao":
                 return "green";
-            case "cancelled":
+            case "Bị huỷ":
                 return "red";
             default:
                 return "black";
@@ -57,6 +57,7 @@ export const PurchaseHistory = () => {
                         <thead>
                             <tr>
                                 <th style={{ textAlign: "center" }}>Mã đơn hàng</th>
+                                <th style={{ textAlign: "center" }}>Thanh toán</th>
                                 <th style={{ textAlign: "center" }}>Trạng thái</th>
                                 <th style={{ textAlign: "center" }}>Ngày đặt</th>
                                 <th style={{ textAlign: "center" }}>Tổng tiền</th>
@@ -68,6 +69,7 @@ export const PurchaseHistory = () => {
                                     key={item._id}
                                     onClick={() => navigate(`/order-details/${item._id}`)}>
                                     <td style={{ textAlign: "center" }}>{item._id}</td>
+                                    <td style={{ textAlign: "center" }}>{item.payment_status}</td>
                                     <td
                                         style={{
                                             textAlign: "center",

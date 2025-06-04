@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 export const useCheckOut = create((set, get) => ({
     createOrder: async (data) => {
         try {
-            console.log(data, "usechecksort");
             const response = await axiosInstance.post("/checkout", data);
             toast.success("Order created successfully!");
             return response.data; // Trả dữ liệu về để component có thể xử lý tiếp

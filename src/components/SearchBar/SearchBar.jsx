@@ -80,6 +80,7 @@ export default function SearchBar() {
                                     )}
                                 </span>
                             </div>
+                            {console.log("product img: ", item.img_obj.productimg)}
                             <img className="suggestion-img" src={item.img_obj.productimg}></img>
                         </Link>
                     ))}

@@ -18,25 +18,6 @@ const useOrderStore = create((set) => ({
         }
     },
 
-    updateStatusOrder: async (orderId, status) => {
-        set({ loading: true, error: null });
-        try {
-            const response = await axiosInstance.put(`/order/${orderId}`, {
-                order_status: status,
-            });
-            console.log("Order status updated:", response.data);
-            set((state) => ({
-                orders: state.orders.map((order) =>
-                    order._id === orderId ? { ...order, order_status: status } : order
-                ),
-                loading: false,
-            }));
-        } catch (error) {
-            console.error("Error updating order status:", error);
-            set({ error: error.message, loading: false });
-        }
-    },
-
     getOrderDetails: async (user_id, orderId) => {
         set({ loading: true, error: null });
         try {
