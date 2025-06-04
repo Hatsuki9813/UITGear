@@ -12,6 +12,7 @@
 .AddressRow .container {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 .AddressRow .defaultAddress {
@@ -25,6 +26,7 @@
     display: flex;
     height: fit-content;
     gap: 0.5rem;
+    align-items: center;
 }
 
 .AddressRow .editButton {
@@ -46,4 +48,14 @@
     border-radius: 0.25rem;
     cursor: pointer;
     font-weight: 500;
+}
+
+.AddressRow .icon {
+    width: 24px;
+    height: 24px;
+}
+
+.AddressRow .phoneAndAddress {
+    display: flex;
+    gap: 10px
 }

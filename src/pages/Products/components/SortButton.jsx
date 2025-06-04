@@ -2,13 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import styles from "./SortButton.module.css";
 
-export default function DropdownSort({ onSort }) {
+export default function SortButton({ onSort }) {
     const [isOpen, setIsOpen] = useState(false);
     const [buttonText, setButtonText] = useState("Giá giảm dần");
-    const [sortType, setSortType] = useState(null);
-    const dropdownRef = useRef(null); // Tạo ref để tham chiếu đến dropdown
+    const dropdownRef = useRef(null);
 
-    // Đóng dropdown nếu click bên ngoài
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -19,35 +17,58 @@ export default function DropdownSort({ onSort }) {
         if (isOpen) {
             document.addEventListener("mousedown", handleClickOutside);
         }
+
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [isOpen]);
 
-    const handleSort = (type) => {
-        // onSort(type);
+    const handleSort = (type, order) => {
+        onSort?.(type, order);
+
+        let label = "";
+        if (type === "name") {
+            label = order === "asc" ? "Tên A → Z" : "Tên Z → A";
+        } else if (type === "price") {
+            label = order === "asc" ? "Giá tăng dần" : "Giá giảm dần";
+        }
+
+        setButtonText(label);
         setIsOpen(false);
-        setButtonText(type === "name" ? "Tên từ A đến Z" : "Giá giảm dần");
     };
 
     return (
         <div className={styles.SortButton} ref={dropdownRef}>
             <label>Sắp xếp theo</label>
-            {/* Nút bấm */}
             <button className={styles.button} onClick={() => setIsOpen(!isOpen)}>
                 <div>
                     <span>{buttonText}</span>
-                    {isOpen ? <ChevronUpIcon className={styles.icon} /> : <ChevronDownIcon className={styles.icon} />}
+                    {isOpen ? (
+                        <ChevronUpIcon className={styles.icon} />
+                    ) : (
+                        <ChevronDownIcon className={styles.icon} />
+                    )}
                 </div>
             </button>
 
-            {/* Dropdown */}
             {isOpen && (
                 <div className={styles.dropdown2}>
-                    <button className={styles.sortOption} onClick={() => handleSort("name")}>
-                        Tên từ A đến Z
+                    <button className={styles.sortOption} onClick={() => handleSort("name", "asc")}>
+                        Tên A → Z
                     </button>
-                    <button className={styles.sortOption} onClick={() => handleSort("price")}>
+                    <button
+                        className={styles.sortOption}
+                        onClick={() => handleSort("name", "desc")}>
+                        Tên Z → A
+                    </button>
+                    <button
+                        className={styles.sortOption}
+                        onClick={() => handleSort("price", "asc")}>
+                        Giá tăng dần
+                    </button>
+                    <button
+                        className={styles.sortOption}
+                        onClick={() => handleSort("price", "desc")}>
                         Giá giảm dần
                     </button>
                 </div>

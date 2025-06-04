@@ -10,6 +10,7 @@
 
 .SortButton .button {
     border: 1px solid #CFCFCF;
+    background-color: white;
     transition: border-color 0.3s ease-in-out;
     width: 12rem;
     padding: 0.5rem 1rem;
@@ -56,6 +57,7 @@
     padding: 0.5rem 1rem;
     cursor: pointer;
     border: none;
+    background-color: white;
 }
 
 .SortButton .sortOption:hover {

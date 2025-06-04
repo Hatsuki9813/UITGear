@@ -1,59 +1,89 @@
-import React, { useState } from 'react'
-import reactlogo from '../../assets/react.svg'
-import styles from './CartItem.module.css'
-import Form from 'react-bootstrap/Form';
-import { TiDeleteOutline } from "react-icons/ti";
-import Button from 'react-bootstrap/Button';
-import { Container, Row, Col } from 'react-bootstrap';
+import { useState, useEffect } from "react";
+import styles from "./CartItem.module.css";
+import formatCurrency from "../../utils/formatCurrency";
 
-export default function CartItem() {
-  const [count, setCount] = useState(1);
+export default function CartItem({ product, quantity, onDiscountSelect, onUpdateQuantity }) {
+    const [quantityValue, setQuantityValue] = useState(quantity);
 
-  const decrease = () => {
-    if (count > 0) {
-      setCount(count - 1);
+    useEffect(() => {
+        // Nếu props thay đổi (do backend trả về sau khi gọi API), cập nhật lại
+        setQuantityValue(quantity);
+    }, [quantity]);
+
+    if (!product || !product.img_obj) {
+        return <div>Loading...</div>;
     }
-  };
 
-  const increase = () => {
-    setCount(count + 1);
-  };
+    const handleDiscountChange = (e) => {
+        const selectedValue = e.target.value;
+        onDiscountSelect(product.product_id, selectedValue);
+    };
 
+    const validateQuantityInput = (value) => {
+        const num = parseInt(value, 10);
 
-  return (
-    <Container className={styles.CartItemContainer}>
-      <Row className={styles.ProductInfo}>
-        <Col xs={12} md={5} className={styles.ProductDetails}>
-          <img src={reactlogo} alt="product" className={styles.ProductImage} />
-          <p className={styles.ProductName}>Laptop Gaming Lenovo LOQ 15IAX9</p>
-        </Col>
-        <Col xs={6} md={3} className={styles.PriceWrapper}>
-          <p className={styles.Price}>15.000.000đ</p>
-        </Col>
-        <Col xs={6} md={4} className={styles.QuantityWrapper}>
-          <div className={styles.IncreaseDecreaseContainer}>
-            <button onClick={decrease} disabled={count === 1} className={styles.IncreaseDecrease}>-</button>
-            <span>{count}</span>
-            <button onClick={increase} className={styles.IncreaseDecrease}>+</button>
-          </div>
-          <TiDeleteOutline className={styles.deleteicon}/>
+        if (isNaN(num)) return 1; // Nếu không phải số => về 1
+        if (num < 1) return 1; // Nhỏ hơn 1 => về 1
+        if (num > 99) return 99; // Lớn hơn 99 => về 99
+        return num; // Hợp lệ => giữ nguyên
+    };
 
-        </Col>
-        
-      </Row>
-      <Row className={styles.CouponContainer}>
-        <div className={styles.CouponHeader}>Chọn gói giảm giá</div>
-        <Form.Check // prettier-ignore
-          type='radio'
-          id={`default-radio`}
-          label={`Giảm 10% trực tiếp vào giá máy`}
-        />
-        <Form.Check // prettier-ignore
-          type='radio'
-          id={`default-radio`}
-          label={`Tặng thêm ram 16gb`}
-        />
-    </Row>
- </Container >
-  )
+    const handleInputChange = (e) => {
+        const newQuantity = validateQuantityInput(Number(e.target.value));
+        if (newQuantity >= 1) {
+            setQuantityValue(newQuantity);
+            onUpdateQuantity(newQuantity); // gọi API luôn
+        }
+    };
+
+    const handleDecrease = () => {
+        const newQuantity = quantityValue > 1 ? quantityValue - 1 : 1;
+        setQuantityValue(newQuantity);
+        onUpdateQuantity(newQuantity); // gọi API luôn
+    };
+
+    const handleIncrease = () => {
+        const newQuantity = quantityValue >= 99 ? 99 : quantityValue + 1;
+        setQuantityValue(newQuantity);
+        onUpdateQuantity(newQuantity); // gọi API luôn
+    };
+
+    return (
+        <div className={styles.container}>
+            <div className={styles.info}>
+                <div className={styles.col1}>
+                    <div className={styles.imageContainer}>
+                        <img
+                            src={product.img_obj.productimg || ""}
+                            alt="product"
+                            className={styles.image}
+                        />
+                    </div>
+                    <span className={styles.name}>{product.name}</span>
+                </div>
+                <div className={styles.col2}>{formatCurrency(product.price * quantityValue)}</div>
+                <div className={styles.col3}>
+                    <button className={styles.quantityButton} onClick={handleDecrease}>
+                        -
+                    </button>
+                    <input
+                        name="quantity"
+                        className={styles.quantityInput}
+                        value={quantityValue}
+                        onChange={handleInputChange}
+                    />
+                    <button className={styles.quantityButton} onClick={handleIncrease}>
+                        +
+                    </button>
+                </div>
+            </div>
+            <div className={styles.discount}>
+                <div className={styles.title}>Chọn gói giảm giá:</div>
+                <select onChange={handleDiscountChange}>
+                    <option value="discount">Giảm {product.discount}% trực tiếp vào giá máy</option>
+                    <option value="bonus_ram">Tặng thêm 16GB RAM</option>
+                </select>
+            </div>
+        </div>
+    );
 }

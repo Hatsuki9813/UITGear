@@ -19,32 +19,44 @@
     /* flex flex-col gap-4 */
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding: 0 16rem;
+    gap: 2rem;
+    padding: 0 5rem;
 }
 
 .Overview>form>div {
     /* flex flex-col gap-2 */
     display: flex;
+    gap: 3rem;
+}
+
+.Overview .infoBlock {
+    display: flex;
     flex-direction: column;
+    flex: 1;
     gap: 0.5rem;
 }
 
 .Overview .avatarContainer {
     /* border-1 border-[rgb(2, 69, 122)] w-24 h-24 rounded-full flex items-center justify-center" */
-    border: 3px solid rgb(2, 69, 122);
-    width: 6rem;
-    height: 6rem;
+    border: 2px solid rgb(2, 69, 122);
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     align-self: center;
+    position: relative;
+}
+
+.Overview .avatarContainer:hover {
+    background-color: #ececec;
 }
 
 .Overview .avatar {
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
 }
 
 .Overview .title {
@@ -69,41 +81,50 @@
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    height: 100%;
+    align-items: center;
+}
+
+.Overview .buttonGroup {
+    /* flex flex-row gap-4 */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
 }
 
 .Overview .confirmButton {
     /* border-2 rounded-sm transition-colors ease-in duration-200 border-[#02457a] hover: text-black
     text-white hover:bg-white bg-[#02457a] w-fit py-2 flex px-20 cursor-pointer font-medium */
-    margin-top: 1rem;
-    border: 2px solid #02457a;
     border-radius: 0.25rem;
-    transition: background-color 0.2s ease-in, color 0.2s ease-in;
     color: white;
     background-color: #02457a;
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
+    width: 200px;
     display: flex;
     cursor: pointer;
     font-weight: 500;
     justify-content: center;
+    border: none;
 }
 
-.Overview .confirmButton:hover {
-    color: black;
-    background-color: white;
+.Overview .removeAvatar {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #E2E5E9;
+    display: grid;
+    place-items: center;
 }
 
-.Overview .logoutButton {
-    /* border-2 rounded-sm transition-colors ease-in duration-200 border-[#02457a] hover: text-black
-    text-white hover:bg-white bg-[#02457a] w-fit py-2 flex px-20 cursor-pointer font-medium */
-    margin-top: 1rem;
-    border: 2px solid #02457a;
-    border-radius: 0.25rem;
-    transition: background-color 0.2s ease-in, color 0.2s ease-in;
-    color: black;
-    background-color: transparent;
-    padding: 0.5rem 0;
-    display: flex;
-    cursor: pointer;
-    font-weight: 500;
-    justify-content: center;
+.Overview .removeAvatar:hover {
+    background-color: #d6d9dd;
+}
+
+.Overview .removeIcon {
+    width: 20px;
+    height: 20px;
 }

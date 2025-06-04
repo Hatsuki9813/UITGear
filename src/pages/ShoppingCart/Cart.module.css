@@ -1,72 +1,156 @@
-.CartContainer {
-    margin-top: 20px;
+.container {
+	display: flex;
+	gap: 40px;
 }
-.CartContainer .ItemList {
-    background-color: #f9f9f9;
-    padding: 15px;
-    margin-bottom: 20px;
+
+.itemList {
+	flex: 7;
+	background-color: white;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
 }
-.CartContainer .CheckoutContainer {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #ccc;
-    padding: 20px;
-    height: fit-content;
-    box-sizing: border-box;
+
+.col1 {
+	flex: 4;
+	display: flex;
+	align-items: center;
+	padding: 0 10px;
 }
-.CartContainer .CheckoutHeader {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: flex-start;
-    width: 100%;
+
+.col2 {
+	flex: 3;
+	display: grid;
+	place-items: center;
+	padding: 0 10px;
 }
-.CartContainer .SubmitButton {
-    border-radius: 0px !important;
-    width: 100%;
-    padding: 10px;
-    background-color: #011C49;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
+
+.col3 {
+	flex: 2;
+	display: grid;
+	place-items: center;
+	padding: 0 10px;
 }
-.CartContainer .SubmitButton:active,
-.CartContainer .SubmitButton:focus,
-.CartContainer .SubmitButton:hover {
-    background-color: #011C49 !important;
-    color: white !important;
-    border-color: #011C49 !important;
-    box-shadow: none !important; /* Ngăn Bootstrap thêm viền xanh */
+
+.headerRow {
+	display: flex;
+	font-weight: 500;
+	font-size: 1.25rem;
+	flex: 1;
+	padding: 0px 10px 5px 10px;
 }
-.CartContainer .divider {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    text-align: center;
-    color: #666;
-    margin: 20px 0;
+
+.row {
+	display: flex;
+	flex: 1;
+	position: relative;
 }
+
+.deleteButton {
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	right: 0px;
+	top: 0px;
+	cursor: pointer;
+	background-color: white;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	border: 1px solid red;
+	background-color: #f5d5d5;
+}
+
+.deleteIcon {
+	position: absolute;
+	transform: translate(0%, 0%);
+	width: 16px;
+	height: 16px;
+	color: red;
+}
+
+.checkout {
+	flex-direction: column;
+	border: 1px solid #ccc;
+	flex: 3;
+	height: fit-content;
+	background-color: white;
+	border-radius: 4px;
+	padding: 20px;
+	display: flex;
+	gap: 10px;
+}
+
+.price {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1.2rem;
+	width: 100%;
+}
+
+.divider {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	text-align: center;
+	color: #666;
+	margin: 10px 0;
+}
+
 .divider::before,
 .divider::after {
-    content: "";
-    flex: 1;
-    border-bottom: 1px solid #ccc;
+	content: "";
+	flex: 1;
+	border-bottom: 1px solid #ccc;
+}
 
+.submitButton {
+	border-radius: 4px !important;
+	width: 100%;
+	background-color: #02457a;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	font-weight: 500;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	margin-top: 10px;
 }
-.CartContainer .CheckoutContent {
-    display: flex;
-    justify-content: space-between; /* Đẩy nội dung và giá sang hai bên */
-    align-items: center;
-    padding: 10px;
-    font-size: 1.2rem;
-    width: 100%;
+
+.modalContainer {
+	position: fixed;
+	width: fit-content;
+	height: fit-content;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	background-color: white;
 }
-.CartContainer .ListHeader {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-    margin-bottom: 10px;
+
+.modalButtons {
+	display: flex;
+	gap: 10px;
+	width: 100%;
+	align-items: center;
+	justify-content: flex-end;
 }
-.CartContainer .ListHeader span:first-child {
-    padding-left: 100px; /* Dịch sang phải 20px */
+
+.emptyCart {
+	padding: 20px;
+}
+
+.submitButton:disabled {
+	cursor: not-allowed;
+	opacity: 0.6;
 }

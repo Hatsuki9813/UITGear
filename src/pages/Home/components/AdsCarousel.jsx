@@ -11,7 +11,7 @@ export default ({ imageList }) => {
         clearInterval(intervalRef.current); // Dừng interval cũ trước khi tạo mới
         intervalRef.current = setInterval(() => {
             setIndex((prev) => (prev + 1) % imageList.length);
-        }, 3000);
+        }, 7000);
     };
 
     useEffect(() => {
@@ -42,6 +42,7 @@ export default ({ imageList }) => {
                         width: "100%",
                         height: "auto",
                         objectFit: "cover",
+                        borderRadius: "4px",
                     }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: i === index ? 1 : 0 }}

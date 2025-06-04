@@ -1,0 +1,12 @@
+export { default as menunavigation } from "./icons/menunavigation.svg";
+export { default as menucash } from "./icons/menucash.svg";
+export { default as menusaving } from "./icons/menusaving.svg";
+export { default as menunews } from "./icons/menunews.svg";
+export { default as menuwarranty } from "./icons/menuwarranty.svg";
+export { default as laptop } from "./icons/laptop.png";
+export { default as consoleIcon } from "./icons/console.png";
+export { default as accessory } from "./icons/accessory.png";
+export { default as service } from "./icons/services.png";
+export { default as news } from "./icons/news.png";
+export { default as windowicon } from "./icons/windows.png";
+export { default as saleicon } from "./icons/sales.png";

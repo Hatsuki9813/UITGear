@@ -1,119 +1,95 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import Nav from "react-bootstrap/Nav";
-import { NavLink } from "react-router";
-import Image from "react-bootstrap/Image";
+import { Link } from "react-router-dom";
 import styles from "./Footer.module.css"; // Import CSS module
 import logo from "../../assets/icons/croppedlogonobgr.png";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 const Footer = () => {
-  return (
-    <footer className={styles.footercontainer}>
-      <Container fluid>
-        <Row>
-          <Col className="d-flex flex-column">
-            <img src={logo} className={styles.logoimg} />
-            <p className={styles.stacontenttext}>
-              UITGEAR - Chuyên cung cấp Laptop & phụ kiện cao cấp chính hãng.
-            </p>
-            <p className={styles.titletext}>Hotline Hỗ trợ</p>
-            <p className={styles.stacontenttext}>0799479950</p>
-          </Col>
-          <Col className="d-flex flex-column">
-            <p className={styles.titletext}>Hướng dẫn</p>
-            <Nav className="flex-column">
-              <Nav.Item>
-                <Nav.Link className={styles.contenttext}>
-                  Hướng dẫn thanh toán
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link className={styles.contenttext}>
-                  Hướng dẫn trả góp
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link className={styles.contenttext}>
-                  Tra cứu bảo hành
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link className={styles.contenttext}>
-                  Chính sách bảo hành
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link className={styles.contenttext}>
-                  Tin công nghệ
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link className={styles.contenttext}>Về chúng tôi</Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Col>
-          <Col className="d-flex flex-column">
-            <p className={styles.titletext}>Danh mục được yêu thích</p>
-            <Nav className="flex-column">
-              <Nav.Item>
-                <Nav.Link className={styles.contenttext}>Laptop</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link className={styles.contenttext}>
-                  Laptap Gaming
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link className={styles.contenttext}>Bàn phím</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link className={styles.contenttext}>Tai nghe</Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Col>
-          <Col className="d-flex flex-column">
-            <p className={styles.titletext}>Liên hệ với chung tôi</p>
-            <div className={styles.iconcontainer}>
-              <FaFacebook className={styles.footericon} />
-              <Nav>
-                <Nav.Link
-                  href="https://www.facebook.com/"
-                  className={styles.contenttext}
-                >
-                  UITGear Fanpage
-                </Nav.Link>
-              </Nav>
-            </div>
-            <div className={styles.iconcontainer}>
-              <FaInstagram className={styles.footericon} />
-              <Nav>
-                <Nav.Link
-                  href="https://www.youtube.com/"
-                  className={styles.contenttext}
-                >
-                  UITGear Instagram
-                </Nav.Link>
-              </Nav>
-            </div>
-            <div className={styles.iconcontainer}>
-              <FaYoutube className={styles.footericon} />
-              <Nav>
-                <Nav.Link
-                  href="https://www.instagram.com/"
-                  className={styles.contenttext}
-                >
-                  UITGear Youtube
-                </Nav.Link>
-              </Nav>
-            </div>
-          </Col>
-          <p className="text-sm text-center text-white">
-            © Copyright 2021, All Rights Reserved by UITGear company
-          </p>
-        </Row>
-      </Container>
-    </footer>
-  );
+    return (
+        <div className={styles.backgroundContainer}>
+            <footer className={styles.footercontainer}>
+                <div className={styles.infoContainer}>
+                    <div className={styles.info}>
+                        <img src={logo} className={styles.logoimg} />
+                        <span className={styles.stacontenttext}>
+                            UITGEAR - Chuyên cung cấp Laptop & phụ kiện cao cấp chính hãng.
+                        </span>
+                        <span className={styles.titletext}>Hotline Hỗ trợ</span>
+                        <span className={styles.stacontenttext}>0799479950</span>
+                    </div>
+                    <div className={styles.grid}>
+                        <div>
+                            <span className={styles.titletext}>Hướng dẫn</span>
+                            <Link to="/">
+                                <span className={styles.contenttext}>Hướng dẫn thanh toán</span>
+                            </Link>
+                            <Link to="/">
+                                <span className={styles.contenttext}>Hướng dẫn trả góp</span>
+                            </Link>
+                            <Link to="/">
+                                <span className={styles.contenttext}>Tra cứu bảo hành</span>
+                            </Link>
+                            <Link to="/">
+                                <span className={styles.contenttext}>Chính sách bảo hành</span>
+                            </Link>
+                            <Link to="/">
+                                <span className={styles.contenttext}>Tin công nghệ</span>
+                            </Link>
+                            <Link to="/">
+                                <span className={styles.contenttext}>Về chúng tôi</span>
+                            </Link>
+                        </div>
+                        <div>
+                            <span className={styles.titletext}>Danh mục được yêu thích</span>
+                            <Link to="/" className={styles.contenttext}>
+                                Laptop
+                            </Link>
+                            <Link to="/" className={styles.contenttext}>
+                                Laptop Gaming
+                            </Link>
+                            <Link to="/" className={styles.contenttext}>
+                                Bàn phím
+                            </Link>
+                            <Link to="/" className={styles.contenttext}>
+                                Chuột
+                            </Link>
+                        </div>
+                        <div>
+                            <span className={styles.titletext}>Liên hệ với chúng tôi</span>
+                            <div className={styles.iconcontainer}>
+                                <FaFacebook className={styles.footericon} />
+                                <a
+                                    href="https://www.facebook.com"
+                                    target="_blank"
+                                    className={styles.contenttext}>
+                                    UITGear Fanpage
+                                </a>
+                            </div>
+                            <div className={styles.iconcontainer}>
+                                <FaInstagram className={styles.footericon} />
+                                <a
+                                    href="https://www.instagram.com"
+                                    target="_blank"
+                                    className={styles.contenttext}>
+                                    UITGear Instagram
+                                </a>
+                            </div>
+                            <div className={styles.iconcontainer}>
+                                <FaYoutube className={styles.footericon} />
+                                <a
+                                    href="https://www.youtube.com"
+                                    target="_blank"
+                                    className={styles.contenttext}>
+                                    UITGear Youtube
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span className={styles.copyrightText}>
+                    © Copyright 2025, All Rights Reserved by UITGear Company
+                </span>
+            </footer>
+        </div>
+    );
 };
 
 export default Footer;
