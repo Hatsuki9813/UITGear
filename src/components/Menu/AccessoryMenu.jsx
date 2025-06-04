@@ -13,14 +13,14 @@ export default function AccessoryMenu() {
                 <ul>
                     <li>
                         <Link
-                            to={`/products?category=${encodedCategory}&product_line=${encodedKeyboardProductLine}&brand=Aula`}
+                            to={`/products?category=Accessories&product_line=Keyboard&brand=Aula`}
                             className={styles.linkStyle}>
                             Aula
                         </Link>
                     </li>
                     <li>
                         <Link
-                            to={`/products?category=${encodedCategory}&product_line=${encodedKeyboardProductLine}&brand=Dareu`}
+                            to={`/products?category=Accessories&product_line=Keyboard&brand=Dareu`}
                             className={styles.linkStyle}>
                             Dareu
                         </Link>
@@ -32,14 +32,14 @@ export default function AccessoryMenu() {
                 <ul>
                     <li>
                         <Link
-                            to={`/products?category=${encodedCategory}&product_line=${encodedMouseProductLine}&brand=Dareu`}
+                            to={`/products?category=Accessories&product_line=Mouse&brand=Dareu`}
                             className={styles.linkStyle}>
                             Dareu
                         </Link>
                     </li>
                     <li>
                         <Link
-                            to={`/products?category=${encodedCategory}&product_line=${encodedMouseProductLine}&brand=Logitech`}
+                            to={`/products?category=Accessories&product_line=Mouse&brand=Logitech`}
                             className={styles.linkStyle}>
                             Logitech
                         </Link>

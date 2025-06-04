@@ -9,7 +9,7 @@ export default function ServiceMenu() {
                 <h4>Vệ sinh laptop</h4>
                 <ul>
                     <li>
-                        <Link to="/" className={styles.linkStyle}>
+                        <Link to="/products?category=Services&product_line=Cleaning&brand=UITGear" className={styles.linkStyle}>
                             Dịch vụ vệ sinh laptop 2 trong 1
                         </Link>
                     </li>
@@ -20,7 +20,7 @@ export default function ServiceMenu() {
                 <h4>Cân màu màn hình</h4>
                 <ul>
                     <li>
-                        <Link to="/" className={styles.linkStyle}>
+                        <Link to="/products?category=Services&product_line=ColorAdjustment&brand=UITGear" className={styles.linkStyle}>
                             Cân màu màn hình bằng SpyderX
                         </Link>
                     </li>
