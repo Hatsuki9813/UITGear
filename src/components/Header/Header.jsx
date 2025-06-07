@@ -16,6 +16,7 @@ import {
     windowicon,
     saleicon,
 } from "../../assets/subHeaderIcons";
+import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
 import LaptopMenu from "../Menu/LaptopMenu";
 import GamingMenu from "../Menu/GamingMenu";
 import AccessoryMenu from "../Menu/AccessoryMenu";
@@ -162,8 +163,12 @@ export default function Header() {
                     </div>
                     {/* Other menu items remain unchanged */}
                     <Link to="/question" style={{ textDecoration: "none" }}>
-                        <img src={menucash} className={styles.menuicon} alt="Menu Icon" />
-                        <span>Hướng dẫn thanh toán</span>
+                        <QuestionMarkCircleIcon
+                            className={styles.menuicon}
+                            style={{ marginRight: "10px" }}
+                            alt="Menu Icon"
+                        />
+                        <span>Câu hỏi thường gặp</span>
                     </Link>
                     <Link to="/warranty-policies" style={{ textDecoration: "none" }}>
                         <img src={menuwarranty} className={styles.menuicon} alt="Menu Icon" />
@@ -240,7 +245,9 @@ export default function Header() {
                             <div
                                 onMouseEnter={() => toggleChildmenu("servicemenu")}
                                 onMouseLeave={() => toggleChildmenu(null)}>
-                                <Link to="/products?category=Services" style={{ textDecoration: "none" }}>
+                                <Link
+                                    to="/products?category=Services"
+                                    style={{ textDecoration: "none" }}>
                                     <div className={styles.menuitem}>
                                         <img
                                             src={service}
@@ -255,7 +262,9 @@ export default function Header() {
                             <div
                                 onMouseEnter={() => toggleChildmenu("softmenu")}
                                 onMouseLeave={() => toggleChildmenu(null)}>
-                                <Link to="/products?category=Software" style={{ textDecoration: "none" }}>
+                                <Link
+                                    to="/products?category=Software"
+                                    style={{ textDecoration: "none" }}>
                                     <div className={styles.menuitem}>
                                         <img
                                             src={windowicon}
@@ -269,17 +278,18 @@ export default function Header() {
                             </div>
                             <div>
                                 <Link to="/news" style={{ textDecoration: "none" }}>
-
                                     <div className={styles.menuitem}>
-                                        <img src={news} className={styles.menuicon} alt="Menu Icon" />
+                                        <img
+                                            src={news}
+                                            className={styles.menuicon}
+                                            alt="Menu Icon"
+                                        />
                                         <span style={{ color: "white" }}>Tin tức</span>
                                     </div>
                                 </Link>
-
                             </div>
                             <div>
                                 <Link to="/sales" style={{ textDecoration: "none" }}>
-
                                     <div className={styles.menuitem}>
                                         <img
                                             src={saleicon}
@@ -287,7 +297,6 @@ export default function Header() {
                                             alt="Menu Icon"
                                         />
                                         <span style={{ color: "white" }}>Khuyến mãi</span>
-                                    
                                     </div>
                                 </Link>
                             </div>
