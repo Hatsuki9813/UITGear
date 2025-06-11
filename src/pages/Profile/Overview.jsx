@@ -13,6 +13,7 @@ export const Overview = () => {
     const user = useAuthStore((state) => state.user);
     const fetchUser = useAuthStore((state) => state.fetchUser);
     const changePassword = useAuthStore((state) => state.changePassword);
+    const [isSubmit, setIsSubmit] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({
         fullname: "",
@@ -60,6 +61,7 @@ export const Overview = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await editProfile(formData);
+        setIsSubmit(true);
         setIsEditing(false); // Đặt lại chế độ chỉnh sửa sau khi cập nhật
     };
 
@@ -81,8 +83,9 @@ export const Overview = () => {
             // Lưu lại dữ liệu ban đầu khi bắt đầu chỉnh sửa
             setCloneFormData({ ...formData });
         } else {
-            // Khi không chỉnh sửa nữa, đặt lại dữ liệu về ban đầu
+            if (isSubmit) return;
             setFormData({ ...cloneFormData });
+            setIsSubmit(false);
         }
     }, [isEditing]);
 
@@ -236,11 +239,9 @@ export const Overview = () => {
                         <span className={styles.title}>Email</span>
                         <input
                             name="email"
-                            placeholder="Input here"
                             className={styles.inputField}
                             value={formData.email}
-                            onChange={handleChange}
-                            readOnly={!isEditing}
+                            disabled
                         />
                     </div>
                     {/* Số điện thoại */}
